@@ -1,0 +1,9 @@
+servers:
+    - address: ["0.0.0.0:8083"]
+      type: http
+      accept_worker: accept
+      io_worker: http_io
+      process_worker:  http_io
+      keepalive: true
+      timeout: 1000
+      name: routn/1.0.4
