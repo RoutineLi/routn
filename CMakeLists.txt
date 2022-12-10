@@ -5,7 +5,7 @@ project(routn)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib")
+set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib")
 
 set(PROJECT_SOURCE_DIR /home/rotun-li/routn/)
 
@@ -26,6 +26,8 @@ endif()
 
 find_library(YAMLCPP yamlcpp)
 find_library(PTHREAD pthread)
+find_library(OPENSSL openssl)
+find_library(CRYPTO crypto)
 
 set(LIB_SRC
     src/plugins/libco/coctx.cpp
@@ -62,9 +64,14 @@ set(LIB_SRC
     src/http/httpclient_parser.rl.cpp
     src/http/http11_parser.rl.cpp 
     src/http/Parser.cpp
+    src/http/WSServer.cpp
+    src/http/WSSession.cpp
+    src/http/WSServlet.cpp
+    src/http/WSConnection.cpp
     )
 
 add_library(routn SHARED ${LIB_SRC})
+target_link_libraries(routn ssl crypto)
 
 set(LIBS
         routn
@@ -75,11 +82,11 @@ set(LIBS
     )
 
 
-add_executable(Routn src/main.cpp )
-add_dependencies(Routn routn)
-target_link_libraries(Routn ${LIBS})
+add_executable(routn-svr src/main.cpp )
+add_dependencies(routn-svr routn)
+target_link_libraries(routn-svr ${LIBS})
 
-if(BUILD_TEST)
+#if(BUILD_TEST)
 
 add_executable(test test/test.cpp )
 add_dependencies(test routn)
@@ -163,7 +170,15 @@ add_executable(test_application test/test_application.cpp)
 add_dependencies(test_application routn)
 target_link_libraries(test_application routn ${LIBS})
 
-endif()
+add_executable(test_ws_server test/test_ws_server.cpp)
+add_dependencies(test_ws_server routn)
+target_link_libraries(test_ws_server routn ${LIBS})
+
+add_executable(test_ws_client test/test_ws_client.cpp)
+add_dependencies(test_ws_client routn)
+target_link_libraries(test_ws_client routn ${LIBS})
+
+#endif()
 
 add_executable(ex_echoServer examples/ex_echoServer.cpp)
 add_dependencies(ex_echoServer routn)
