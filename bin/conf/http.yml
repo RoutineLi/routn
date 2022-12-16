@@ -1,9 +1,21 @@
 servers:
     - address: ["0.0.0.0:8083"]
       type: http
+      ssl: 1
+      cert_file: /home/rotun-li/routn/bin/ssl/server.crt
+      key_file: /home/rotun-li/routn/bin/ssl/server.key
+      accept_worker: accept
+      io_worker: http_io
+      process_worker:  http_io
+      keepalive: true
+      timeout: 30000
+      name: routn/1.1
+
+    - address: ["0.0.0.0:8084"]
+      type: ws
       accept_worker: accept
       io_worker: http_io
       process_worker:  http_io
       keepalive: true
       timeout: 1000
-      name: routn/1.0.4
+      name: routn/1.1

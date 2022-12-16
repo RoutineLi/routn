@@ -9,7 +9,7 @@ ASM_DEFINES = -Droutn_EXPORTS
 
 ASM_INCLUDES = -I/home/rotun-li/routn/. -I/usr/local/include 
 
-CXX_FLAGS =  -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -fPIC  
+CXX_FLAGS =  -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -fPIC  
 
 CXX_DEFINES = -Droutn_EXPORTS
 

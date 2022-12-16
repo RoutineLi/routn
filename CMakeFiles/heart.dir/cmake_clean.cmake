@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/heart.dir/module/heart_module.cpp.o"
+  "CMakeFiles/heart.dir/modules/heart/heart_module.cpp.o"
   "lib/libheart.pdb"
   "lib/libheart.so"
 )

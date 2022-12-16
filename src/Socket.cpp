@@ -17,7 +17,12 @@
 static Routn::Logger::ptr g_logger = ROUTN_LOG_NAME("system");
 
 namespace Routn{
-
+	/**
+	 * @brief Socket基类
+	 * 
+	 * @param address 
+	 * @return Socket::ptr 
+	 */
 
 	Socket::ptr Socket::CreateTCP(Routn::Address::ptr address){
 		Socket::ptr sock(new Socket(address->getFamily(), TCP, 0));
@@ -471,8 +476,219 @@ namespace Routn{
 		}
 	}
 
+	bool Socket::checkConnected() {
+		struct tcp_info info;
+		int len = sizeof(info);
+		getsockopt(_sock, IPPROTO_TCP, TCP_INFO, &info, (socklen_t *)&len);
+		_isConnected = (info.tcpi_state == TCP_ESTABLISHED);
+		return _isConnected;
+	}
+
 	std::ostream& operator<<(std::ostream& os, const Socket& addr){
 		return addr.dump(os);
+	}
+
+namespace{
+	struct _SSLInit {
+		_SSLInit(){
+			SSL_library_init();
+			SSL_load_error_strings();
+			OpenSSL_add_all_algorithms();
+		}
+	};
+
+	static _SSLInit _s_ssl_init_;
+}
+
+/**
+ * @brief SSL-Socket类
+ * 
+ */
+
+
+	SSLSocket::ptr SSLSocket::CreateTCP(Routn::Address::ptr address){
+		return std::make_shared<SSLSocket>(address->getFamily(), Socket::TCP, 0);
+	}
+
+	SSLSocket::ptr SSLSocket::CreateTCPSocket(){
+		return std::make_shared<SSLSocket>(Socket::IPV4, Socket::TCP, 0);
+	}
+
+	SSLSocket::ptr SSLSocket::CreateTCPSocket6(){
+		return std::make_shared<SSLSocket>(Socket::IPV6, Socket::TCP, 0);
+	}
+
+
+	SSLSocket::SSLSocket(int family, int type, int protocol)
+		: Socket(family, type, protocol){
+
+	}
+
+	Socket::ptr SSLSocket::accept(){
+		SSLSocket::ptr sock = std::make_shared<SSLSocket>(_family, _type, _protocol);
+		int newsock = ::accept(_sock, nullptr, nullptr);
+		if(newsock == -1){
+			ROUTN_LOG_ERROR(g_logger) << "accept(" << _sock << ") errno = "
+				<< errno << " reason = " << strerror(errno);
+			return nullptr;
+		}
+		sock->_ctx = _ctx;
+		if(sock->init(newsock)){
+			return sock;
+		}
+		return nullptr;
+	}
+
+	bool SSLSocket::bind(const Address::ptr addr){
+		return Socket::bind(addr);
+	}
+
+	bool SSLSocket::connect(const Address::ptr addr, uint64_t timeout_ms ){
+		bool v = Socket::connect(addr, timeout_ms);
+		if(v){
+			_ctx.reset(SSL_CTX_new(SSLv23_client_method()), SSL_CTX_free);
+			_ssl.reset(SSL_new(_ctx.get()), SSL_free);
+			SSL_set_fd(_ssl.get(), _sock);
+			v = (SSL_connect(_ssl.get()) == 1);
+		}
+		return v;
+	}
+
+	bool SSLSocket::listen(int backlog){
+		return Socket::listen(backlog);
+	}
+
+	bool SSLSocket::close(){
+		return Socket::close();
+	}
+
+	int SSLSocket::send(const void* buffer, size_t length, int flags){
+		if(_ssl){
+			return SSL_write(_ssl.get(), buffer, length);
+		}
+		return -1;
+	}
+
+	int SSLSocket::send(const iovec* buffers, size_t length, int flags){
+		if(!_ssl){
+			return -1;
+		}
+		int total = 0;
+		for(size_t i = 0; i < length; ++i){
+			int tmp = SSL_write(_ssl.get(), buffers[i].iov_base, buffers[i].iov_len);
+			if(tmp <= 0){
+				return tmp;
+			}
+			total += tmp;
+			if(tmp != (int)buffers[i].iov_len){
+				break;
+			}
+		}
+		return total;
+	}
+
+	int SSLSocket::sendTo(const void* buffer, size_t length, const Address::ptr to, int flags){
+		ROUTN_ASSERT(false);
+		return -1;
+	}
+
+	int SSLSocket::sendTo(const iovec* buffers, size_t length, const Address::ptr to, int flags){
+		ROUTN_ASSERT(false);
+		return -1;
+	}
+
+
+
+	int SSLSocket::recv(void* buffer, size_t length, int flags){
+		if(_ssl){
+			return SSL_read(_ssl.get(), buffer, length);
+		}
+		return -1;
+	}
+
+	int SSLSocket::recv(iovec* buffers, size_t length, int flags ){
+		if(!_ssl){
+			return -1;
+		}
+		int total = 0;
+		for(size_t i = 0; i < length; ++i){
+			int tmp = SSL_read(_ssl.get(), buffers[i].iov_base, buffers[i].iov_len);
+			if(tmp <= 0){
+				return tmp;
+			}
+			total += tmp;
+			if(tmp != (int)buffers[i].iov_len){
+				break;
+			}
+		}
+		return total;
+	}
+
+	int SSLSocket::recvFrom(void *buffer, size_t length, Address::ptr from, int flags) {
+		ROUTN_ASSERT(false);
+		return -1;
+	}
+
+	int SSLSocket::recvFrom(iovec* buffers, size_t length, Address::ptr from, int flags){
+		ROUTN_ASSERT(false);
+		return -1;
+	} 	
+
+
+	bool SSLSocket::loadCertificates(const std::string& cert_file, const std::string& key_file){
+		_ctx.reset(SSL_CTX_new(SSLv23_server_method()), SSL_CTX_free);
+		if(SSL_CTX_use_certificate_chain_file(_ctx.get(), cert_file.c_str()) != 1){
+			ROUTN_LOG_ERROR(g_logger) << "SSL_CTX_use_certificate_chain_file("
+				<< cert_file << ") error";
+			return false;
+		}
+		if(SSL_CTX_use_PrivateKey_file(_ctx.get(), key_file.c_str(), SSL_FILETYPE_PEM) != 1){
+			ROUTN_LOG_ERROR(g_logger) << "SSL_CTX_use_PrivateKey_file("
+				<< key_file << ") error";
+			return false;
+		}
+		if(SSL_CTX_check_private_key(_ctx.get()) != 1){
+			ROUTN_LOG_ERROR(g_logger) << "SSL_CTX_check_private_key cert_file = "
+				<< cert_file << " key_file = " << key_file;
+			return false;
+		}
+		return true;
+	}
+	
+	std::ostream& SSLSocket::dump(std::ostream& os) const{
+		os << "[SSLSocket sock=" << _sock
+		<< " is_connected=" << _isConnected
+		<< " family=" << _family
+		<< " type=" << _type
+		<< " protocol=" << _protocol;
+		if(_localAddress) {
+			os << " local_address=" << _localAddress->toString();
+		}
+		if(_remoteAddress) {
+			os << " remote_address=" << _remoteAddress->toString();
+		}
+		os << "]";
+		return os;		
+	}
+
+
+	bool SSLSocket::init(int sock){
+		bool v = Socket::init(sock);
+		int ret = 0;
+		if(v){
+			_ssl.reset(SSL_new(_ctx.get()), SSL_free);
+			SSL_set_fd(_ssl.get(), _sock);
+			while((ret = SSL_accept(_ssl.get())) <= 0){
+				int e;
+				if((e = SSL_get_error(_ssl.get(), ret)) != SSL_ERROR_WANT_READ){
+					ROUTN_LOG_ERROR(g_logger) << "SSL_accept ret = " << ret
+						<< " err = " << ERR_error_string(e, nullptr) << ", reason:" << SSL_state_string_long(_ssl.get());					
+					v = false;
+					break;
+				}
+			}
+		}
+		return v;
 	}
 
 }

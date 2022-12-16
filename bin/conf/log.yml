@@ -5,7 +5,7 @@ logs:
       appenders:
           - type: StdoutAppender
 
-    - name: system
+    - name: xxx
       appenders:
           - type: FileAppender
             file: /home/rotun-li/routn/log/system_log.txt

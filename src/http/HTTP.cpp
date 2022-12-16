@@ -169,11 +169,10 @@ namespace Http{
 		   << "."
 		   << ((uint32_t)(_version & 0x0f))
 		   << "\r\n";
-		os << "connection: " << (_close ? "close" : "keep-alive") << "\r\n";
 		for(auto &i : _headers){
-			if(strcasecmp(i.first.c_str(), "connection") == 0){
-				continue;
-			}
+			//if(strcasecmp(i.first.c_str(), "connection") == 0){
+			//	continue;
+			//}
 			os << i.first << ":" << i.second << "\r\n";
 		}
 		
@@ -228,13 +227,8 @@ namespace Http{
 		   << "\r\n";
 		
 		for(auto &i : _headers){
-			if(strcasecmp(i.first.c_str(), "connection") == 0){
-				continue;
-			}
 			os << i.first << ": " << i.second << "\r\n";
 		}
-
-		os << "connection: " << (_close ? "close" : "keep-alive") << "\r\n";
 
 		if(!_body.empty()){
 			os << "content-length: " << _body.size() << "\r\n\r\n" << _body;

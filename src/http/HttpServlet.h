@@ -30,7 +30,7 @@ namespace Http{
 		virtual ~Servlet() {}
 		virtual int32_t handle(Routn::Http::HttpRequest::ptr request, 
 						Routn::Http::HttpResponse::ptr response,
-						Routn::Http::HttpSession::ptr session) = 0;
+						Routn::SocketStream::ptr session) = 0;
 		
 		const std::string& getName() const { return _name;}
 	protected:
@@ -46,7 +46,7 @@ namespace Http{
 		FunctionServlet(callback cb);
 		virtual int32_t handle(Routn::Http::HttpRequest::ptr request, 
 						Routn::Http::HttpResponse::ptr response,
-						Routn::Http::HttpSession::ptr session) override;
+						Routn::SocketStream::ptr session) override;
 	private:
 		callback _cb;
 	};
@@ -60,7 +60,7 @@ namespace Http{
 
 		virtual int32_t handle(Routn::Http::HttpRequest::ptr request, 
 						Routn::Http::HttpResponse::ptr response,
-						Routn::Http::HttpSession::ptr session) override;
+						Routn::SocketStream::ptr session) override;
 
 		void addServlet(const std::string& uri, Servlet::ptr slt);
 		void addServlet(const std::string& uri, FunctionServlet::callback cb);
@@ -94,7 +94,7 @@ namespace Http{
 		NotFoundServlet();
 		virtual int32_t handle(Routn::Http::HttpRequest::ptr request, 
 						Routn::Http::HttpResponse::ptr response,
-						Routn::Http::HttpSession::ptr session) override;
+						Routn::SocketStream::ptr session) override;
 	};
 }
 }

@@ -30,16 +30,18 @@ namespace Routn{
 		_socks.clear();
 	}
 
-	bool TcpServer::bind(Routn::Address::ptr addr){
+///TODO
+	bool TcpServer::bind(Routn::Address::ptr addr, bool ssl){
 		std::vector<Address::ptr> addrs;
 		std::vector<Address::ptr> fails;
 		addrs.push_back(addr);
-		return bind(addrs, fails);
+		return bind(addrs, fails, ssl);
 	}
 	
-	bool TcpServer::bind(const std::vector<Address::ptr>& addrs, std::vector<Address::ptr>& fail_addrs){
+	bool TcpServer::bind(const std::vector<Address::ptr>& addrs, std::vector<Address::ptr>& fail_addrs, bool ssl){
+		_ssl = ssl;
 		for(auto &addr : addrs){
-			Socket::ptr sock = Socket::CreateTCP(addr);
+			Socket::ptr sock = ssl ? SSLSocket::CreateTCP(addr) : Socket::CreateTCP(addr);
 			if(!sock->bind(addr)){
 				ROUTN_LOG_ERROR(g_logger) << "bind fail errno = "
 					<< errno << " reason = " << strerror(errno)
@@ -109,6 +111,19 @@ namespace Routn{
 					<< " reason = " << strerror(errno);
 			}
 		}
+	}
+
+
+    bool TcpServer::loadCertificates(const std::string& cert_file, const std::string& key_file){
+		for(auto &i : _socks){
+			auto ssl_sock = std::dynamic_pointer_cast<SSLSocket>(i);
+			if(ssl_sock){
+				if(!ssl_sock->loadCertificates(cert_file, key_file)){
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }
 

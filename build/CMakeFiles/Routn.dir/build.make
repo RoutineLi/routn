@@ -73,9 +73,14 @@ CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.s"
 	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rotun-li/routn/src/plugins/libco/coctx.cpp -o CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.s
 
+CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o: CMakeFiles/routn.dir/flags.make
+CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o: ../src/plugins/libco/coctx_swap.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building ASM object CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o"
+	/bin/x86_64-linux-gnu-gcc-9 $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o -c /home/rotun-li/routn/src/plugins/libco/coctx_swap.S
+
 CMakeFiles/routn.dir/src/Log.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Log.cpp.o: ../src/Log.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/routn.dir/src/Log.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/routn.dir/src/Log.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Log.cpp.o -c /home/rotun-li/routn/src/Log.cpp
 
 CMakeFiles/routn.dir/src/Log.cpp.i: cmake_force
@@ -88,7 +93,7 @@ CMakeFiles/routn.dir/src/Log.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Util.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Util.cpp.o: ../src/Util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/routn.dir/src/Util.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/routn.dir/src/Util.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Util.cpp.o -c /home/rotun-li/routn/src/Util.cpp
 
 CMakeFiles/routn.dir/src/Util.cpp.i: cmake_force
@@ -101,7 +106,7 @@ CMakeFiles/routn.dir/src/Util.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Config.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Config.cpp.o: ../src/Config.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/routn.dir/src/Config.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/routn.dir/src/Config.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Config.cpp.o -c /home/rotun-li/routn/src/Config.cpp
 
 CMakeFiles/routn.dir/src/Config.cpp.i: cmake_force
@@ -114,7 +119,7 @@ CMakeFiles/routn.dir/src/Config.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Fiber.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Fiber.cpp.o: ../src/Fiber.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/routn.dir/src/Fiber.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/routn.dir/src/Fiber.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Fiber.cpp.o -c /home/rotun-li/routn/src/Fiber.cpp
 
 CMakeFiles/routn.dir/src/Fiber.cpp.i: cmake_force
@@ -127,7 +132,7 @@ CMakeFiles/routn.dir/src/Fiber.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Thread.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Thread.cpp.o: ../src/Thread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/routn.dir/src/Thread.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/routn.dir/src/Thread.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Thread.cpp.o -c /home/rotun-li/routn/src/Thread.cpp
 
 CMakeFiles/routn.dir/src/Thread.cpp.i: cmake_force
@@ -140,7 +145,7 @@ CMakeFiles/routn.dir/src/Thread.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Scheduler.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Scheduler.cpp.o: ../src/Scheduler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/routn.dir/src/Scheduler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/routn.dir/src/Scheduler.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Scheduler.cpp.o -c /home/rotun-li/routn/src/Scheduler.cpp
 
 CMakeFiles/routn.dir/src/Scheduler.cpp.i: cmake_force
@@ -153,7 +158,7 @@ CMakeFiles/routn.dir/src/Scheduler.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/IoManager.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/IoManager.cpp.o: ../src/IoManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/routn.dir/src/IoManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/routn.dir/src/IoManager.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/IoManager.cpp.o -c /home/rotun-li/routn/src/IoManager.cpp
 
 CMakeFiles/routn.dir/src/IoManager.cpp.i: cmake_force
@@ -166,7 +171,7 @@ CMakeFiles/routn.dir/src/IoManager.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Timer.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Timer.cpp.o: ../src/Timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/routn.dir/src/Timer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/routn.dir/src/Timer.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Timer.cpp.o -c /home/rotun-li/routn/src/Timer.cpp
 
 CMakeFiles/routn.dir/src/Timer.cpp.i: cmake_force
@@ -179,7 +184,7 @@ CMakeFiles/routn.dir/src/Timer.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Hook.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Hook.cpp.o: ../src/Hook.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/routn.dir/src/Hook.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/routn.dir/src/Hook.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Hook.cpp.o -c /home/rotun-li/routn/src/Hook.cpp
 
 CMakeFiles/routn.dir/src/Hook.cpp.i: cmake_force
@@ -192,7 +197,7 @@ CMakeFiles/routn.dir/src/Hook.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/FdManager.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/FdManager.cpp.o: ../src/FdManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/routn.dir/src/FdManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/routn.dir/src/FdManager.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/FdManager.cpp.o -c /home/rotun-li/routn/src/FdManager.cpp
 
 CMakeFiles/routn.dir/src/FdManager.cpp.i: cmake_force
@@ -205,7 +210,7 @@ CMakeFiles/routn.dir/src/FdManager.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Address.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Address.cpp.o: ../src/Address.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/routn.dir/src/Address.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/routn.dir/src/Address.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Address.cpp.o -c /home/rotun-li/routn/src/Address.cpp
 
 CMakeFiles/routn.dir/src/Address.cpp.i: cmake_force
@@ -218,7 +223,7 @@ CMakeFiles/routn.dir/src/Address.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Socket.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Socket.cpp.o: ../src/Socket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/routn.dir/src/Socket.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/routn.dir/src/Socket.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Socket.cpp.o -c /home/rotun-li/routn/src/Socket.cpp
 
 CMakeFiles/routn.dir/src/Socket.cpp.i: cmake_force
@@ -231,7 +236,7 @@ CMakeFiles/routn.dir/src/Socket.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/ByteArray.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/ByteArray.cpp.o: ../src/ByteArray.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/routn.dir/src/ByteArray.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/routn.dir/src/ByteArray.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/ByteArray.cpp.o -c /home/rotun-li/routn/src/ByteArray.cpp
 
 CMakeFiles/routn.dir/src/ByteArray.cpp.i: cmake_force
@@ -244,7 +249,7 @@ CMakeFiles/routn.dir/src/ByteArray.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/TcpServer.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/TcpServer.cpp.o: ../src/TcpServer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/routn.dir/src/TcpServer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/routn.dir/src/TcpServer.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/TcpServer.cpp.o -c /home/rotun-li/routn/src/TcpServer.cpp
 
 CMakeFiles/routn.dir/src/TcpServer.cpp.i: cmake_force
@@ -257,7 +262,7 @@ CMakeFiles/routn.dir/src/TcpServer.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/SocketStream.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/SocketStream.cpp.o: ../src/SocketStream.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/routn.dir/src/SocketStream.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/routn.dir/src/SocketStream.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/SocketStream.cpp.o -c /home/rotun-li/routn/src/SocketStream.cpp
 
 CMakeFiles/routn.dir/src/SocketStream.cpp.i: cmake_force
@@ -270,7 +275,7 @@ CMakeFiles/routn.dir/src/SocketStream.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Stream.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Stream.cpp.o: ../src/Stream.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/routn.dir/src/Stream.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/routn.dir/src/Stream.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Stream.cpp.o -c /home/rotun-li/routn/src/Stream.cpp
 
 CMakeFiles/routn.dir/src/Stream.cpp.i: cmake_force
@@ -283,7 +288,7 @@ CMakeFiles/routn.dir/src/Stream.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Uri.rl.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Uri.rl.cpp.o: ../src/Uri.rl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/routn.dir/src/Uri.rl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/routn.dir/src/Uri.rl.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Uri.rl.cpp.o -c /home/rotun-li/routn/src/Uri.rl.cpp
 
 CMakeFiles/routn.dir/src/Uri.rl.cpp.i: cmake_force
@@ -296,7 +301,7 @@ CMakeFiles/routn.dir/src/Uri.rl.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Daemon.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Daemon.cpp.o: ../src/Daemon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/routn.dir/src/Daemon.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/routn.dir/src/Daemon.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Daemon.cpp.o -c /home/rotun-li/routn/src/Daemon.cpp
 
 CMakeFiles/routn.dir/src/Daemon.cpp.i: cmake_force
@@ -309,7 +314,7 @@ CMakeFiles/routn.dir/src/Daemon.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Env.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Env.cpp.o: ../src/Env.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/routn.dir/src/Env.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/routn.dir/src/Env.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Env.cpp.o -c /home/rotun-li/routn/src/Env.cpp
 
 CMakeFiles/routn.dir/src/Env.cpp.i: cmake_force
@@ -322,7 +327,7 @@ CMakeFiles/routn.dir/src/Env.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/FiberSem.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/FiberSem.cpp.o: ../src/FiberSem.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/routn.dir/src/FiberSem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/routn.dir/src/FiberSem.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/FiberSem.cpp.o -c /home/rotun-li/routn/src/FiberSem.cpp
 
 CMakeFiles/routn.dir/src/FiberSem.cpp.i: cmake_force
@@ -335,7 +340,7 @@ CMakeFiles/routn.dir/src/FiberSem.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Worker.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Worker.cpp.o: ../src/Worker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/routn.dir/src/Worker.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/routn.dir/src/Worker.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Worker.cpp.o -c /home/rotun-li/routn/src/Worker.cpp
 
 CMakeFiles/routn.dir/src/Worker.cpp.i: cmake_force
@@ -348,7 +353,7 @@ CMakeFiles/routn.dir/src/Worker.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Library.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Library.cpp.o: ../src/Library.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/routn.dir/src/Library.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/routn.dir/src/Library.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Library.cpp.o -c /home/rotun-li/routn/src/Library.cpp
 
 CMakeFiles/routn.dir/src/Library.cpp.i: cmake_force
@@ -361,7 +366,7 @@ CMakeFiles/routn.dir/src/Library.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/Module.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Module.cpp.o: ../src/Module.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/routn.dir/src/Module.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/routn.dir/src/Module.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Module.cpp.o -c /home/rotun-li/routn/src/Module.cpp
 
 CMakeFiles/routn.dir/src/Module.cpp.i: cmake_force
@@ -372,9 +377,22 @@ CMakeFiles/routn.dir/src/Module.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/routn.dir/src/Module.cpp.s"
 	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rotun-li/routn/src/Module.cpp -o CMakeFiles/routn.dir/src/Module.cpp.s
 
+CMakeFiles/routn.dir/src/Dns.cpp.o: CMakeFiles/routn.dir/flags.make
+CMakeFiles/routn.dir/src/Dns.cpp.o: ../src/Dns.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/routn.dir/src/Dns.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Dns.cpp.o -c /home/rotun-li/routn/src/Dns.cpp
+
+CMakeFiles/routn.dir/src/Dns.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/routn.dir/src/Dns.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rotun-li/routn/src/Dns.cpp > CMakeFiles/routn.dir/src/Dns.cpp.i
+
+CMakeFiles/routn.dir/src/Dns.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/routn.dir/src/Dns.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rotun-li/routn/src/Dns.cpp -o CMakeFiles/routn.dir/src/Dns.cpp.s
+
 CMakeFiles/routn.dir/src/Application.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/Application.cpp.o: ../src/Application.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/routn.dir/src/Application.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/routn.dir/src/Application.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/Application.cpp.o -c /home/rotun-li/routn/src/Application.cpp
 
 CMakeFiles/routn.dir/src/Application.cpp.i: cmake_force
@@ -387,7 +405,7 @@ CMakeFiles/routn.dir/src/Application.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/http/HttpSession.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/http/HttpSession.cpp.o: ../src/http/HttpSession.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/routn.dir/src/http/HttpSession.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/routn.dir/src/http/HttpSession.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/HttpSession.cpp.o -c /home/rotun-li/routn/src/http/HttpSession.cpp
 
 CMakeFiles/routn.dir/src/http/HttpSession.cpp.i: cmake_force
@@ -400,7 +418,7 @@ CMakeFiles/routn.dir/src/http/HttpSession.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o: ../src/http/HttpConnection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o -c /home/rotun-li/routn/src/http/HttpConnection.cpp
 
 CMakeFiles/routn.dir/src/http/HttpConnection.cpp.i: cmake_force
@@ -413,7 +431,7 @@ CMakeFiles/routn.dir/src/http/HttpConnection.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/http/HttpServer.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/http/HttpServer.cpp.o: ../src/http/HttpServer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/routn.dir/src/http/HttpServer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/routn.dir/src/http/HttpServer.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/HttpServer.cpp.o -c /home/rotun-li/routn/src/http/HttpServer.cpp
 
 CMakeFiles/routn.dir/src/http/HttpServer.cpp.i: cmake_force
@@ -426,7 +444,7 @@ CMakeFiles/routn.dir/src/http/HttpServer.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o: ../src/http/HttpServlet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o -c /home/rotun-li/routn/src/http/HttpServlet.cpp
 
 CMakeFiles/routn.dir/src/http/HttpServlet.cpp.i: cmake_force
@@ -439,7 +457,7 @@ CMakeFiles/routn.dir/src/http/HttpServlet.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/http/HTTP.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/http/HTTP.cpp.o: ../src/http/HTTP.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/routn.dir/src/http/HTTP.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/routn.dir/src/http/HTTP.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/HTTP.cpp.o -c /home/rotun-li/routn/src/http/HTTP.cpp
 
 CMakeFiles/routn.dir/src/http/HTTP.cpp.i: cmake_force
@@ -452,7 +470,7 @@ CMakeFiles/routn.dir/src/http/HTTP.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o: ../src/http/httpclient_parser.rl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o -c /home/rotun-li/routn/src/http/httpclient_parser.rl.cpp
 
 CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.i: cmake_force
@@ -465,7 +483,7 @@ CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o: ../src/http/http11_parser.rl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o -c /home/rotun-li/routn/src/http/http11_parser.rl.cpp
 
 CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.i: cmake_force
@@ -478,7 +496,7 @@ CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.s: cmake_force
 
 CMakeFiles/routn.dir/src/http/Parser.cpp.o: CMakeFiles/routn.dir/flags.make
 CMakeFiles/routn.dir/src/http/Parser.cpp.o: ../src/http/Parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/routn.dir/src/http/Parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/routn.dir/src/http/Parser.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/Parser.cpp.o -c /home/rotun-li/routn/src/http/Parser.cpp
 
 CMakeFiles/routn.dir/src/http/Parser.cpp.i: cmake_force
@@ -489,9 +507,62 @@ CMakeFiles/routn.dir/src/http/Parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/routn.dir/src/http/Parser.cpp.s"
 	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rotun-li/routn/src/http/Parser.cpp -o CMakeFiles/routn.dir/src/http/Parser.cpp.s
 
+CMakeFiles/routn.dir/src/http/WSServer.cpp.o: CMakeFiles/routn.dir/flags.make
+CMakeFiles/routn.dir/src/http/WSServer.cpp.o: ../src/http/WSServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/routn.dir/src/http/WSServer.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/WSServer.cpp.o -c /home/rotun-li/routn/src/http/WSServer.cpp
+
+CMakeFiles/routn.dir/src/http/WSServer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/routn.dir/src/http/WSServer.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rotun-li/routn/src/http/WSServer.cpp > CMakeFiles/routn.dir/src/http/WSServer.cpp.i
+
+CMakeFiles/routn.dir/src/http/WSServer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/routn.dir/src/http/WSServer.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rotun-li/routn/src/http/WSServer.cpp -o CMakeFiles/routn.dir/src/http/WSServer.cpp.s
+
+CMakeFiles/routn.dir/src/http/WSSession.cpp.o: CMakeFiles/routn.dir/flags.make
+CMakeFiles/routn.dir/src/http/WSSession.cpp.o: ../src/http/WSSession.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/routn.dir/src/http/WSSession.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/WSSession.cpp.o -c /home/rotun-li/routn/src/http/WSSession.cpp
+
+CMakeFiles/routn.dir/src/http/WSSession.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/routn.dir/src/http/WSSession.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rotun-li/routn/src/http/WSSession.cpp > CMakeFiles/routn.dir/src/http/WSSession.cpp.i
+
+CMakeFiles/routn.dir/src/http/WSSession.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/routn.dir/src/http/WSSession.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rotun-li/routn/src/http/WSSession.cpp -o CMakeFiles/routn.dir/src/http/WSSession.cpp.s
+
+CMakeFiles/routn.dir/src/http/WSServlet.cpp.o: CMakeFiles/routn.dir/flags.make
+CMakeFiles/routn.dir/src/http/WSServlet.cpp.o: ../src/http/WSServlet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/routn.dir/src/http/WSServlet.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/WSServlet.cpp.o -c /home/rotun-li/routn/src/http/WSServlet.cpp
+
+CMakeFiles/routn.dir/src/http/WSServlet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/routn.dir/src/http/WSServlet.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rotun-li/routn/src/http/WSServlet.cpp > CMakeFiles/routn.dir/src/http/WSServlet.cpp.i
+
+CMakeFiles/routn.dir/src/http/WSServlet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/routn.dir/src/http/WSServlet.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rotun-li/routn/src/http/WSServlet.cpp -o CMakeFiles/routn.dir/src/http/WSServlet.cpp.s
+
+CMakeFiles/routn.dir/src/http/WSConnection.cpp.o: CMakeFiles/routn.dir/flags.make
+CMakeFiles/routn.dir/src/http/WSConnection.cpp.o: ../src/http/WSConnection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/routn.dir/src/http/WSConnection.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/routn.dir/src/http/WSConnection.cpp.o -c /home/rotun-li/routn/src/http/WSConnection.cpp
+
+CMakeFiles/routn.dir/src/http/WSConnection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/routn.dir/src/http/WSConnection.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rotun-li/routn/src/http/WSConnection.cpp > CMakeFiles/routn.dir/src/http/WSConnection.cpp.i
+
+CMakeFiles/routn.dir/src/http/WSConnection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/routn.dir/src/http/WSConnection.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rotun-li/routn/src/http/WSConnection.cpp -o CMakeFiles/routn.dir/src/http/WSConnection.cpp.s
+
 # Object files for target routn
 routn_OBJECTS = \
 "CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.o" \
+"CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o" \
 "CMakeFiles/routn.dir/src/Log.cpp.o" \
 "CMakeFiles/routn.dir/src/Util.cpp.o" \
 "CMakeFiles/routn.dir/src/Config.cpp.o" \
@@ -515,6 +586,7 @@ routn_OBJECTS = \
 "CMakeFiles/routn.dir/src/Worker.cpp.o" \
 "CMakeFiles/routn.dir/src/Library.cpp.o" \
 "CMakeFiles/routn.dir/src/Module.cpp.o" \
+"CMakeFiles/routn.dir/src/Dns.cpp.o" \
 "CMakeFiles/routn.dir/src/Application.cpp.o" \
 "CMakeFiles/routn.dir/src/http/HttpSession.cpp.o" \
 "CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o" \
@@ -523,12 +595,17 @@ routn_OBJECTS = \
 "CMakeFiles/routn.dir/src/http/HTTP.cpp.o" \
 "CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o" \
 "CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o" \
-"CMakeFiles/routn.dir/src/http/Parser.cpp.o"
+"CMakeFiles/routn.dir/src/http/Parser.cpp.o" \
+"CMakeFiles/routn.dir/src/http/WSServer.cpp.o" \
+"CMakeFiles/routn.dir/src/http/WSSession.cpp.o" \
+"CMakeFiles/routn.dir/src/http/WSServlet.cpp.o" \
+"CMakeFiles/routn.dir/src/http/WSConnection.cpp.o"
 
 # External object files for target routn
 routn_EXTERNAL_OBJECTS =
 
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.o
+../lib/libroutn.so: CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/Log.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/Util.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/Config.cpp.o
@@ -552,6 +629,7 @@ routn_EXTERNAL_OBJECTS =
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/Worker.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/Library.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/Module.cpp.o
+../lib/libroutn.so: CMakeFiles/routn.dir/src/Dns.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/Application.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/http/HttpSession.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o
@@ -561,9 +639,13 @@ routn_EXTERNAL_OBJECTS =
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/src/http/Parser.cpp.o
+../lib/libroutn.so: CMakeFiles/routn.dir/src/http/WSServer.cpp.o
+../lib/libroutn.so: CMakeFiles/routn.dir/src/http/WSSession.cpp.o
+../lib/libroutn.so: CMakeFiles/routn.dir/src/http/WSServlet.cpp.o
+../lib/libroutn.so: CMakeFiles/routn.dir/src/http/WSConnection.cpp.o
 ../lib/libroutn.so: CMakeFiles/routn.dir/build.make
 ../lib/libroutn.so: CMakeFiles/routn.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX shared library ../lib/libroutn.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rotun-li/routn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Linking CXX shared library ../lib/libroutn.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/routn.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

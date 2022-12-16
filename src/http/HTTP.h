@@ -224,12 +224,13 @@ namespace Routn
 			const std::string &getPath() const { return _path; }
 			const std::string &getQuery() const { return _query; }
 			const std::string &getBody() const { return _body; }
+			
 
 			const MapType &getHeaders() const { return _headers; }
 			const MapType &getParams() const { return _params; }
 			const MapType &getCookies() const { return _cookies; }
 
-			void setMethod(HttpMethod &v) { _method = v; }
+			void setMethod(HttpMethod v) { _method = v; }
 			void setVersion(uint8_t v) { _version = v; }
 
 			void setPath(const std::string &v) { _path = v; }
@@ -248,7 +249,9 @@ namespace Routn
 			void setHeader(const std::string &key, const std::string &val);
 			void setParam(const std::string &key, const std::string &val);
 			void setCookie(const std::string &key, const std::string &val);
+			void setWebsocket(bool v) { _websocket = v;}
 
+			bool isWebsocket() const { return _websocket;} 
 			bool isClose() const { return _close; }
 			void setClose(bool v) { _close = v; }
 
@@ -300,6 +303,7 @@ namespace Routn
 			HttpMethod _method;
 			uint8_t _version;
 			bool _close;
+			bool _websocket;
 
 			std::string _path;
 			std::string _query;
@@ -330,7 +334,9 @@ namespace Routn
 			void setBody(const std::string &v) { _body = v; }
 			void setReason(const std::string &v) { _reason = v; }
 			void setHeaders(const MapType &v) { _headers = v; }
-
+			void setWebsocket(bool v) { _websocket = v;}
+			
+			bool isWebsocket() const { return _websocket;} 
 			bool isClose() const { return _close; }
 			void setClose(bool v) { _close = v; }
 
@@ -356,6 +362,7 @@ namespace Routn
 			HttpStatus _status;
 			uint8_t _version;
 			bool _close;
+			bool _websocket;
 
 			std::string _body;
 			std::string _reason;

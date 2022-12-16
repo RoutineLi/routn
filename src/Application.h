@@ -16,6 +16,7 @@
 #include "Env.h"
 
 #include "http/HttpServer.h"
+#include "http/WSServer.h"
 #include "TcpServer.h"
 
 namespace Routn{

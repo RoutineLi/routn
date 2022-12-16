@@ -1,14 +1,31 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "ASM"
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_ASM
+  "/home/rotun-li/routn/src/plugins/libco/coctx_swap.S" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o"
+  )
+set(CMAKE_ASM_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_ASM
+  "routn_EXPORTS"
+  )
+
+# The include file search paths:
+set(CMAKE_ASM_TARGET_INCLUDE_PATH
+  "../."
+  "/usr/local/include"
+  )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/rotun-li/routn/src/Address.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/Address.cpp.o"
   "/home/rotun-li/routn/src/Application.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/Application.cpp.o"
   "/home/rotun-li/routn/src/ByteArray.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/ByteArray.cpp.o"
   "/home/rotun-li/routn/src/Config.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/Config.cpp.o"
   "/home/rotun-li/routn/src/Daemon.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/Daemon.cpp.o"
+  "/home/rotun-li/routn/src/Dns.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/Dns.cpp.o"
   "/home/rotun-li/routn/src/Env.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/Env.cpp.o"
   "/home/rotun-li/routn/src/FdManager.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/FdManager.cpp.o"
   "/home/rotun-li/routn/src/Fiber.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/Fiber.cpp.o"
@@ -34,6 +51,10 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/rotun-li/routn/src/http/HttpServlet.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o"
   "/home/rotun-li/routn/src/http/HttpSession.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/HttpSession.cpp.o"
   "/home/rotun-li/routn/src/http/Parser.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/Parser.cpp.o"
+  "/home/rotun-li/routn/src/http/WSConnection.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/WSConnection.cpp.o"
+  "/home/rotun-li/routn/src/http/WSServer.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/WSServer.cpp.o"
+  "/home/rotun-li/routn/src/http/WSServlet.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/WSServlet.cpp.o"
+  "/home/rotun-li/routn/src/http/WSSession.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/WSSession.cpp.o"
   "/home/rotun-li/routn/src/http/http11_parser.rl.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o"
   "/home/rotun-li/routn/src/http/httpclient_parser.rl.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o"
   "/home/rotun-li/routn/src/plugins/libco/coctx.cpp" "/home/rotun-li/routn/build/CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.o"

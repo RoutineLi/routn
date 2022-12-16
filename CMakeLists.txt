@@ -55,6 +55,7 @@ set(LIB_SRC
     src/Worker.cpp
     src/Library.cpp
     src/Module.cpp
+    src/Dns.cpp
     src/Application.cpp
     src/http/HttpSession.cpp
     src/http/HttpConnection.cpp
@@ -86,7 +87,7 @@ add_executable(routn-svr src/main.cpp )
 add_dependencies(routn-svr routn)
 target_link_libraries(routn-svr ${LIBS})
 
-#if(BUILD_TEST)
+if(BUILD_TEST)
 
 add_executable(test test/test.cpp )
 add_dependencies(test routn)
@@ -178,11 +179,15 @@ add_executable(test_ws_client test/test_ws_client.cpp)
 add_dependencies(test_ws_client routn)
 target_link_libraries(test_ws_client routn ${LIBS})
 
-#endif()
+endif()
 
 add_executable(ex_echoServer examples/ex_echoServer.cpp)
 add_dependencies(ex_echoServer routn)
 target_link_libraries(ex_echoServer routn ${LIBS})
+
+add_executable(test_http_connection test/test_http_connection.cpp)
+add_dependencies(test_http_connection routn)
+target_link_libraries(test_http_connection routn ${LIBS})
 
 add_executable(http_server_demo examples/http_server_demo.cpp)
 add_dependencies(http_server_demo routn)
@@ -192,7 +197,8 @@ target_link_libraries(http_server_demo routn ${LIBS})
 #这里添加自定义业务Module
 #add_library(test_module SHARED tests/test_module.cpp)
 
-add_library(heart SHARED module/heart_module.cpp)
+add_library(heart SHARED modules/heart/heart_module.cpp)
+add_library(chat SHARED modules/chat_room/chat_module.cpp modules/chat_room/chat_servlet.cpp)
 
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)

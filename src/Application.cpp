@@ -8,6 +8,7 @@
 #include "Application.h"
 #include "Worker.h"
 #include "Module.h"
+#include "Dns.h"
 #include "Config.h"
 
 static Routn::Logger::ptr g_logger = ROUTN_LOG_NAME("system");
@@ -132,7 +133,11 @@ namespace Routn{
 	}
 
 	int Application::run_fiber(){
+		
 		Routn::WorkerMgr::GetInstance()->init();
+		DnsMgr::GetInstance()->init();
+		DnsMgr::GetInstance()->start();
+
 		std::vector<Module::ptr> modules;
 		ModuleMgr::GetInstance()->listAll(modules);
 		for(auto &i : modules){
@@ -200,18 +205,20 @@ namespace Routn{
 				exit(EXIT_FAILURE);
 			}
 		
-			//if(!i.process_worker.empty()){
-			// 	process_worker = Routn::WorkerMgr::GetInstance()->getAsIOManager(i.process_worker).get();
-			//}else{
-			// 	ROUTN_LOG_ERROR(g_logger) << "proc_worker: " << i.process_worker
-			// 		<< " not exists";
-			// 	exit(EXIT_FAILURE);
-			//}
+			if(!i.process_worker.empty()){
+				process_worker = Routn::WorkerMgr::GetInstance()->getAsIOManager(i.process_worker).get();
+			}else{
+				ROUTN_LOG_ERROR(g_logger) << "proc_worker: " << i.process_worker
+					<< " not exists";
+				exit(EXIT_FAILURE);
+			}
 	
 			TcpServer::ptr server;
 			if(i.type == "http"){
 				server.reset(new Routn::Http::HttpServer(i.keepalive, process_worker, io_worker, accept_worker));
 				//server.reset(new Routn::Http::HttpServer(i.keepalive, Routn::IOManager::GetThis(), Routn::IOManager::GetThis(), accept_worker));
+			}else if(i.type == "ws"){
+				server.reset(new Routn::Http::WSServer(process_worker, io_worker, accept_worker));
 			}else{
             	ROUTN_LOG_ERROR(g_logger) << "invalid server type=" << i.type
                 	<< LexicalCast<TcpServerConf, std::string>()(i);
@@ -221,11 +228,17 @@ namespace Routn{
 				server->setName(i.name);
 			}
 			std::vector<Address::ptr> fails;
-			if(!server->bind(address, fails)){
+			if(!server->bind(address, fails, i.ssl)){
 				for(auto& x : fails){
 					ROUTN_LOG_ERROR(g_logger) << "bind address fail: " << *x;
 				}
 				exit(EXIT_FAILURE);
+			}
+			if(i.ssl){
+				if(!server->loadCertificates(i.cert_file, i.key_file)){
+					ROUTN_LOG_ERROR(g_logger) << "loadCertificates fail, cert_file = "
+						<< i.cert_file << " key_file = " << i.key_file;
+				}
 			}
 			server->setConf(i);
 			_servers[i.type].push_back(server);

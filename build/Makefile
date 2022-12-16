@@ -114,6 +114,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named chat
+
+# Build rule for target.
+chat: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 chat
+.PHONY : chat
+
+# fast build rule for target.
+chat/fast:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/build
+.PHONY : chat/fast
+
+#=============================================================================
 # Target rules for targets named heart
 
 # Build rule for target.
@@ -140,6 +153,19 @@ http_server_demo/fast:
 .PHONY : http_server_demo/fast
 
 #=============================================================================
+# Target rules for targets named test_http_connection
+
+# Build rule for target.
+test_http_connection: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_http_connection
+.PHONY : test_http_connection
+
+# fast build rule for target.
+test_http_connection/fast:
+	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/build
+.PHONY : test_http_connection/fast
+
+#=============================================================================
 # Target rules for targets named ex_echoServer
 
 # Build rule for target.
@@ -153,17 +179,17 @@ ex_echoServer/fast:
 .PHONY : ex_echoServer/fast
 
 #=============================================================================
-# Target rules for targets named Routn
+# Target rules for targets named routn-svr
 
 # Build rule for target.
-Routn: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Routn
-.PHONY : Routn
+routn-svr: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 routn-svr
+.PHONY : routn-svr
 
 # fast build rule for target.
-Routn/fast:
-	$(MAKE) -f CMakeFiles/Routn.dir/build.make CMakeFiles/Routn.dir/build
-.PHONY : Routn/fast
+routn-svr/fast:
+	$(MAKE) -f CMakeFiles/routn-svr.dir/build.make CMakeFiles/routn-svr.dir/build
+.PHONY : routn-svr/fast
 
 #=============================================================================
 # Target rules for targets named routn
@@ -232,32 +258,86 @@ examples/http_server_demo.cpp.s:
 	$(MAKE) -f CMakeFiles/http_server_demo.dir/build.make CMakeFiles/http_server_demo.dir/examples/http_server_demo.cpp.s
 .PHONY : examples/http_server_demo.cpp.s
 
-module/heart_module.o: module/heart_module.cpp.o
+modules/chat_room/chat_module.o: modules/chat_room/chat_module.cpp.o
 
-.PHONY : module/heart_module.o
+.PHONY : modules/chat_room/chat_module.o
 
 # target to build an object file
-module/heart_module.cpp.o:
-	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/module/heart_module.cpp.o
-.PHONY : module/heart_module.cpp.o
+modules/chat_room/chat_module.cpp.o:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_module.cpp.o
+.PHONY : modules/chat_room/chat_module.cpp.o
 
-module/heart_module.i: module/heart_module.cpp.i
+modules/chat_room/chat_module.i: modules/chat_room/chat_module.cpp.i
 
-.PHONY : module/heart_module.i
+.PHONY : modules/chat_room/chat_module.i
 
 # target to preprocess a source file
-module/heart_module.cpp.i:
-	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/module/heart_module.cpp.i
-.PHONY : module/heart_module.cpp.i
+modules/chat_room/chat_module.cpp.i:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_module.cpp.i
+.PHONY : modules/chat_room/chat_module.cpp.i
 
-module/heart_module.s: module/heart_module.cpp.s
+modules/chat_room/chat_module.s: modules/chat_room/chat_module.cpp.s
 
-.PHONY : module/heart_module.s
+.PHONY : modules/chat_room/chat_module.s
 
 # target to generate assembly for a file
-module/heart_module.cpp.s:
-	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/module/heart_module.cpp.s
-.PHONY : module/heart_module.cpp.s
+modules/chat_room/chat_module.cpp.s:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_module.cpp.s
+.PHONY : modules/chat_room/chat_module.cpp.s
+
+modules/chat_room/chat_servlet.o: modules/chat_room/chat_servlet.cpp.o
+
+.PHONY : modules/chat_room/chat_servlet.o
+
+# target to build an object file
+modules/chat_room/chat_servlet.cpp.o:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_servlet.cpp.o
+.PHONY : modules/chat_room/chat_servlet.cpp.o
+
+modules/chat_room/chat_servlet.i: modules/chat_room/chat_servlet.cpp.i
+
+.PHONY : modules/chat_room/chat_servlet.i
+
+# target to preprocess a source file
+modules/chat_room/chat_servlet.cpp.i:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_servlet.cpp.i
+.PHONY : modules/chat_room/chat_servlet.cpp.i
+
+modules/chat_room/chat_servlet.s: modules/chat_room/chat_servlet.cpp.s
+
+.PHONY : modules/chat_room/chat_servlet.s
+
+# target to generate assembly for a file
+modules/chat_room/chat_servlet.cpp.s:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_servlet.cpp.s
+.PHONY : modules/chat_room/chat_servlet.cpp.s
+
+modules/heart/heart_module.o: modules/heart/heart_module.cpp.o
+
+.PHONY : modules/heart/heart_module.o
+
+# target to build an object file
+modules/heart/heart_module.cpp.o:
+	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/modules/heart/heart_module.cpp.o
+.PHONY : modules/heart/heart_module.cpp.o
+
+modules/heart/heart_module.i: modules/heart/heart_module.cpp.i
+
+.PHONY : modules/heart/heart_module.i
+
+# target to preprocess a source file
+modules/heart/heart_module.cpp.i:
+	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/modules/heart/heart_module.cpp.i
+.PHONY : modules/heart/heart_module.cpp.i
+
+modules/heart/heart_module.s: modules/heart/heart_module.cpp.s
+
+.PHONY : modules/heart/heart_module.s
+
+# target to generate assembly for a file
+modules/heart/heart_module.cpp.s:
+	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/modules/heart/heart_module.cpp.s
+.PHONY : modules/heart/heart_module.cpp.s
 
 src/Address.o: src/Address.cpp.o
 
@@ -393,6 +473,33 @@ src/Daemon.s: src/Daemon.cpp.s
 src/Daemon.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Daemon.cpp.s
 .PHONY : src/Daemon.cpp.s
+
+src/Dns.o: src/Dns.cpp.o
+
+.PHONY : src/Dns.o
+
+# target to build an object file
+src/Dns.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Dns.cpp.o
+.PHONY : src/Dns.cpp.o
+
+src/Dns.i: src/Dns.cpp.i
+
+.PHONY : src/Dns.i
+
+# target to preprocess a source file
+src/Dns.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Dns.cpp.i
+.PHONY : src/Dns.cpp.i
+
+src/Dns.s: src/Dns.cpp.s
+
+.PHONY : src/Dns.s
+
+# target to generate assembly for a file
+src/Dns.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Dns.cpp.s
+.PHONY : src/Dns.cpp.s
 
 src/Env.o: src/Env.cpp.o
 
@@ -1069,6 +1176,114 @@ src/http/Parser.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/Parser.cpp.s
 .PHONY : src/http/Parser.cpp.s
 
+src/http/WSConnection.o: src/http/WSConnection.cpp.o
+
+.PHONY : src/http/WSConnection.o
+
+# target to build an object file
+src/http/WSConnection.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSConnection.cpp.o
+.PHONY : src/http/WSConnection.cpp.o
+
+src/http/WSConnection.i: src/http/WSConnection.cpp.i
+
+.PHONY : src/http/WSConnection.i
+
+# target to preprocess a source file
+src/http/WSConnection.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSConnection.cpp.i
+.PHONY : src/http/WSConnection.cpp.i
+
+src/http/WSConnection.s: src/http/WSConnection.cpp.s
+
+.PHONY : src/http/WSConnection.s
+
+# target to generate assembly for a file
+src/http/WSConnection.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSConnection.cpp.s
+.PHONY : src/http/WSConnection.cpp.s
+
+src/http/WSServer.o: src/http/WSServer.cpp.o
+
+.PHONY : src/http/WSServer.o
+
+# target to build an object file
+src/http/WSServer.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSServer.cpp.o
+.PHONY : src/http/WSServer.cpp.o
+
+src/http/WSServer.i: src/http/WSServer.cpp.i
+
+.PHONY : src/http/WSServer.i
+
+# target to preprocess a source file
+src/http/WSServer.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSServer.cpp.i
+.PHONY : src/http/WSServer.cpp.i
+
+src/http/WSServer.s: src/http/WSServer.cpp.s
+
+.PHONY : src/http/WSServer.s
+
+# target to generate assembly for a file
+src/http/WSServer.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSServer.cpp.s
+.PHONY : src/http/WSServer.cpp.s
+
+src/http/WSServlet.o: src/http/WSServlet.cpp.o
+
+.PHONY : src/http/WSServlet.o
+
+# target to build an object file
+src/http/WSServlet.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSServlet.cpp.o
+.PHONY : src/http/WSServlet.cpp.o
+
+src/http/WSServlet.i: src/http/WSServlet.cpp.i
+
+.PHONY : src/http/WSServlet.i
+
+# target to preprocess a source file
+src/http/WSServlet.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSServlet.cpp.i
+.PHONY : src/http/WSServlet.cpp.i
+
+src/http/WSServlet.s: src/http/WSServlet.cpp.s
+
+.PHONY : src/http/WSServlet.s
+
+# target to generate assembly for a file
+src/http/WSServlet.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSServlet.cpp.s
+.PHONY : src/http/WSServlet.cpp.s
+
+src/http/WSSession.o: src/http/WSSession.cpp.o
+
+.PHONY : src/http/WSSession.o
+
+# target to build an object file
+src/http/WSSession.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSSession.cpp.o
+.PHONY : src/http/WSSession.cpp.o
+
+src/http/WSSession.i: src/http/WSSession.cpp.i
+
+.PHONY : src/http/WSSession.i
+
+# target to preprocess a source file
+src/http/WSSession.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSSession.cpp.i
+.PHONY : src/http/WSSession.cpp.i
+
+src/http/WSSession.s: src/http/WSSession.cpp.s
+
+.PHONY : src/http/WSSession.s
+
+# target to generate assembly for a file
+src/http/WSSession.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/http/WSSession.cpp.s
+.PHONY : src/http/WSSession.cpp.s
+
 src/http/http11_parser.rl.o: src/http/http11_parser.rl.cpp.o
 
 .PHONY : src/http/http11_parser.rl.o
@@ -1129,7 +1344,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/Routn.dir/build.make CMakeFiles/Routn.dir/src/main.cpp.o
+	$(MAKE) -f CMakeFiles/routn-svr.dir/build.make CMakeFiles/routn-svr.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -1138,7 +1353,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/Routn.dir/build.make CMakeFiles/Routn.dir/src/main.cpp.i
+	$(MAKE) -f CMakeFiles/routn-svr.dir/build.make CMakeFiles/routn-svr.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -1147,7 +1362,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/Routn.dir/build.make CMakeFiles/Routn.dir/src/main.cpp.s
+	$(MAKE) -f CMakeFiles/routn-svr.dir/build.make CMakeFiles/routn-svr.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/plugins/libco/coctx.o: src/plugins/libco/coctx.cpp.o
@@ -1177,6 +1392,42 @@ src/plugins/libco/coctx.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.s
 .PHONY : src/plugins/libco/coctx.cpp.s
 
+src/plugins/libco/coctx_swap.o: src/plugins/libco/coctx_swap.S.o
+
+.PHONY : src/plugins/libco/coctx_swap.o
+
+# target to build an object file
+src/plugins/libco/coctx_swap.S.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o
+.PHONY : src/plugins/libco/coctx_swap.S.o
+
+test/test_http_connection.o: test/test_http_connection.cpp.o
+
+.PHONY : test/test_http_connection.o
+
+# target to build an object file
+test/test_http_connection.cpp.o:
+	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/test/test_http_connection.cpp.o
+.PHONY : test/test_http_connection.cpp.o
+
+test/test_http_connection.i: test/test_http_connection.cpp.i
+
+.PHONY : test/test_http_connection.i
+
+# target to preprocess a source file
+test/test_http_connection.cpp.i:
+	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/test/test_http_connection.cpp.i
+.PHONY : test/test_http_connection.cpp.i
+
+test/test_http_connection.s: test/test_http_connection.cpp.s
+
+.PHONY : test/test_http_connection.s
+
+# target to generate assembly for a file
+test/test_http_connection.cpp.s:
+	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/test/test_http_connection.cpp.s
+.PHONY : test/test_http_connection.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1184,11 +1435,13 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... chat"
 	@echo "... rebuild_cache"
 	@echo "... heart"
 	@echo "... http_server_demo"
+	@echo "... test_http_connection"
 	@echo "... ex_echoServer"
-	@echo "... Routn"
+	@echo "... routn-svr"
 	@echo "... routn"
 	@echo "... examples/ex_echoServer.o"
 	@echo "... examples/ex_echoServer.i"
@@ -1196,9 +1449,15 @@ help:
 	@echo "... examples/http_server_demo.o"
 	@echo "... examples/http_server_demo.i"
 	@echo "... examples/http_server_demo.s"
-	@echo "... module/heart_module.o"
-	@echo "... module/heart_module.i"
-	@echo "... module/heart_module.s"
+	@echo "... modules/chat_room/chat_module.o"
+	@echo "... modules/chat_room/chat_module.i"
+	@echo "... modules/chat_room/chat_module.s"
+	@echo "... modules/chat_room/chat_servlet.o"
+	@echo "... modules/chat_room/chat_servlet.i"
+	@echo "... modules/chat_room/chat_servlet.s"
+	@echo "... modules/heart/heart_module.o"
+	@echo "... modules/heart/heart_module.i"
+	@echo "... modules/heart/heart_module.s"
 	@echo "... src/Address.o"
 	@echo "... src/Address.i"
 	@echo "... src/Address.s"
@@ -1214,6 +1473,9 @@ help:
 	@echo "... src/Daemon.o"
 	@echo "... src/Daemon.i"
 	@echo "... src/Daemon.s"
+	@echo "... src/Dns.o"
+	@echo "... src/Dns.i"
+	@echo "... src/Dns.s"
 	@echo "... src/Env.o"
 	@echo "... src/Env.i"
 	@echo "... src/Env.s"
@@ -1289,6 +1551,18 @@ help:
 	@echo "... src/http/Parser.o"
 	@echo "... src/http/Parser.i"
 	@echo "... src/http/Parser.s"
+	@echo "... src/http/WSConnection.o"
+	@echo "... src/http/WSConnection.i"
+	@echo "... src/http/WSConnection.s"
+	@echo "... src/http/WSServer.o"
+	@echo "... src/http/WSServer.i"
+	@echo "... src/http/WSServer.s"
+	@echo "... src/http/WSServlet.o"
+	@echo "... src/http/WSServlet.i"
+	@echo "... src/http/WSServlet.s"
+	@echo "... src/http/WSSession.o"
+	@echo "... src/http/WSSession.i"
+	@echo "... src/http/WSSession.s"
 	@echo "... src/http/http11_parser.rl.o"
 	@echo "... src/http/http11_parser.rl.i"
 	@echo "... src/http/http11_parser.rl.s"
@@ -1301,6 +1575,10 @@ help:
 	@echo "... src/plugins/libco/coctx.o"
 	@echo "... src/plugins/libco/coctx.i"
 	@echo "... src/plugins/libco/coctx.s"
+	@echo "... src/plugins/libco/coctx_swap.o"
+	@echo "... test/test_http_connection.o"
+	@echo "... test/test_http_connection.i"
+	@echo "... test/test_http_connection.s"
 .PHONY : help
 
 

@@ -20,6 +20,9 @@ CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/HTTP.h
 CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/HttpServer.h
 CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/HttpServlet.h
 CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/HttpSession.h
+CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/WSServer.h
+CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/WSServlet.h
+CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/WSSession.h
 CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/http11_common.h
 CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/http11_parser.h
 CMakeFiles/test_application.dir/test/test_application.cpp.o: src/http/httpclient_parser.h

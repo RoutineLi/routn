@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/routn.dir/src/ByteArray.cpp.o"
   "CMakeFiles/routn.dir/src/Config.cpp.o"
   "CMakeFiles/routn.dir/src/Daemon.cpp.o"
+  "CMakeFiles/routn.dir/src/Dns.cpp.o"
   "CMakeFiles/routn.dir/src/Env.cpp.o"
   "CMakeFiles/routn.dir/src/FdManager.cpp.o"
   "CMakeFiles/routn.dir/src/Fiber.cpp.o"
@@ -31,12 +32,17 @@ file(REMOVE_RECURSE
   "CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o"
   "CMakeFiles/routn.dir/src/http/HttpSession.cpp.o"
   "CMakeFiles/routn.dir/src/http/Parser.cpp.o"
+  "CMakeFiles/routn.dir/src/http/WSConnection.cpp.o"
+  "CMakeFiles/routn.dir/src/http/WSServer.cpp.o"
+  "CMakeFiles/routn.dir/src/http/WSServlet.cpp.o"
+  "CMakeFiles/routn.dir/src/http/WSSession.cpp.o"
   "CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o"
   "CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o"
   "CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.o"
+  "CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang ASM CXX)
   include(CMakeFiles/routn.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

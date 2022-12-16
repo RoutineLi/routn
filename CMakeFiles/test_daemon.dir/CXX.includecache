@@ -65,6 +65,10 @@ syscall.h
 -
 stdint.h
 -
+stdlib.h
+-
+stdio.h
+-
 string
 -
 sys/stat.h
@@ -111,12 +115,16 @@ memory
 -
 vector
 -
+stdint.h
+-
 sys/stat.h
 -
-Thread.h
-src/Thread.h
+bits/types.h
+-
 Singleton.h
 src/Singleton.h
+Thread.h
+src/Thread.h
 Hook.h
 src/Hook.h
 
@@ -270,6 +278,10 @@ unistd.h
 syscall.h
 -
 stdint.h
+-
+stdlib.h
+-
+stdio.h
 -
 string
 -

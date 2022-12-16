@@ -21,6 +21,9 @@ CMakeFiles/test_application.dir/test/test_application.cpp.o
  /home/rotun-li/routn/src/http/HttpServer.h
  /home/rotun-li/routn/src/http/HttpServlet.h
  /home/rotun-li/routn/src/http/HttpSession.h
+ /home/rotun-li/routn/src/http/WSServer.h
+ /home/rotun-li/routn/src/http/WSServlet.h
+ /home/rotun-li/routn/src/http/WSSession.h
  /home/rotun-li/routn/src/http/http11_common.h
  /home/rotun-li/routn/src/http/http11_parser.h
  /home/rotun-li/routn/src/http/httpclient_parser.h

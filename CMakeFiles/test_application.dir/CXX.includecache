@@ -51,6 +51,8 @@ Env.h
 /home/rotun-li/routn/src/Env.h
 http/HttpServer.h
 /home/rotun-li/routn/src/http/HttpServer.h
+http/WSServer.h
+/home/rotun-li/routn/src/http/WSServer.h
 TcpServer.h
 /home/rotun-li/routn/src/TcpServer.h
 
@@ -227,6 +229,10 @@ sys/socket.h
 -
 netinet/tcp.h
 -
+openssl/err.h
+-
+openssl/ssl.h
+-
 Address.h
 /home/rotun-li/routn/src/Address.h
 Noncopyable.h
@@ -338,6 +344,30 @@ HttpSession.h
 HTTP.h
 /home/rotun-li/routn/src/http/HTTP.h
 
+/home/rotun-li/routn/src/http/WSServer.h
+../TcpServer.h
+/home/rotun-li/routn/src/TcpServer.h
+WSServlet.h
+/home/rotun-li/routn/src/http/WSServlet.h
+WSSession.h
+/home/rotun-li/routn/src/http/WSSession.h
+
+/home/rotun-li/routn/src/http/WSServlet.h
+WSSession.h
+/home/rotun-li/routn/src/http/WSSession.h
+../Thread.h
+/home/rotun-li/routn/src/Thread.h
+HttpServlet.h
+/home/rotun-li/routn/src/http/HttpServlet.h
+
+/home/rotun-li/routn/src/http/WSSession.h
+../Config.h
+/home/rotun-li/routn/src/Config.h
+HttpSession.h
+/home/rotun-li/routn/src/http/HttpSession.h
+cstdint
+-
+
 /home/rotun-li/routn/src/http/http11_common.h
 sys/types.h
 -
@@ -389,12 +419,16 @@ memory
 -
 vector
 -
+stdint.h
+-
 sys/stat.h
 -
-Thread.h
-src/Thread.h
+bits/types.h
+-
 Singleton.h
 src/Singleton.h
+Thread.h
+src/Thread.h
 Hook.h
 src/Hook.h
 
@@ -548,6 +582,10 @@ unistd.h
 syscall.h
 -
 stdint.h
+-
+stdlib.h
+-
+stdio.h
 -
 string
 -

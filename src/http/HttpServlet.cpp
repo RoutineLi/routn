@@ -19,8 +19,8 @@ namespace Http{
 
 	int32_t FunctionServlet::handle(Routn::Http::HttpRequest::ptr request, 
 					Routn::Http::HttpResponse::ptr response,
-					Routn::Http::HttpSession::ptr session) {
-		return _cb(request, response, session);
+					Routn::SocketStream::ptr session) {
+		return _cb(request, response, std::dynamic_pointer_cast<HttpSession>(session));
 	}
 
 
@@ -32,7 +32,7 @@ namespace Http{
 	
 	int32_t ServletDispatch::handle(Routn::Http::HttpRequest::ptr request, 
 					Routn::Http::HttpResponse::ptr response,
-					Routn::Http::HttpSession::ptr session){
+					Routn::SocketStream::ptr session){
 		auto slt = getMatchedServlet(request->getPath()); //get uri-path
 		if(slt){
 			slt->handle(request, response, session);
@@ -119,7 +119,7 @@ namespace Http{
 
 	int32_t NotFoundServlet::handle(Routn::Http::HttpRequest::ptr request, 
 						Routn::Http::HttpResponse::ptr response,
-						Routn::Http::HttpSession::ptr session){
+						Routn::SocketStream::ptr session){
 		static const std::string& RSP_BODY = "<html><head><title>404 Not Found"
         	"</title></head><body><center><h1>404 Not Found</h1></center>"
         	"<hr><center>" + response->getHeader("Server") + "</center></body></html>";

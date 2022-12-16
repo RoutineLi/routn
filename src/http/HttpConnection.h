@@ -97,7 +97,15 @@ namespace Routn
 											, Uri::ptr uri
 											, uint64_t timeout_ms);  
 			
-			
+			static HttpResult::ptr DoRequest_base(HttpRequest::ptr req
+											, Address::ptr addr
+											, bool ssl
+											, uint64_t timeout_ms);
+											
+			static HttpResult::ptr DoRequest_base(HttpRequest::ptr req
+											, Socket::ptr sock
+											, uint64_t timeout_ms);
+
 			HttpConnection(Socket::ptr sock, bool owner = true);
 			~HttpConnection();
 			HttpResponse::ptr recvResponse();			 //处理请求

@@ -19,6 +19,7 @@ CMakeFiles/routn.dir/src/Application.cpp.o
  /home/rotun-li/routn/src/ByteArray.h
  /home/rotun-li/routn/src/Config.h
  /home/rotun-li/routn/src/Daemon.h
+ /home/rotun-li/routn/src/Dns.h
  /home/rotun-li/routn/src/Env.h
  /home/rotun-li/routn/src/Fiber.h
  /home/rotun-li/routn/src/FiberSem.h
@@ -41,6 +42,9 @@ CMakeFiles/routn.dir/src/Application.cpp.o
  /home/rotun-li/routn/src/http/HttpServer.h
  /home/rotun-li/routn/src/http/HttpServlet.h
  /home/rotun-li/routn/src/http/HttpSession.h
+ /home/rotun-li/routn/src/http/WSServer.h
+ /home/rotun-li/routn/src/http/WSServlet.h
+ /home/rotun-li/routn/src/http/WSSession.h
  /home/rotun-li/routn/src/http/http11_common.h
  /home/rotun-li/routn/src/http/http11_parser.h
  /home/rotun-li/routn/src/http/httpclient_parser.h
@@ -73,6 +77,31 @@ CMakeFiles/routn.dir/src/Daemon.cpp.o
  /home/rotun-li/routn/src/Singleton.h
  /home/rotun-li/routn/src/Thread.h
  /home/rotun-li/routn/src/Util.h
+CMakeFiles/routn.dir/src/Dns.cpp.o
+ /home/rotun-li/routn/src/Address.h
+ /home/rotun-li/routn/src/ByteArray.h
+ /home/rotun-li/routn/src/Config.h
+ /home/rotun-li/routn/src/Dns.cpp
+ /home/rotun-li/routn/src/Dns.h
+ /home/rotun-li/routn/src/Fiber.h
+ /home/rotun-li/routn/src/IoManager.h
+ /home/rotun-li/routn/src/Log.h
+ /home/rotun-li/routn/src/Noncopyable.h
+ /home/rotun-li/routn/src/Scheduler.h
+ /home/rotun-li/routn/src/Singleton.h
+ /home/rotun-li/routn/src/Socket.h
+ /home/rotun-li/routn/src/SocketStream.h
+ /home/rotun-li/routn/src/Stream.h
+ /home/rotun-li/routn/src/Thread.h
+ /home/rotun-li/routn/src/Timer.h
+ /home/rotun-li/routn/src/Uri.h
+ /home/rotun-li/routn/src/Util.h
+ /home/rotun-li/routn/src/http/HTTP.h
+ /home/rotun-li/routn/src/http/HttpConnection.h
+ /home/rotun-li/routn/src/http/http11_common.h
+ /home/rotun-li/routn/src/http/http11_parser.h
+ /home/rotun-li/routn/src/http/httpclient_parser.h
+ /home/rotun-li/routn/src/plugins/libco/coctx.h
 CMakeFiles/routn.dir/src/Env.cpp.o
  /home/rotun-li/routn/src/Env.cpp
  /home/rotun-li/routn/src/Env.h
@@ -197,6 +226,9 @@ CMakeFiles/routn.dir/src/Module.cpp.o
  /home/rotun-li/routn/src/http/HttpServer.h
  /home/rotun-li/routn/src/http/HttpServlet.h
  /home/rotun-li/routn/src/http/HttpSession.h
+ /home/rotun-li/routn/src/http/WSServer.h
+ /home/rotun-li/routn/src/http/WSServlet.h
+ /home/rotun-li/routn/src/http/WSSession.h
  /home/rotun-li/routn/src/http/http11_common.h
  /home/rotun-li/routn/src/http/http11_parser.h
  /home/rotun-li/routn/src/http/httpclient_parser.h
@@ -400,6 +432,97 @@ CMakeFiles/routn.dir/src/http/Parser.cpp.o
  /home/rotun-li/routn/src/http/HTTP.h
  /home/rotun-li/routn/src/http/Parser.cpp
  /home/rotun-li/routn/src/http/Parser.h
+ /home/rotun-li/routn/src/http/http11_common.h
+ /home/rotun-li/routn/src/http/http11_parser.h
+ /home/rotun-li/routn/src/http/httpclient_parser.h
+CMakeFiles/routn.dir/src/http/WSConnection.cpp.o
+ /home/rotun-li/routn/src/Address.h
+ /home/rotun-li/routn/src/ByteArray.h
+ /home/rotun-li/routn/src/Config.h
+ /home/rotun-li/routn/src/Log.h
+ /home/rotun-li/routn/src/Noncopyable.h
+ /home/rotun-li/routn/src/Singleton.h
+ /home/rotun-li/routn/src/Socket.h
+ /home/rotun-li/routn/src/SocketStream.h
+ /home/rotun-li/routn/src/Stream.h
+ /home/rotun-li/routn/src/Thread.h
+ /home/rotun-li/routn/src/Uri.h
+ /home/rotun-li/routn/src/Util.h
+ /home/rotun-li/routn/src/http/HTTP.h
+ /home/rotun-li/routn/src/http/HttpConnection.h
+ /home/rotun-li/routn/src/http/HttpSession.h
+ /home/rotun-li/routn/src/http/WSConnection.cpp
+ /home/rotun-li/routn/src/http/WSConnection.h
+ /home/rotun-li/routn/src/http/WSSession.h
+ /home/rotun-li/routn/src/http/http11_common.h
+ /home/rotun-li/routn/src/http/http11_parser.h
+ /home/rotun-li/routn/src/http/httpclient_parser.h
+CMakeFiles/routn.dir/src/http/WSServer.cpp.o
+ /home/rotun-li/routn/src/Address.h
+ /home/rotun-li/routn/src/ByteArray.h
+ /home/rotun-li/routn/src/Config.h
+ /home/rotun-li/routn/src/Fiber.h
+ /home/rotun-li/routn/src/IoManager.h
+ /home/rotun-li/routn/src/Log.h
+ /home/rotun-li/routn/src/Noncopyable.h
+ /home/rotun-li/routn/src/Scheduler.h
+ /home/rotun-li/routn/src/Singleton.h
+ /home/rotun-li/routn/src/Socket.h
+ /home/rotun-li/routn/src/SocketStream.h
+ /home/rotun-li/routn/src/Stream.h
+ /home/rotun-li/routn/src/TcpServer.h
+ /home/rotun-li/routn/src/Thread.h
+ /home/rotun-li/routn/src/Timer.h
+ /home/rotun-li/routn/src/Util.h
+ /home/rotun-li/routn/src/http/HTTP.h
+ /home/rotun-li/routn/src/http/HttpServlet.h
+ /home/rotun-li/routn/src/http/HttpSession.h
+ /home/rotun-li/routn/src/http/WSServer.cpp
+ /home/rotun-li/routn/src/http/WSServer.h
+ /home/rotun-li/routn/src/http/WSServlet.h
+ /home/rotun-li/routn/src/http/WSSession.h
+ /home/rotun-li/routn/src/http/http11_common.h
+ /home/rotun-li/routn/src/http/http11_parser.h
+ /home/rotun-li/routn/src/http/httpclient_parser.h
+ /home/rotun-li/routn/src/plugins/libco/coctx.h
+CMakeFiles/routn.dir/src/http/WSServlet.cpp.o
+ /home/rotun-li/routn/src/Address.h
+ /home/rotun-li/routn/src/ByteArray.h
+ /home/rotun-li/routn/src/Config.h
+ /home/rotun-li/routn/src/Log.h
+ /home/rotun-li/routn/src/Noncopyable.h
+ /home/rotun-li/routn/src/Singleton.h
+ /home/rotun-li/routn/src/Socket.h
+ /home/rotun-li/routn/src/SocketStream.h
+ /home/rotun-li/routn/src/Stream.h
+ /home/rotun-li/routn/src/Thread.h
+ /home/rotun-li/routn/src/Util.h
+ /home/rotun-li/routn/src/http/HTTP.h
+ /home/rotun-li/routn/src/http/HttpServlet.h
+ /home/rotun-li/routn/src/http/HttpSession.h
+ /home/rotun-li/routn/src/http/WSServlet.cpp
+ /home/rotun-li/routn/src/http/WSServlet.h
+ /home/rotun-li/routn/src/http/WSSession.h
+ /home/rotun-li/routn/src/http/http11_common.h
+ /home/rotun-li/routn/src/http/http11_parser.h
+ /home/rotun-li/routn/src/http/httpclient_parser.h
+CMakeFiles/routn.dir/src/http/WSSession.cpp.o
+ /home/rotun-li/routn/src/Address.h
+ /home/rotun-li/routn/src/ByteArray.h
+ /home/rotun-li/routn/src/Config.h
+ /home/rotun-li/routn/src/Endian.h
+ /home/rotun-li/routn/src/Log.h
+ /home/rotun-li/routn/src/Noncopyable.h
+ /home/rotun-li/routn/src/Singleton.h
+ /home/rotun-li/routn/src/Socket.h
+ /home/rotun-li/routn/src/SocketStream.h
+ /home/rotun-li/routn/src/Stream.h
+ /home/rotun-li/routn/src/Thread.h
+ /home/rotun-li/routn/src/Util.h
+ /home/rotun-li/routn/src/http/HTTP.h
+ /home/rotun-li/routn/src/http/HttpSession.h
+ /home/rotun-li/routn/src/http/WSSession.cpp
+ /home/rotun-li/routn/src/http/WSSession.h
  /home/rotun-li/routn/src/http/http11_common.h
  /home/rotun-li/routn/src/http/http11_parser.h
  /home/rotun-li/routn/src/http/httpclient_parser.h

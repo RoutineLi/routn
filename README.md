@@ -339,6 +339,3 @@ HTTPParser --> ragel --> github-->mongrel2/src/http11
 ```
 
 ## 分布式协议
-
-## WebSocket协议支持
-   基于Http模块派生出的Websocket协议模块，支持串行化，Websocket协议解析，握手的密钥算法基于openssl的base64和sha1sum，详情请见Util.cpp

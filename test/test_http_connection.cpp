@@ -14,24 +14,25 @@ static Routn::Logger::ptr g_logger = ROUTN_LOG_ROOT();
 void test2();
 
 void test(){
-	Routn::IPAddress::ptr addr = Routn::Address::LookupAnyIPAddress("www.baidu.com");
+	Routn::IPAddress::ptr addr = Routn::Address::LookupAnyIPAddress("172.20.10.2:8083");
 	if(!addr){
 		ROUTN_LOG_ERROR(g_logger) << "get addr error";
 		return ;
 	}
 	ROUTN_LOG_INFO(g_logger) << "get addr: " << *addr;
 
-	Routn::Socket::ptr sock = Routn::Socket::CreateTCP(addr);
-	addr->setPort(80);
+	Routn::SSLSocket::ptr sock = Routn::SSLSocket::CreateTCP(addr);
+	//addr->setPort(80);
 	bool ret = sock->connect(addr);
 	if(!ret){
 		ROUTN_LOG_ERROR(g_logger) << "connect " << *addr << " failed!";
 		return ;
 	}
+	
 	Routn::Http::HttpConnection::ptr conn(new Routn::Http::HttpConnection(sock));
 	Routn::Http::HttpRequest::ptr req(new Routn::Http::HttpRequest);
-	req->setHeader("host", "www.baidu.com");
-	req->setPath("/duty/");
+	//req->setHeader("host", "www.baidu.com");
+	req->setPath("/routn/");
 	ROUTN_LOG_INFO(g_logger) << "req: " << std::endl << req->toString();
 	conn->sendRequest(req);
 	auto rsp = conn->recvResponse();
@@ -40,16 +41,16 @@ void test(){
 		return ;
 	}
 	ROUTN_LOG_INFO(g_logger) << "rsp: " << std::endl << rsp->toString();
-	
+	/*
 	ROUTN_LOG_INFO(g_logger) << "==================================================================";
-	auto ret2 = Routn::Http::HttpConnection::DoGet("http://www.baidu.com", 300);
+	auto ret2 = Routn::Http::HttpConnection::DoGet("https://172.20.10.2:8083", 300);
 	
 	ROUTN_LOG_INFO(g_logger) << "result = " << ret2->result
 		<< " error = " << ret2->error
 		<< " rsp = " << (ret2 ? ret2->response->toString() : "");
 	
-	ROUTN_LOG_INFO(g_logger) << "==================================================================";
-	test2();
+	ROUTN_LOG_INFO(g_logger) << "==================================================================";*/
+	
 }
 
 //connection-pool
@@ -63,7 +64,7 @@ void test2(){
 
 int main(int argc, char** argv){
 	Routn::IOManager iom(2);
-	iom.schedule(test2);
+	iom.schedule(test);
 	return 0;
 }
 

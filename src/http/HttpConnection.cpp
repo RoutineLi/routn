@@ -247,34 +247,81 @@ namespace Routn
 										, Uri::ptr uri
 										, uint64_t timeout_ms)  
 		{
+			bool is_ssl = uri->getScheme() == "https";
 			Address::ptr addr = uri->createAddress();
 			if(!addr){
 				return std::make_shared<HttpResult>((int)HttpResult::Error::INVALID_HOST, nullptr, "invalid host: " + uri->getHost());
 			}
-			Socket::ptr sock = Socket::CreateTCP(addr);
-			if(!sock){
-				return std::make_shared<HttpResult>((int)HttpResult::Error::CONNECT_FAIL, nullptr, "connected fail: " + addr->toString());
-			}
-			sock->setRecvTimeout(timeout_ms);
-			auto conn = std::make_shared<HttpConnection>(sock);
+			return DoRequest_base(req, addr, is_ssl, timeout_ms);
+			// Socket::ptr sock = Socket::CreateTCP(addr);
+			// if(!sock){
+			// 	return std::make_shared<HttpResult>((int)HttpResult::Error::CONNECT_FAIL, nullptr, "connected fail: " + addr->toString());
+			// }
+			// sock->setRecvTimeout(timeout_ms);
+			// auto conn = std::make_shared<HttpConnection>(sock);
 			
-			if(!sock->connect(addr)){
-				return std::make_shared<HttpResult>((int)HttpResult::Error::CONNECT_FAIL, nullptr, "connect fail: " + addr->toString());
-			}
+			// if(!sock->connect(addr)){
+			// 	return std::make_shared<HttpResult>((int)HttpResult::Error::CONNECT_FAIL, nullptr, "connect fail: " + addr->toString());
+			// }
 
-			int ret = conn->sendRequest(req);
-			if(ret == 0){
-				return std::make_shared<HttpResult>((int)HttpResult::Error::SEND_CLOSE_BY_REMOTE, nullptr, "send request closed by remote: " + addr->toString());
-			}else if(ret < 0){
-				return std::make_shared<HttpResult>((int)HttpResult::Error::SEND_SOCKET_ERROR, nullptr, "send socket error, errno =  " + std::to_string(errno) + " reason: " + std::string(strerror(errno)));
+			// int ret = conn->sendRequest(req);
+			// if(ret == 0){
+			// 	return std::make_shared<HttpResult>((int)HttpResult::Error::SEND_CLOSE_BY_REMOTE, nullptr, "send request closed by remote: " + addr->toString());
+			// }else if(ret < 0){
+			// 	return std::make_shared<HttpResult>((int)HttpResult::Error::SEND_SOCKET_ERROR, nullptr, "send socket error, errno =  " + std::to_string(errno) + " reason: " + std::string(strerror(errno)));
+			// }
+			// auto rsp = conn->recvResponse();
+			// if(!rsp){
+			// 	//TODO
+			// 	return std::make_shared<HttpResult>((int)HttpResult::Error::TIMEOUT, nullptr, "recv response timeout: " + addr->toString() + " timout_ms = " + std::to_string(timeout_ms));
+			// }
+			// return std::make_shared<HttpResult>((int)HttpResult::Error::OK, rsp, "ok");
+		}	
+
+		HttpResult::ptr HttpConnection::DoRequest_base(HttpRequest::ptr req
+										, Socket::ptr sock
+										, uint64_t timeout_ms){
+			sock->setRecvTimeout(timeout_ms);
+			HttpConnection::ptr conn = std::make_shared<HttpConnection>(sock);
+			int rt = conn->sendRequest(req);
+			if(rt == 0) {
+				return std::make_shared<HttpResult>((int)HttpResult::Error::SEND_CLOSE_BY_REMOTE
+						, nullptr, "send request closed by peer: " + conn->getSocket()->getRemoteAddress()->toString());
+			}
+			if(rt < 0) {
+				return std::make_shared<HttpResult>((int)HttpResult::Error::SEND_SOCKET_ERROR
+							, nullptr, "send request socket error errno=" + std::to_string(errno)
+							+ " errstr=" + std::string(strerror(errno)));
 			}
 			auto rsp = conn->recvResponse();
-			if(!rsp){
-				//TODO
-				return std::make_shared<HttpResult>((int)HttpResult::Error::TIMEOUT, nullptr, "recv response timeout: " + addr->toString() + " timout_ms = " + std::to_string(timeout_ms));
+			if(!rsp) {
+				return std::make_shared<HttpResult>((int)HttpResult::Error::TIMEOUT
+							, nullptr, "recv response timeout: " + conn->getSocket()->getRemoteAddress()->toString()
+							+ " timeout_ms:" + std::to_string(timeout_ms));
 			}
 			return std::make_shared<HttpResult>((int)HttpResult::Error::OK, rsp, "ok");
-		}	
+		}
+			
+		HttpResult::ptr HttpConnection::DoRequest_base(HttpRequest::ptr req
+										, Address::ptr addr
+										, bool ssl
+										, uint64_t timeout_ms){
+			Socket::ptr sock = ssl ? SSLSocket::CreateTCP(addr) : Socket::CreateTCP(addr);
+			if(!sock) {
+				return std::make_shared<HttpResult>((int)HttpResult::Error::CREATE_SOCKET_ERROR
+						, nullptr, "create socket fail: " + addr->toString()
+								+ " errno=" + std::to_string(errno)
+								+ " errstr=" + std::string(strerror(errno)));
+			}
+			uint64_t ts1 = Routn::GetCurrentMs();
+			if(!sock->connect(addr, timeout_ms)) {
+				return std::make_shared<HttpResult>((int)HttpResult::Error::CONNECT_FAIL
+						, nullptr, "connect fail: " + addr->toString());
+			}
+			timeout_ms -= Routn::GetCurrentMs() - ts1;
+			return DoRequest_base(req, sock, timeout_ms);
+		}
+
 
 
 		HttpConnectionPool::HttpConnectionPool(const std::string& host

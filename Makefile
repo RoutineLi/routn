@@ -59,17 +59,6 @@ CMAKE_BINARY_DIR = /home/rotun-li/routn
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -80,6 +69,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -114,30 +114,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test_ws_server
+# Target rules for targets named chat
 
 # Build rule for target.
-test_ws_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_ws_server
-.PHONY : test_ws_server
+chat: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 chat
+.PHONY : chat
 
 # fast build rule for target.
-test_ws_server/fast:
-	$(MAKE) -f CMakeFiles/test_ws_server.dir/build.make CMakeFiles/test_ws_server.dir/build
-.PHONY : test_ws_server/fast
-
-#=============================================================================
-# Target rules for targets named test_application
-
-# Build rule for target.
-test_application: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_application
-.PHONY : test_application
-
-# fast build rule for target.
-test_application/fast:
-	$(MAKE) -f CMakeFiles/test_application.dir/build.make CMakeFiles/test_application.dir/build
-.PHONY : test_application/fast
+chat/fast:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/build
+.PHONY : chat/fast
 
 #=============================================================================
 # Target rules for targets named heart
@@ -153,17 +140,17 @@ heart/fast:
 .PHONY : heart/fast
 
 #=============================================================================
-# Target rules for targets named test_ws_client
+# Target rules for targets named http_server_demo
 
 # Build rule for target.
-test_ws_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_ws_client
-.PHONY : test_ws_client
+http_server_demo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 http_server_demo
+.PHONY : http_server_demo
 
 # fast build rule for target.
-test_ws_client/fast:
-	$(MAKE) -f CMakeFiles/test_ws_client.dir/build.make CMakeFiles/test_ws_client.dir/build
-.PHONY : test_ws_client/fast
+http_server_demo/fast:
+	$(MAKE) -f CMakeFiles/http_server_demo.dir/build.make CMakeFiles/http_server_demo.dir/build
+.PHONY : http_server_demo/fast
 
 #=============================================================================
 # Target rules for targets named test_http_connection
@@ -179,95 +166,17 @@ test_http_connection/fast:
 .PHONY : test_http_connection/fast
 
 #=============================================================================
-# Target rules for targets named test_http_parser
+# Target rules for targets named ex_echoServer
 
 # Build rule for target.
-test_http_parser: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_http_parser
-.PHONY : test_http_parser
+ex_echoServer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ex_echoServer
+.PHONY : ex_echoServer
 
 # fast build rule for target.
-test_http_parser/fast:
-	$(MAKE) -f CMakeFiles/test_http_parser.dir/build.make CMakeFiles/test_http_parser.dir/build
-.PHONY : test_http_parser/fast
-
-#=============================================================================
-# Target rules for targets named test_http
-
-# Build rule for target.
-test_http: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_http
-.PHONY : test_http
-
-# fast build rule for target.
-test_http/fast:
-	$(MAKE) -f CMakeFiles/test_http.dir/build.make CMakeFiles/test_http.dir/build
-.PHONY : test_http/fast
-
-#=============================================================================
-# Target rules for targets named test_daemon
-
-# Build rule for target.
-test_daemon: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_daemon
-.PHONY : test_daemon
-
-# fast build rule for target.
-test_daemon/fast:
-	$(MAKE) -f CMakeFiles/test_daemon.dir/build.make CMakeFiles/test_daemon.dir/build
-.PHONY : test_daemon/fast
-
-#=============================================================================
-# Target rules for targets named routn
-
-# Build rule for target.
-routn: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 routn
-.PHONY : routn
-
-# fast build rule for target.
-routn/fast:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/build
-.PHONY : routn/fast
-
-#=============================================================================
-# Target rules for targets named test_config
-
-# Build rule for target.
-test_config: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_config
-.PHONY : test_config
-
-# fast build rule for target.
-test_config/fast:
-	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/build
-.PHONY : test_config/fast
-
-#=============================================================================
-# Target rules for targets named http_server_demo
-
-# Build rule for target.
-http_server_demo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 http_server_demo
-.PHONY : http_server_demo
-
-# fast build rule for target.
-http_server_demo/fast:
-	$(MAKE) -f CMakeFiles/http_server_demo.dir/build.make CMakeFiles/http_server_demo.dir/build
-.PHONY : http_server_demo/fast
-
-#=============================================================================
-# Target rules for targets named test_uri
-
-# Build rule for target.
-test_uri: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_uri
-.PHONY : test_uri
-
-# fast build rule for target.
-test_uri/fast:
-	$(MAKE) -f CMakeFiles/test_uri.dir/build.make CMakeFiles/test_uri.dir/build
-.PHONY : test_uri/fast
+ex_echoServer/fast:
+	$(MAKE) -f CMakeFiles/ex_echoServer.dir/build.make CMakeFiles/ex_echoServer.dir/build
+.PHONY : ex_echoServer/fast
 
 #=============================================================================
 # Target rules for targets named routn-svr
@@ -283,186 +192,17 @@ routn-svr/fast:
 .PHONY : routn-svr/fast
 
 #=============================================================================
-# Target rules for targets named ex_echoServer
+# Target rules for targets named routn
 
 # Build rule for target.
-ex_echoServer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ex_echoServer
-.PHONY : ex_echoServer
+routn: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 routn
+.PHONY : routn
 
 # fast build rule for target.
-ex_echoServer/fast:
-	$(MAKE) -f CMakeFiles/ex_echoServer.dir/build.make CMakeFiles/ex_echoServer.dir/build
-.PHONY : ex_echoServer/fast
-
-#=============================================================================
-# Target rules for targets named test
-
-# Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test
-.PHONY : test
-
-# fast build rule for target.
-test/fast:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
-
-#=============================================================================
-# Target rules for targets named test_thread
-
-# Build rule for target.
-test_thread: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_thread
-.PHONY : test_thread
-
-# fast build rule for target.
-test_thread/fast:
-	$(MAKE) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/build
-.PHONY : test_thread/fast
-
-#=============================================================================
-# Target rules for targets named test_env
-
-# Build rule for target.
-test_env: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_env
-.PHONY : test_env
-
-# fast build rule for target.
-test_env/fast:
-	$(MAKE) -f CMakeFiles/test_env.dir/build.make CMakeFiles/test_env.dir/build
-.PHONY : test_env/fast
-
-#=============================================================================
-# Target rules for targets named test_util
-
-# Build rule for target.
-test_util: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_util
-.PHONY : test_util
-
-# fast build rule for target.
-test_util/fast:
-	$(MAKE) -f CMakeFiles/test_util.dir/build.make CMakeFiles/test_util.dir/build
-.PHONY : test_util/fast
-
-#=============================================================================
-# Target rules for targets named test_fiber
-
-# Build rule for target.
-test_fiber: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_fiber
-.PHONY : test_fiber
-
-# fast build rule for target.
-test_fiber/fast:
-	$(MAKE) -f CMakeFiles/test_fiber.dir/build.make CMakeFiles/test_fiber.dir/build
-.PHONY : test_fiber/fast
-
-#=============================================================================
-# Target rules for targets named test_http_server
-
-# Build rule for target.
-test_http_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_http_server
-.PHONY : test_http_server
-
-# fast build rule for target.
-test_http_server/fast:
-	$(MAKE) -f CMakeFiles/test_http_server.dir/build.make CMakeFiles/test_http_server.dir/build
-.PHONY : test_http_server/fast
-
-#=============================================================================
-# Target rules for targets named test_address
-
-# Build rule for target.
-test_address: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_address
-.PHONY : test_address
-
-# fast build rule for target.
-test_address/fast:
-	$(MAKE) -f CMakeFiles/test_address.dir/build.make CMakeFiles/test_address.dir/build
-.PHONY : test_address/fast
-
-#=============================================================================
-# Target rules for targets named test_scheduler
-
-# Build rule for target.
-test_scheduler: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_scheduler
-.PHONY : test_scheduler
-
-# fast build rule for target.
-test_scheduler/fast:
-	$(MAKE) -f CMakeFiles/test_scheduler.dir/build.make CMakeFiles/test_scheduler.dir/build
-.PHONY : test_scheduler/fast
-
-#=============================================================================
-# Target rules for targets named test_iomanager
-
-# Build rule for target.
-test_iomanager: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_iomanager
-.PHONY : test_iomanager
-
-# fast build rule for target.
-test_iomanager/fast:
-	$(MAKE) -f CMakeFiles/test_iomanager.dir/build.make CMakeFiles/test_iomanager.dir/build
-.PHONY : test_iomanager/fast
-
-#=============================================================================
-# Target rules for targets named test_hook
-
-# Build rule for target.
-test_hook: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_hook
-.PHONY : test_hook
-
-# fast build rule for target.
-test_hook/fast:
-	$(MAKE) -f CMakeFiles/test_hook.dir/build.make CMakeFiles/test_hook.dir/build
-.PHONY : test_hook/fast
-
-#=============================================================================
-# Target rules for targets named test_Tcp_server
-
-# Build rule for target.
-test_Tcp_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_Tcp_server
-.PHONY : test_Tcp_server
-
-# fast build rule for target.
-test_Tcp_server/fast:
-	$(MAKE) -f CMakeFiles/test_Tcp_server.dir/build.make CMakeFiles/test_Tcp_server.dir/build
-.PHONY : test_Tcp_server/fast
-
-#=============================================================================
-# Target rules for targets named test_socket
-
-# Build rule for target.
-test_socket: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_socket
-.PHONY : test_socket
-
-# fast build rule for target.
-test_socket/fast:
-	$(MAKE) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/build
-.PHONY : test_socket/fast
-
-#=============================================================================
-# Target rules for targets named test_byte
-
-# Build rule for target.
-test_byte: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_byte
-.PHONY : test_byte
-
-# fast build rule for target.
-test_byte/fast:
-	$(MAKE) -f CMakeFiles/test_byte.dir/build.make CMakeFiles/test_byte.dir/build
-.PHONY : test_byte/fast
+routn/fast:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/build
+.PHONY : routn/fast
 
 examples/ex_echoServer.o: examples/ex_echoServer.cpp.o
 
@@ -518,32 +258,86 @@ examples/http_server_demo.cpp.s:
 	$(MAKE) -f CMakeFiles/http_server_demo.dir/build.make CMakeFiles/http_server_demo.dir/examples/http_server_demo.cpp.s
 .PHONY : examples/http_server_demo.cpp.s
 
-module/heart_module.o: module/heart_module.cpp.o
+modules/chat_room/chat_module.o: modules/chat_room/chat_module.cpp.o
 
-.PHONY : module/heart_module.o
+.PHONY : modules/chat_room/chat_module.o
 
 # target to build an object file
-module/heart_module.cpp.o:
-	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/module/heart_module.cpp.o
-.PHONY : module/heart_module.cpp.o
+modules/chat_room/chat_module.cpp.o:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_module.cpp.o
+.PHONY : modules/chat_room/chat_module.cpp.o
 
-module/heart_module.i: module/heart_module.cpp.i
+modules/chat_room/chat_module.i: modules/chat_room/chat_module.cpp.i
 
-.PHONY : module/heart_module.i
+.PHONY : modules/chat_room/chat_module.i
 
 # target to preprocess a source file
-module/heart_module.cpp.i:
-	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/module/heart_module.cpp.i
-.PHONY : module/heart_module.cpp.i
+modules/chat_room/chat_module.cpp.i:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_module.cpp.i
+.PHONY : modules/chat_room/chat_module.cpp.i
 
-module/heart_module.s: module/heart_module.cpp.s
+modules/chat_room/chat_module.s: modules/chat_room/chat_module.cpp.s
 
-.PHONY : module/heart_module.s
+.PHONY : modules/chat_room/chat_module.s
 
 # target to generate assembly for a file
-module/heart_module.cpp.s:
-	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/module/heart_module.cpp.s
-.PHONY : module/heart_module.cpp.s
+modules/chat_room/chat_module.cpp.s:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_module.cpp.s
+.PHONY : modules/chat_room/chat_module.cpp.s
+
+modules/chat_room/chat_servlet.o: modules/chat_room/chat_servlet.cpp.o
+
+.PHONY : modules/chat_room/chat_servlet.o
+
+# target to build an object file
+modules/chat_room/chat_servlet.cpp.o:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_servlet.cpp.o
+.PHONY : modules/chat_room/chat_servlet.cpp.o
+
+modules/chat_room/chat_servlet.i: modules/chat_room/chat_servlet.cpp.i
+
+.PHONY : modules/chat_room/chat_servlet.i
+
+# target to preprocess a source file
+modules/chat_room/chat_servlet.cpp.i:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_servlet.cpp.i
+.PHONY : modules/chat_room/chat_servlet.cpp.i
+
+modules/chat_room/chat_servlet.s: modules/chat_room/chat_servlet.cpp.s
+
+.PHONY : modules/chat_room/chat_servlet.s
+
+# target to generate assembly for a file
+modules/chat_room/chat_servlet.cpp.s:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_servlet.cpp.s
+.PHONY : modules/chat_room/chat_servlet.cpp.s
+
+modules/heart/heart_module.o: modules/heart/heart_module.cpp.o
+
+.PHONY : modules/heart/heart_module.o
+
+# target to build an object file
+modules/heart/heart_module.cpp.o:
+	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/modules/heart/heart_module.cpp.o
+.PHONY : modules/heart/heart_module.cpp.o
+
+modules/heart/heart_module.i: modules/heart/heart_module.cpp.i
+
+.PHONY : modules/heart/heart_module.i
+
+# target to preprocess a source file
+modules/heart/heart_module.cpp.i:
+	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/modules/heart/heart_module.cpp.i
+.PHONY : modules/heart/heart_module.cpp.i
+
+modules/heart/heart_module.s: modules/heart/heart_module.cpp.s
+
+.PHONY : modules/heart/heart_module.s
+
+# target to generate assembly for a file
+modules/heart/heart_module.cpp.s:
+	$(MAKE) -f CMakeFiles/heart.dir/build.make CMakeFiles/heart.dir/modules/heart/heart_module.cpp.s
+.PHONY : modules/heart/heart_module.cpp.s
 
 src/Address.o: src/Address.cpp.o
 
@@ -679,6 +473,33 @@ src/Daemon.s: src/Daemon.cpp.s
 src/Daemon.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Daemon.cpp.s
 .PHONY : src/Daemon.cpp.s
+
+src/Dns.o: src/Dns.cpp.o
+
+.PHONY : src/Dns.o
+
+# target to build an object file
+src/Dns.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Dns.cpp.o
+.PHONY : src/Dns.cpp.o
+
+src/Dns.i: src/Dns.cpp.i
+
+.PHONY : src/Dns.i
+
+# target to preprocess a source file
+src/Dns.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Dns.cpp.i
+.PHONY : src/Dns.cpp.i
+
+src/Dns.s: src/Dns.cpp.s
+
+.PHONY : src/Dns.s
+
+# target to generate assembly for a file
+src/Dns.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Dns.cpp.s
+.PHONY : src/Dns.cpp.s
 
 src/Env.o: src/Env.cpp.o
 
@@ -1580,303 +1401,6 @@ src/plugins/libco/coctx_swap.S.o:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o
 .PHONY : src/plugins/libco/coctx_swap.S.o
 
-test/test.o: test/test.cpp.o
-
-.PHONY : test/test.o
-
-# target to build an object file
-test/test.cpp.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test/test.cpp.o
-.PHONY : test/test.cpp.o
-
-test/test.i: test/test.cpp.i
-
-.PHONY : test/test.i
-
-# target to preprocess a source file
-test/test.cpp.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test/test.cpp.i
-.PHONY : test/test.cpp.i
-
-test/test.s: test/test.cpp.s
-
-.PHONY : test/test.s
-
-# target to generate assembly for a file
-test/test.cpp.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test/test.cpp.s
-.PHONY : test/test.cpp.s
-
-test/test_Tcp_server.o: test/test_Tcp_server.cpp.o
-
-.PHONY : test/test_Tcp_server.o
-
-# target to build an object file
-test/test_Tcp_server.cpp.o:
-	$(MAKE) -f CMakeFiles/test_Tcp_server.dir/build.make CMakeFiles/test_Tcp_server.dir/test/test_Tcp_server.cpp.o
-.PHONY : test/test_Tcp_server.cpp.o
-
-test/test_Tcp_server.i: test/test_Tcp_server.cpp.i
-
-.PHONY : test/test_Tcp_server.i
-
-# target to preprocess a source file
-test/test_Tcp_server.cpp.i:
-	$(MAKE) -f CMakeFiles/test_Tcp_server.dir/build.make CMakeFiles/test_Tcp_server.dir/test/test_Tcp_server.cpp.i
-.PHONY : test/test_Tcp_server.cpp.i
-
-test/test_Tcp_server.s: test/test_Tcp_server.cpp.s
-
-.PHONY : test/test_Tcp_server.s
-
-# target to generate assembly for a file
-test/test_Tcp_server.cpp.s:
-	$(MAKE) -f CMakeFiles/test_Tcp_server.dir/build.make CMakeFiles/test_Tcp_server.dir/test/test_Tcp_server.cpp.s
-.PHONY : test/test_Tcp_server.cpp.s
-
-test/test_address.o: test/test_address.cpp.o
-
-.PHONY : test/test_address.o
-
-# target to build an object file
-test/test_address.cpp.o:
-	$(MAKE) -f CMakeFiles/test_address.dir/build.make CMakeFiles/test_address.dir/test/test_address.cpp.o
-.PHONY : test/test_address.cpp.o
-
-test/test_address.i: test/test_address.cpp.i
-
-.PHONY : test/test_address.i
-
-# target to preprocess a source file
-test/test_address.cpp.i:
-	$(MAKE) -f CMakeFiles/test_address.dir/build.make CMakeFiles/test_address.dir/test/test_address.cpp.i
-.PHONY : test/test_address.cpp.i
-
-test/test_address.s: test/test_address.cpp.s
-
-.PHONY : test/test_address.s
-
-# target to generate assembly for a file
-test/test_address.cpp.s:
-	$(MAKE) -f CMakeFiles/test_address.dir/build.make CMakeFiles/test_address.dir/test/test_address.cpp.s
-.PHONY : test/test_address.cpp.s
-
-test/test_application.o: test/test_application.cpp.o
-
-.PHONY : test/test_application.o
-
-# target to build an object file
-test/test_application.cpp.o:
-	$(MAKE) -f CMakeFiles/test_application.dir/build.make CMakeFiles/test_application.dir/test/test_application.cpp.o
-.PHONY : test/test_application.cpp.o
-
-test/test_application.i: test/test_application.cpp.i
-
-.PHONY : test/test_application.i
-
-# target to preprocess a source file
-test/test_application.cpp.i:
-	$(MAKE) -f CMakeFiles/test_application.dir/build.make CMakeFiles/test_application.dir/test/test_application.cpp.i
-.PHONY : test/test_application.cpp.i
-
-test/test_application.s: test/test_application.cpp.s
-
-.PHONY : test/test_application.s
-
-# target to generate assembly for a file
-test/test_application.cpp.s:
-	$(MAKE) -f CMakeFiles/test_application.dir/build.make CMakeFiles/test_application.dir/test/test_application.cpp.s
-.PHONY : test/test_application.cpp.s
-
-test/test_byte.o: test/test_byte.cpp.o
-
-.PHONY : test/test_byte.o
-
-# target to build an object file
-test/test_byte.cpp.o:
-	$(MAKE) -f CMakeFiles/test_byte.dir/build.make CMakeFiles/test_byte.dir/test/test_byte.cpp.o
-.PHONY : test/test_byte.cpp.o
-
-test/test_byte.i: test/test_byte.cpp.i
-
-.PHONY : test/test_byte.i
-
-# target to preprocess a source file
-test/test_byte.cpp.i:
-	$(MAKE) -f CMakeFiles/test_byte.dir/build.make CMakeFiles/test_byte.dir/test/test_byte.cpp.i
-.PHONY : test/test_byte.cpp.i
-
-test/test_byte.s: test/test_byte.cpp.s
-
-.PHONY : test/test_byte.s
-
-# target to generate assembly for a file
-test/test_byte.cpp.s:
-	$(MAKE) -f CMakeFiles/test_byte.dir/build.make CMakeFiles/test_byte.dir/test/test_byte.cpp.s
-.PHONY : test/test_byte.cpp.s
-
-test/test_config.o: test/test_config.cpp.o
-
-.PHONY : test/test_config.o
-
-# target to build an object file
-test/test_config.cpp.o:
-	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/test/test_config.cpp.o
-.PHONY : test/test_config.cpp.o
-
-test/test_config.i: test/test_config.cpp.i
-
-.PHONY : test/test_config.i
-
-# target to preprocess a source file
-test/test_config.cpp.i:
-	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/test/test_config.cpp.i
-.PHONY : test/test_config.cpp.i
-
-test/test_config.s: test/test_config.cpp.s
-
-.PHONY : test/test_config.s
-
-# target to generate assembly for a file
-test/test_config.cpp.s:
-	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/test/test_config.cpp.s
-.PHONY : test/test_config.cpp.s
-
-test/test_daemon.o: test/test_daemon.cpp.o
-
-.PHONY : test/test_daemon.o
-
-# target to build an object file
-test/test_daemon.cpp.o:
-	$(MAKE) -f CMakeFiles/test_daemon.dir/build.make CMakeFiles/test_daemon.dir/test/test_daemon.cpp.o
-.PHONY : test/test_daemon.cpp.o
-
-test/test_daemon.i: test/test_daemon.cpp.i
-
-.PHONY : test/test_daemon.i
-
-# target to preprocess a source file
-test/test_daemon.cpp.i:
-	$(MAKE) -f CMakeFiles/test_daemon.dir/build.make CMakeFiles/test_daemon.dir/test/test_daemon.cpp.i
-.PHONY : test/test_daemon.cpp.i
-
-test/test_daemon.s: test/test_daemon.cpp.s
-
-.PHONY : test/test_daemon.s
-
-# target to generate assembly for a file
-test/test_daemon.cpp.s:
-	$(MAKE) -f CMakeFiles/test_daemon.dir/build.make CMakeFiles/test_daemon.dir/test/test_daemon.cpp.s
-.PHONY : test/test_daemon.cpp.s
-
-test/test_env.o: test/test_env.cpp.o
-
-.PHONY : test/test_env.o
-
-# target to build an object file
-test/test_env.cpp.o:
-	$(MAKE) -f CMakeFiles/test_env.dir/build.make CMakeFiles/test_env.dir/test/test_env.cpp.o
-.PHONY : test/test_env.cpp.o
-
-test/test_env.i: test/test_env.cpp.i
-
-.PHONY : test/test_env.i
-
-# target to preprocess a source file
-test/test_env.cpp.i:
-	$(MAKE) -f CMakeFiles/test_env.dir/build.make CMakeFiles/test_env.dir/test/test_env.cpp.i
-.PHONY : test/test_env.cpp.i
-
-test/test_env.s: test/test_env.cpp.s
-
-.PHONY : test/test_env.s
-
-# target to generate assembly for a file
-test/test_env.cpp.s:
-	$(MAKE) -f CMakeFiles/test_env.dir/build.make CMakeFiles/test_env.dir/test/test_env.cpp.s
-.PHONY : test/test_env.cpp.s
-
-test/test_fiber.o: test/test_fiber.cpp.o
-
-.PHONY : test/test_fiber.o
-
-# target to build an object file
-test/test_fiber.cpp.o:
-	$(MAKE) -f CMakeFiles/test_fiber.dir/build.make CMakeFiles/test_fiber.dir/test/test_fiber.cpp.o
-.PHONY : test/test_fiber.cpp.o
-
-test/test_fiber.i: test/test_fiber.cpp.i
-
-.PHONY : test/test_fiber.i
-
-# target to preprocess a source file
-test/test_fiber.cpp.i:
-	$(MAKE) -f CMakeFiles/test_fiber.dir/build.make CMakeFiles/test_fiber.dir/test/test_fiber.cpp.i
-.PHONY : test/test_fiber.cpp.i
-
-test/test_fiber.s: test/test_fiber.cpp.s
-
-.PHONY : test/test_fiber.s
-
-# target to generate assembly for a file
-test/test_fiber.cpp.s:
-	$(MAKE) -f CMakeFiles/test_fiber.dir/build.make CMakeFiles/test_fiber.dir/test/test_fiber.cpp.s
-.PHONY : test/test_fiber.cpp.s
-
-test/test_hook.o: test/test_hook.cpp.o
-
-.PHONY : test/test_hook.o
-
-# target to build an object file
-test/test_hook.cpp.o:
-	$(MAKE) -f CMakeFiles/test_hook.dir/build.make CMakeFiles/test_hook.dir/test/test_hook.cpp.o
-.PHONY : test/test_hook.cpp.o
-
-test/test_hook.i: test/test_hook.cpp.i
-
-.PHONY : test/test_hook.i
-
-# target to preprocess a source file
-test/test_hook.cpp.i:
-	$(MAKE) -f CMakeFiles/test_hook.dir/build.make CMakeFiles/test_hook.dir/test/test_hook.cpp.i
-.PHONY : test/test_hook.cpp.i
-
-test/test_hook.s: test/test_hook.cpp.s
-
-.PHONY : test/test_hook.s
-
-# target to generate assembly for a file
-test/test_hook.cpp.s:
-	$(MAKE) -f CMakeFiles/test_hook.dir/build.make CMakeFiles/test_hook.dir/test/test_hook.cpp.s
-.PHONY : test/test_hook.cpp.s
-
-test/test_http.o: test/test_http.cpp.o
-
-.PHONY : test/test_http.o
-
-# target to build an object file
-test/test_http.cpp.o:
-	$(MAKE) -f CMakeFiles/test_http.dir/build.make CMakeFiles/test_http.dir/test/test_http.cpp.o
-.PHONY : test/test_http.cpp.o
-
-test/test_http.i: test/test_http.cpp.i
-
-.PHONY : test/test_http.i
-
-# target to preprocess a source file
-test/test_http.cpp.i:
-	$(MAKE) -f CMakeFiles/test_http.dir/build.make CMakeFiles/test_http.dir/test/test_http.cpp.i
-.PHONY : test/test_http.cpp.i
-
-test/test_http.s: test/test_http.cpp.s
-
-.PHONY : test/test_http.s
-
-# target to generate assembly for a file
-test/test_http.cpp.s:
-	$(MAKE) -f CMakeFiles/test_http.dir/build.make CMakeFiles/test_http.dir/test/test_http.cpp.s
-.PHONY : test/test_http.cpp.s
-
 test/test_http_connection.o: test/test_http_connection.cpp.o
 
 .PHONY : test/test_http_connection.o
@@ -1904,320 +1428,36 @@ test/test_http_connection.cpp.s:
 	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/test/test_http_connection.cpp.s
 .PHONY : test/test_http_connection.cpp.s
 
-test/test_http_parser.o: test/test_http_parser.cpp.o
-
-.PHONY : test/test_http_parser.o
-
-# target to build an object file
-test/test_http_parser.cpp.o:
-	$(MAKE) -f CMakeFiles/test_http_parser.dir/build.make CMakeFiles/test_http_parser.dir/test/test_http_parser.cpp.o
-.PHONY : test/test_http_parser.cpp.o
-
-test/test_http_parser.i: test/test_http_parser.cpp.i
-
-.PHONY : test/test_http_parser.i
-
-# target to preprocess a source file
-test/test_http_parser.cpp.i:
-	$(MAKE) -f CMakeFiles/test_http_parser.dir/build.make CMakeFiles/test_http_parser.dir/test/test_http_parser.cpp.i
-.PHONY : test/test_http_parser.cpp.i
-
-test/test_http_parser.s: test/test_http_parser.cpp.s
-
-.PHONY : test/test_http_parser.s
-
-# target to generate assembly for a file
-test/test_http_parser.cpp.s:
-	$(MAKE) -f CMakeFiles/test_http_parser.dir/build.make CMakeFiles/test_http_parser.dir/test/test_http_parser.cpp.s
-.PHONY : test/test_http_parser.cpp.s
-
-test/test_http_server.o: test/test_http_server.cpp.o
-
-.PHONY : test/test_http_server.o
-
-# target to build an object file
-test/test_http_server.cpp.o:
-	$(MAKE) -f CMakeFiles/test_http_server.dir/build.make CMakeFiles/test_http_server.dir/test/test_http_server.cpp.o
-.PHONY : test/test_http_server.cpp.o
-
-test/test_http_server.i: test/test_http_server.cpp.i
-
-.PHONY : test/test_http_server.i
-
-# target to preprocess a source file
-test/test_http_server.cpp.i:
-	$(MAKE) -f CMakeFiles/test_http_server.dir/build.make CMakeFiles/test_http_server.dir/test/test_http_server.cpp.i
-.PHONY : test/test_http_server.cpp.i
-
-test/test_http_server.s: test/test_http_server.cpp.s
-
-.PHONY : test/test_http_server.s
-
-# target to generate assembly for a file
-test/test_http_server.cpp.s:
-	$(MAKE) -f CMakeFiles/test_http_server.dir/build.make CMakeFiles/test_http_server.dir/test/test_http_server.cpp.s
-.PHONY : test/test_http_server.cpp.s
-
-test/test_iomanager.o: test/test_iomanager.cpp.o
-
-.PHONY : test/test_iomanager.o
-
-# target to build an object file
-test/test_iomanager.cpp.o:
-	$(MAKE) -f CMakeFiles/test_iomanager.dir/build.make CMakeFiles/test_iomanager.dir/test/test_iomanager.cpp.o
-.PHONY : test/test_iomanager.cpp.o
-
-test/test_iomanager.i: test/test_iomanager.cpp.i
-
-.PHONY : test/test_iomanager.i
-
-# target to preprocess a source file
-test/test_iomanager.cpp.i:
-	$(MAKE) -f CMakeFiles/test_iomanager.dir/build.make CMakeFiles/test_iomanager.dir/test/test_iomanager.cpp.i
-.PHONY : test/test_iomanager.cpp.i
-
-test/test_iomanager.s: test/test_iomanager.cpp.s
-
-.PHONY : test/test_iomanager.s
-
-# target to generate assembly for a file
-test/test_iomanager.cpp.s:
-	$(MAKE) -f CMakeFiles/test_iomanager.dir/build.make CMakeFiles/test_iomanager.dir/test/test_iomanager.cpp.s
-.PHONY : test/test_iomanager.cpp.s
-
-test/test_scheduler.o: test/test_scheduler.cpp.o
-
-.PHONY : test/test_scheduler.o
-
-# target to build an object file
-test/test_scheduler.cpp.o:
-	$(MAKE) -f CMakeFiles/test_scheduler.dir/build.make CMakeFiles/test_scheduler.dir/test/test_scheduler.cpp.o
-.PHONY : test/test_scheduler.cpp.o
-
-test/test_scheduler.i: test/test_scheduler.cpp.i
-
-.PHONY : test/test_scheduler.i
-
-# target to preprocess a source file
-test/test_scheduler.cpp.i:
-	$(MAKE) -f CMakeFiles/test_scheduler.dir/build.make CMakeFiles/test_scheduler.dir/test/test_scheduler.cpp.i
-.PHONY : test/test_scheduler.cpp.i
-
-test/test_scheduler.s: test/test_scheduler.cpp.s
-
-.PHONY : test/test_scheduler.s
-
-# target to generate assembly for a file
-test/test_scheduler.cpp.s:
-	$(MAKE) -f CMakeFiles/test_scheduler.dir/build.make CMakeFiles/test_scheduler.dir/test/test_scheduler.cpp.s
-.PHONY : test/test_scheduler.cpp.s
-
-test/test_socket.o: test/test_socket.cpp.o
-
-.PHONY : test/test_socket.o
-
-# target to build an object file
-test/test_socket.cpp.o:
-	$(MAKE) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cpp.o
-.PHONY : test/test_socket.cpp.o
-
-test/test_socket.i: test/test_socket.cpp.i
-
-.PHONY : test/test_socket.i
-
-# target to preprocess a source file
-test/test_socket.cpp.i:
-	$(MAKE) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cpp.i
-.PHONY : test/test_socket.cpp.i
-
-test/test_socket.s: test/test_socket.cpp.s
-
-.PHONY : test/test_socket.s
-
-# target to generate assembly for a file
-test/test_socket.cpp.s:
-	$(MAKE) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cpp.s
-.PHONY : test/test_socket.cpp.s
-
-test/test_thread.o: test/test_thread.cpp.o
-
-.PHONY : test/test_thread.o
-
-# target to build an object file
-test/test_thread.cpp.o:
-	$(MAKE) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cpp.o
-.PHONY : test/test_thread.cpp.o
-
-test/test_thread.i: test/test_thread.cpp.i
-
-.PHONY : test/test_thread.i
-
-# target to preprocess a source file
-test/test_thread.cpp.i:
-	$(MAKE) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cpp.i
-.PHONY : test/test_thread.cpp.i
-
-test/test_thread.s: test/test_thread.cpp.s
-
-.PHONY : test/test_thread.s
-
-# target to generate assembly for a file
-test/test_thread.cpp.s:
-	$(MAKE) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cpp.s
-.PHONY : test/test_thread.cpp.s
-
-test/test_uri.o: test/test_uri.cpp.o
-
-.PHONY : test/test_uri.o
-
-# target to build an object file
-test/test_uri.cpp.o:
-	$(MAKE) -f CMakeFiles/test_uri.dir/build.make CMakeFiles/test_uri.dir/test/test_uri.cpp.o
-.PHONY : test/test_uri.cpp.o
-
-test/test_uri.i: test/test_uri.cpp.i
-
-.PHONY : test/test_uri.i
-
-# target to preprocess a source file
-test/test_uri.cpp.i:
-	$(MAKE) -f CMakeFiles/test_uri.dir/build.make CMakeFiles/test_uri.dir/test/test_uri.cpp.i
-.PHONY : test/test_uri.cpp.i
-
-test/test_uri.s: test/test_uri.cpp.s
-
-.PHONY : test/test_uri.s
-
-# target to generate assembly for a file
-test/test_uri.cpp.s:
-	$(MAKE) -f CMakeFiles/test_uri.dir/build.make CMakeFiles/test_uri.dir/test/test_uri.cpp.s
-.PHONY : test/test_uri.cpp.s
-
-test/test_util.o: test/test_util.cpp.o
-
-.PHONY : test/test_util.o
-
-# target to build an object file
-test/test_util.cpp.o:
-	$(MAKE) -f CMakeFiles/test_util.dir/build.make CMakeFiles/test_util.dir/test/test_util.cpp.o
-.PHONY : test/test_util.cpp.o
-
-test/test_util.i: test/test_util.cpp.i
-
-.PHONY : test/test_util.i
-
-# target to preprocess a source file
-test/test_util.cpp.i:
-	$(MAKE) -f CMakeFiles/test_util.dir/build.make CMakeFiles/test_util.dir/test/test_util.cpp.i
-.PHONY : test/test_util.cpp.i
-
-test/test_util.s: test/test_util.cpp.s
-
-.PHONY : test/test_util.s
-
-# target to generate assembly for a file
-test/test_util.cpp.s:
-	$(MAKE) -f CMakeFiles/test_util.dir/build.make CMakeFiles/test_util.dir/test/test_util.cpp.s
-.PHONY : test/test_util.cpp.s
-
-test/test_ws_client.o: test/test_ws_client.cpp.o
-
-.PHONY : test/test_ws_client.o
-
-# target to build an object file
-test/test_ws_client.cpp.o:
-	$(MAKE) -f CMakeFiles/test_ws_client.dir/build.make CMakeFiles/test_ws_client.dir/test/test_ws_client.cpp.o
-.PHONY : test/test_ws_client.cpp.o
-
-test/test_ws_client.i: test/test_ws_client.cpp.i
-
-.PHONY : test/test_ws_client.i
-
-# target to preprocess a source file
-test/test_ws_client.cpp.i:
-	$(MAKE) -f CMakeFiles/test_ws_client.dir/build.make CMakeFiles/test_ws_client.dir/test/test_ws_client.cpp.i
-.PHONY : test/test_ws_client.cpp.i
-
-test/test_ws_client.s: test/test_ws_client.cpp.s
-
-.PHONY : test/test_ws_client.s
-
-# target to generate assembly for a file
-test/test_ws_client.cpp.s:
-	$(MAKE) -f CMakeFiles/test_ws_client.dir/build.make CMakeFiles/test_ws_client.dir/test/test_ws_client.cpp.s
-.PHONY : test/test_ws_client.cpp.s
-
-test/test_ws_server.o: test/test_ws_server.cpp.o
-
-.PHONY : test/test_ws_server.o
-
-# target to build an object file
-test/test_ws_server.cpp.o:
-	$(MAKE) -f CMakeFiles/test_ws_server.dir/build.make CMakeFiles/test_ws_server.dir/test/test_ws_server.cpp.o
-.PHONY : test/test_ws_server.cpp.o
-
-test/test_ws_server.i: test/test_ws_server.cpp.i
-
-.PHONY : test/test_ws_server.i
-
-# target to preprocess a source file
-test/test_ws_server.cpp.i:
-	$(MAKE) -f CMakeFiles/test_ws_server.dir/build.make CMakeFiles/test_ws_server.dir/test/test_ws_server.cpp.i
-.PHONY : test/test_ws_server.cpp.i
-
-test/test_ws_server.s: test/test_ws_server.cpp.s
-
-.PHONY : test/test_ws_server.s
-
-# target to generate assembly for a file
-test/test_ws_server.cpp.s:
-	$(MAKE) -f CMakeFiles/test_ws_server.dir/build.make CMakeFiles/test_ws_server.dir/test/test_ws_server.cpp.s
-.PHONY : test/test_ws_server.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... test_ws_server"
-	@echo "... test_application"
-	@echo "... heart"
-	@echo "... test_ws_client"
-	@echo "... test_http_connection"
-	@echo "... test_http_parser"
-	@echo "... test_http"
-	@echo "... test_daemon"
-	@echo "... routn"
-	@echo "... test_config"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... chat"
+	@echo "... rebuild_cache"
+	@echo "... heart"
 	@echo "... http_server_demo"
-	@echo "... test_uri"
-	@echo "... routn-svr"
+	@echo "... test_http_connection"
 	@echo "... ex_echoServer"
-	@echo "... test"
-	@echo "... test_thread"
-	@echo "... test_env"
-	@echo "... test_util"
-	@echo "... test_fiber"
-	@echo "... test_http_server"
-	@echo "... test_address"
-	@echo "... test_scheduler"
-	@echo "... test_iomanager"
-	@echo "... test_hook"
-	@echo "... test_Tcp_server"
-	@echo "... test_socket"
-	@echo "... test_byte"
+	@echo "... routn-svr"
+	@echo "... routn"
 	@echo "... examples/ex_echoServer.o"
 	@echo "... examples/ex_echoServer.i"
 	@echo "... examples/ex_echoServer.s"
 	@echo "... examples/http_server_demo.o"
 	@echo "... examples/http_server_demo.i"
 	@echo "... examples/http_server_demo.s"
-	@echo "... module/heart_module.o"
-	@echo "... module/heart_module.i"
-	@echo "... module/heart_module.s"
+	@echo "... modules/chat_room/chat_module.o"
+	@echo "... modules/chat_room/chat_module.i"
+	@echo "... modules/chat_room/chat_module.s"
+	@echo "... modules/chat_room/chat_servlet.o"
+	@echo "... modules/chat_room/chat_servlet.i"
+	@echo "... modules/chat_room/chat_servlet.s"
+	@echo "... modules/heart/heart_module.o"
+	@echo "... modules/heart/heart_module.i"
+	@echo "... modules/heart/heart_module.s"
 	@echo "... src/Address.o"
 	@echo "... src/Address.i"
 	@echo "... src/Address.s"
@@ -2233,6 +1473,9 @@ help:
 	@echo "... src/Daemon.o"
 	@echo "... src/Daemon.i"
 	@echo "... src/Daemon.s"
+	@echo "... src/Dns.o"
+	@echo "... src/Dns.i"
+	@echo "... src/Dns.s"
 	@echo "... src/Env.o"
 	@echo "... src/Env.i"
 	@echo "... src/Env.s"
@@ -2333,72 +1576,9 @@ help:
 	@echo "... src/plugins/libco/coctx.i"
 	@echo "... src/plugins/libco/coctx.s"
 	@echo "... src/plugins/libco/coctx_swap.o"
-	@echo "... test/test.o"
-	@echo "... test/test.i"
-	@echo "... test/test.s"
-	@echo "... test/test_Tcp_server.o"
-	@echo "... test/test_Tcp_server.i"
-	@echo "... test/test_Tcp_server.s"
-	@echo "... test/test_address.o"
-	@echo "... test/test_address.i"
-	@echo "... test/test_address.s"
-	@echo "... test/test_application.o"
-	@echo "... test/test_application.i"
-	@echo "... test/test_application.s"
-	@echo "... test/test_byte.o"
-	@echo "... test/test_byte.i"
-	@echo "... test/test_byte.s"
-	@echo "... test/test_config.o"
-	@echo "... test/test_config.i"
-	@echo "... test/test_config.s"
-	@echo "... test/test_daemon.o"
-	@echo "... test/test_daemon.i"
-	@echo "... test/test_daemon.s"
-	@echo "... test/test_env.o"
-	@echo "... test/test_env.i"
-	@echo "... test/test_env.s"
-	@echo "... test/test_fiber.o"
-	@echo "... test/test_fiber.i"
-	@echo "... test/test_fiber.s"
-	@echo "... test/test_hook.o"
-	@echo "... test/test_hook.i"
-	@echo "... test/test_hook.s"
-	@echo "... test/test_http.o"
-	@echo "... test/test_http.i"
-	@echo "... test/test_http.s"
 	@echo "... test/test_http_connection.o"
 	@echo "... test/test_http_connection.i"
 	@echo "... test/test_http_connection.s"
-	@echo "... test/test_http_parser.o"
-	@echo "... test/test_http_parser.i"
-	@echo "... test/test_http_parser.s"
-	@echo "... test/test_http_server.o"
-	@echo "... test/test_http_server.i"
-	@echo "... test/test_http_server.s"
-	@echo "... test/test_iomanager.o"
-	@echo "... test/test_iomanager.i"
-	@echo "... test/test_iomanager.s"
-	@echo "... test/test_scheduler.o"
-	@echo "... test/test_scheduler.i"
-	@echo "... test/test_scheduler.s"
-	@echo "... test/test_socket.o"
-	@echo "... test/test_socket.i"
-	@echo "... test/test_socket.s"
-	@echo "... test/test_thread.o"
-	@echo "... test/test_thread.i"
-	@echo "... test/test_thread.s"
-	@echo "... test/test_uri.o"
-	@echo "... test/test_uri.i"
-	@echo "... test/test_uri.s"
-	@echo "... test/test_util.o"
-	@echo "... test/test_util.i"
-	@echo "... test/test_util.s"
-	@echo "... test/test_ws_client.o"
-	@echo "... test/test_ws_client.i"
-	@echo "... test/test_ws_client.s"
-	@echo "... test/test_ws_server.o"
-	@echo "... test/test_ws_server.i"
-	@echo "... test/test_ws_server.s"
 .PHONY : help
 
 

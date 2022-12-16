@@ -143,6 +143,10 @@ syscall.h
 -
 stdint.h
 -
+stdlib.h
+-
+stdio.h
+-
 string
 -
 sys/stat.h

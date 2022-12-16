@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "../lib/libheart.pdb"
   "../lib/libheart.so"
-  "CMakeFiles/heart.dir/module/heart_module.cpp.o"
+  "CMakeFiles/heart.dir/modules/heart/heart_module.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

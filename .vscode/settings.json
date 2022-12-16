@@ -64,6 +64,9 @@
         "bitset": "cpp",
         "complex": "cpp",
         "typeindex": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "codecvt": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp"
     }
 }

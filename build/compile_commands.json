@@ -1,187 +1,227 @@
 [
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Dheart_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/heart.dir/module/heart_module.cpp.o -c /home/rotun-li/routn/module/heart_module.cpp",
-  "file": "/home/rotun-li/routn/module/heart_module.cpp"
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Dchat_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/chat.dir/modules/chat_room/chat_module.cpp.o -c /home/rotun-li/routn/modules/chat_room/chat_module.cpp",
+  "file": "/home/rotun-li/routn/modules/chat_room/chat_module.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g   -o CMakeFiles/http_server_demo.dir/examples/http_server_demo.cpp.o -c /home/rotun-li/routn/examples/http_server_demo.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Dchat_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/chat.dir/modules/chat_room/chat_servlet.cpp.o -c /home/rotun-li/routn/modules/chat_room/chat_servlet.cpp",
+  "file": "/home/rotun-li/routn/modules/chat_room/chat_servlet.cpp"
+},
+{
+  "directory": "/home/rotun-li/routn/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Dheart_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/heart.dir/modules/heart/heart_module.cpp.o -c /home/rotun-li/routn/modules/heart/heart_module.cpp",
+  "file": "/home/rotun-li/routn/modules/heart/heart_module.cpp"
+},
+{
+  "directory": "/home/rotun-li/routn/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g   -o CMakeFiles/http_server_demo.dir/examples/http_server_demo.cpp.o -c /home/rotun-li/routn/examples/http_server_demo.cpp",
   "file": "/home/rotun-li/routn/examples/http_server_demo.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g   -o CMakeFiles/ex_echoServer.dir/examples/ex_echoServer.cpp.o -c /home/rotun-li/routn/examples/ex_echoServer.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g   -o CMakeFiles/test_http_connection.dir/test/test_http_connection.cpp.o -c /home/rotun-li/routn/test/test_http_connection.cpp",
+  "file": "/home/rotun-li/routn/test/test_http_connection.cpp"
+},
+{
+  "directory": "/home/rotun-li/routn/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g   -o CMakeFiles/ex_echoServer.dir/examples/ex_echoServer.cpp.o -c /home/rotun-li/routn/examples/ex_echoServer.cpp",
   "file": "/home/rotun-li/routn/examples/ex_echoServer.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g   -o CMakeFiles/Routn.dir/src/main.cpp.o -c /home/rotun-li/routn/src/main.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g   -o CMakeFiles/routn-svr.dir/src/main.cpp.o -c /home/rotun-li/routn/src/main.cpp",
   "file": "/home/rotun-li/routn/src/main.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.o -c /home/rotun-li/routn/src/plugins/libco/coctx.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/plugins/libco/coctx.cpp.o -c /home/rotun-li/routn/src/plugins/libco/coctx.cpp",
   "file": "/home/rotun-li/routn/src/plugins/libco/coctx.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Log.cpp.o -c /home/rotun-li/routn/src/Log.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Log.cpp.o -c /home/rotun-li/routn/src/Log.cpp",
   "file": "/home/rotun-li/routn/src/Log.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Util.cpp.o -c /home/rotun-li/routn/src/Util.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Util.cpp.o -c /home/rotun-li/routn/src/Util.cpp",
   "file": "/home/rotun-li/routn/src/Util.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Config.cpp.o -c /home/rotun-li/routn/src/Config.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Config.cpp.o -c /home/rotun-li/routn/src/Config.cpp",
   "file": "/home/rotun-li/routn/src/Config.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Fiber.cpp.o -c /home/rotun-li/routn/src/Fiber.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Fiber.cpp.o -c /home/rotun-li/routn/src/Fiber.cpp",
   "file": "/home/rotun-li/routn/src/Fiber.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Thread.cpp.o -c /home/rotun-li/routn/src/Thread.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Thread.cpp.o -c /home/rotun-li/routn/src/Thread.cpp",
   "file": "/home/rotun-li/routn/src/Thread.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Scheduler.cpp.o -c /home/rotun-li/routn/src/Scheduler.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Scheduler.cpp.o -c /home/rotun-li/routn/src/Scheduler.cpp",
   "file": "/home/rotun-li/routn/src/Scheduler.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/IoManager.cpp.o -c /home/rotun-li/routn/src/IoManager.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/IoManager.cpp.o -c /home/rotun-li/routn/src/IoManager.cpp",
   "file": "/home/rotun-li/routn/src/IoManager.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Timer.cpp.o -c /home/rotun-li/routn/src/Timer.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Timer.cpp.o -c /home/rotun-li/routn/src/Timer.cpp",
   "file": "/home/rotun-li/routn/src/Timer.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Hook.cpp.o -c /home/rotun-li/routn/src/Hook.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Hook.cpp.o -c /home/rotun-li/routn/src/Hook.cpp",
   "file": "/home/rotun-li/routn/src/Hook.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/FdManager.cpp.o -c /home/rotun-li/routn/src/FdManager.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/FdManager.cpp.o -c /home/rotun-li/routn/src/FdManager.cpp",
   "file": "/home/rotun-li/routn/src/FdManager.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Address.cpp.o -c /home/rotun-li/routn/src/Address.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Address.cpp.o -c /home/rotun-li/routn/src/Address.cpp",
   "file": "/home/rotun-li/routn/src/Address.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Socket.cpp.o -c /home/rotun-li/routn/src/Socket.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Socket.cpp.o -c /home/rotun-li/routn/src/Socket.cpp",
   "file": "/home/rotun-li/routn/src/Socket.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/ByteArray.cpp.o -c /home/rotun-li/routn/src/ByteArray.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/ByteArray.cpp.o -c /home/rotun-li/routn/src/ByteArray.cpp",
   "file": "/home/rotun-li/routn/src/ByteArray.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/TcpServer.cpp.o -c /home/rotun-li/routn/src/TcpServer.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/TcpServer.cpp.o -c /home/rotun-li/routn/src/TcpServer.cpp",
   "file": "/home/rotun-li/routn/src/TcpServer.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/SocketStream.cpp.o -c /home/rotun-li/routn/src/SocketStream.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/SocketStream.cpp.o -c /home/rotun-li/routn/src/SocketStream.cpp",
   "file": "/home/rotun-li/routn/src/SocketStream.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Stream.cpp.o -c /home/rotun-li/routn/src/Stream.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Stream.cpp.o -c /home/rotun-li/routn/src/Stream.cpp",
   "file": "/home/rotun-li/routn/src/Stream.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Uri.rl.cpp.o -c /home/rotun-li/routn/src/Uri.rl.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Uri.rl.cpp.o -c /home/rotun-li/routn/src/Uri.rl.cpp",
   "file": "/home/rotun-li/routn/src/Uri.rl.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Daemon.cpp.o -c /home/rotun-li/routn/src/Daemon.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Daemon.cpp.o -c /home/rotun-li/routn/src/Daemon.cpp",
   "file": "/home/rotun-li/routn/src/Daemon.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Env.cpp.o -c /home/rotun-li/routn/src/Env.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Env.cpp.o -c /home/rotun-li/routn/src/Env.cpp",
   "file": "/home/rotun-li/routn/src/Env.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/FiberSem.cpp.o -c /home/rotun-li/routn/src/FiberSem.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/FiberSem.cpp.o -c /home/rotun-li/routn/src/FiberSem.cpp",
   "file": "/home/rotun-li/routn/src/FiberSem.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Worker.cpp.o -c /home/rotun-li/routn/src/Worker.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Worker.cpp.o -c /home/rotun-li/routn/src/Worker.cpp",
   "file": "/home/rotun-li/routn/src/Worker.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Library.cpp.o -c /home/rotun-li/routn/src/Library.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Library.cpp.o -c /home/rotun-li/routn/src/Library.cpp",
   "file": "/home/rotun-li/routn/src/Library.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Module.cpp.o -c /home/rotun-li/routn/src/Module.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Module.cpp.o -c /home/rotun-li/routn/src/Module.cpp",
   "file": "/home/rotun-li/routn/src/Module.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Application.cpp.o -c /home/rotun-li/routn/src/Application.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Dns.cpp.o -c /home/rotun-li/routn/src/Dns.cpp",
+  "file": "/home/rotun-li/routn/src/Dns.cpp"
+},
+{
+  "directory": "/home/rotun-li/routn/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/Application.cpp.o -c /home/rotun-li/routn/src/Application.cpp",
   "file": "/home/rotun-li/routn/src/Application.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HttpSession.cpp.o -c /home/rotun-li/routn/src/http/HttpSession.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HttpSession.cpp.o -c /home/rotun-li/routn/src/http/HttpSession.cpp",
   "file": "/home/rotun-li/routn/src/http/HttpSession.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o -c /home/rotun-li/routn/src/http/HttpConnection.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HttpConnection.cpp.o -c /home/rotun-li/routn/src/http/HttpConnection.cpp",
   "file": "/home/rotun-li/routn/src/http/HttpConnection.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HttpServer.cpp.o -c /home/rotun-li/routn/src/http/HttpServer.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HttpServer.cpp.o -c /home/rotun-li/routn/src/http/HttpServer.cpp",
   "file": "/home/rotun-li/routn/src/http/HttpServer.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o -c /home/rotun-li/routn/src/http/HttpServlet.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HttpServlet.cpp.o -c /home/rotun-li/routn/src/http/HttpServlet.cpp",
   "file": "/home/rotun-li/routn/src/http/HttpServlet.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HTTP.cpp.o -c /home/rotun-li/routn/src/http/HTTP.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/HTTP.cpp.o -c /home/rotun-li/routn/src/http/HTTP.cpp",
   "file": "/home/rotun-li/routn/src/http/HTTP.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o -c /home/rotun-li/routn/src/http/httpclient_parser.rl.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/httpclient_parser.rl.cpp.o -c /home/rotun-li/routn/src/http/httpclient_parser.rl.cpp",
   "file": "/home/rotun-li/routn/src/http/httpclient_parser.rl.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o -c /home/rotun-li/routn/src/http/http11_parser.rl.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/http11_parser.rl.cpp.o -c /home/rotun-li/routn/src/http/http11_parser.rl.cpp",
   "file": "/home/rotun-li/routn/src/http/http11_parser.rl.cpp"
 },
 {
   "directory": "/home/rotun-li/routn/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/Parser.cpp.o -c /home/rotun-li/routn/src/http/Parser.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/Parser.cpp.o -c /home/rotun-li/routn/src/http/Parser.cpp",
   "file": "/home/rotun-li/routn/src/http/Parser.cpp"
+},
+{
+  "directory": "/home/rotun-li/routn/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/WSServer.cpp.o -c /home/rotun-li/routn/src/http/WSServer.cpp",
+  "file": "/home/rotun-li/routn/src/http/WSServer.cpp"
+},
+{
+  "directory": "/home/rotun-li/routn/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/WSSession.cpp.o -c /home/rotun-li/routn/src/http/WSSession.cpp",
+  "file": "/home/rotun-li/routn/src/http/WSSession.cpp"
+},
+{
+  "directory": "/home/rotun-li/routn/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/WSServlet.cpp.o -c /home/rotun-li/routn/src/http/WSServlet.cpp",
+  "file": "/home/rotun-li/routn/src/http/WSServlet.cpp"
+},
+{
+  "directory": "/home/rotun-li/routn/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -Droutn_EXPORTS -I/home/rotun-li/routn/.   -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib -g -fPIC   -o CMakeFiles/routn.dir/src/http/WSConnection.cpp.o -c /home/rotun-li/routn/src/http/WSConnection.cpp",
+  "file": "/home/rotun-li/routn/src/http/WSConnection.cpp"
 }
 ]
