@@ -5,10 +5,15 @@
 	> Created Time: 2022年11月28日 星期一 01时07分32秒
  ************************************************************************/
 
-#include "FiberSem.h"
+#include "FiberSync.h"
 #include "Macro.h"
 
 using namespace std;
+
+/**
+ * @brief 协程同步原语
+ * 
+ */
 
 namespace Routn{
 	FiberSemaphore::FiberSemaphore(size_t initial_concurrency)
@@ -20,7 +25,7 @@ namespace Routn{
 	}
 
 	bool FiberSemaphore::tryWait() {
-		ROUTN_ASSERT(Schedular::GetThis())
+		ROUTN_ASSERT(Schedular::GetThis());
 		{
 			MutexType::Lock lock(m_mutex);
 			if(m_concurrency > 0u) {

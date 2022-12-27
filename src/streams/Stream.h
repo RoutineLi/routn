@@ -9,7 +9,7 @@
 #define _STREAM_H
 
 #include <memory>
-#include "ByteArray.h"
+#include "../ByteArray.h"
 
 namespace Routn{
 

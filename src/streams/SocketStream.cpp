@@ -48,11 +48,23 @@ namespace Routn{
 		if(!isConnected()) return -1;
 		std::vector<iovec> iovs;
 		ba->getReadBuffers(iovs, length);
-		int ret = _socket->recv(&iovs[0], iovs.size());
-		if(ret > 0){
-			ba->setPosition(ba->getPosition() + ret);
+		int rt = _socket->send(&iovs[0], iovs.size());
+		if(rt > 0){
+			ba->setPosition(ba->getPosition() + rt);
 		}
-		return ret;
+		return rt;
+		//int rrt = 0;
+		// for(size_t i = 0; i < iovs.size(); ++i){
+		// 	int rt = _socket->send(&iovs[i], 1);
+		// 	if(rt > 0){
+		// 		ba->setPosition(ba->getPosition() + rt);
+		// 		rrt += rt;
+		// 	}else{
+		// 		rrt = rt;
+		// 		break;
+		// 	}
+		// }
+		// return rrt;
 	}
 
 	void SocketStream::close(){

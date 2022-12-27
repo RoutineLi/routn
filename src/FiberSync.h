@@ -15,7 +15,7 @@
 namespace Routn{
 	class FiberSemaphore : Noncopyable {
 	public:
-		using MutexType = SpinLock;
+		using MutexType = SpinLock;	//自选锁不会阻塞线程
 
 		FiberSemaphore(size_t initial_concurrency = 0);
 		~FiberSemaphore();

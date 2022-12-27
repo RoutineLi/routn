@@ -9,7 +9,7 @@
 #define _SOCKETSTREAM_H
 
 #include "Stream.h"
-#include "Socket.h"
+#include "../Socket.h"
 
 namespace Routn{
 
