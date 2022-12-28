@@ -10,7 +10,7 @@
 
 
 #include <memory>
-#include "Stream.h"
+#include "streams/Stream.h"
 #include "ByteArray.h"
 
 /**

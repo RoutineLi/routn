@@ -83,6 +83,8 @@ namespace Http{
 						, FunctionWSServlet::callback cb
 						, FunctionWSServlet::on_connect_cb connect_cb = nullptr
 						, FunctionWSServlet::on_close_cb close_cb = nullptr);
+		void addServlet(const std::string& uri, WSServlet::ptr slt);
+		
 		void addGlobServlet(const std::string& uri
 						, FunctionWSServlet::callback cb
 						, FunctionWSServlet::on_connect_cb connect_cb = nullptr

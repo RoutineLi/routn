@@ -6,6 +6,7 @@
  ************************************************************************/
 
 #include "HttpConnection.h"
+#include "../streams/ZLIBStream.h"
 #include "Parser.h"
 #include "../Util.h"
 #include "../Log.h"
@@ -150,6 +151,21 @@ namespace Routn
 					}
 					parser->getData()->setBody(body);
 				}
+			}
+			if(!body.empty()){
+				auto content_encoding = parser->getData()->getHeader("content-encoding");
+				if(strcasecmp(content_encoding.c_str(), "gzip") == 0){
+					auto zs = ZLIBStream::CreateGzip(false);
+					zs->write(body.c_str(), body.size());
+					zs->flush();
+					zs->getResult().swap(body);
+				}else if(strcasecmp(content_encoding.c_str(), "deflate") == 0){
+					auto zs = ZLIBStream::CreateDeflate(false);
+					zs->write(body.c_str(), body.size());
+					zs->flush();
+					zs->getResult().swap(body);
+				}
+				parser->getData()->setBody(body);
 			}
 			return parser->getData();
 		}

@@ -12,7 +12,7 @@
 #include <list>
 
 #include "HTTP.h"
-#include "../SocketStream.h"
+#include "../streams/SocketStream.h"
 #include "../Thread.h"
 #include "../Uri.h"
 

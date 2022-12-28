@@ -49,6 +49,10 @@ namespace Http{
 		ServletDispatch::addServlet(uri, std::make_shared<FunctionWSServlet>(cb, connect_cb, close_cb));
 	}
 
+	void WSServletDispatch::addServlet(const std::string& uri, WSServlet::ptr slt){
+		ServletDispatch::addServlet(uri, slt);
+	}
+
 	void WSServletDispatch::addGlobServlet(const std::string& uri
 						,FunctionWSServlet::callback cb
 						,FunctionWSServlet::on_connect_cb connect_cb

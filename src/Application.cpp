@@ -243,18 +243,18 @@ namespace Routn{
 			server->setConf(i);
 			_servers[i.type].push_back(server);
 			svrs.push_back(server);
+		}
 
-			for(auto& i : modules){
-				i->onServerReady();
-			}
+		for(auto& i : modules){
+			i->onServerReady();
+		}
 
-			for(auto &i : svrs){
-				i->start();
-			}
+		for(auto &i : svrs){
+			i->start();
+		}
 
-			for(auto& i : modules){
-				i->onServerUp();
-			}
+		for(auto& i : modules){
+			i->onServerUp();
 		}
 		return 0;
 	}

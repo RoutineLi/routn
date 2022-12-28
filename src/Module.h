@@ -8,7 +8,7 @@
 #ifndef _MODULE_H
 #define _MODULE_H
 
-#include "Stream.h"
+#include "streams/Stream.h"
 #include "Singleton.h"
 #include "Thread.h"
 

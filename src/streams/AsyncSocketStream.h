@@ -130,8 +130,8 @@ protected:
 	Routn::FiberSemaphore _sem;
 	Routn::FiberSemaphore _waitSem;
 	RWMutexType _queueMutex;
-	std::list<SendCtx::ptr> _queue;
 	RWMutexType _mutex;
+	std::list<SendCtx::ptr> _queue;
 	std::unordered_map<uint32_t, Ctx::ptr> _ctxs;
 	uint32_t _sn;
 	bool _autoConnect;
@@ -143,6 +143,41 @@ protected:
 	disconnect_callback _disconnectCB;
 
 	boost::any _data;
+};
+
+class AsyncSocketStreamManager{
+public:
+	using RWMutexType = Routn::RW_Mutex;
+	using connect_callback = AsyncSocketStream::connect_callback;
+	using disconnect_callback = AsyncSocketStream::disconnect_callback;
+
+	AsyncSocketStreamManager();
+	virtual ~AsyncSocketStreamManager() {}
+
+	void add(AsyncSocketStream::ptr stream);
+	void clear();
+	void setConnection(const std::vector<AsyncSocketStream::ptr>& streams);
+	AsyncSocketStream::ptr get();
+	template<class T>
+	std::shared_ptr<T> getAs(){
+		auto rt = get();
+		if(rt){
+			return std::dynamic_pointer_cast<T>(rt);
+		}
+		return nullptr;
+	}
+
+	connect_callback getConnectCB() const { return _conncect_callback;}
+	disconnect_callback getDisConnectCB() const { return _disconnect_callback;}
+	void setConnectCB(connect_callback v);
+	void setDisConnectCB(disconnect_callback v);
+private:
+	RWMutexType _mutex;
+	uint32_t _size;
+	uint32_t _idx;
+	std::vector<AsyncSocketStream::ptr> _datas;
+	connect_callback _conncect_callback;
+	disconnect_callback _disconnect_callback;
 };
 
 }

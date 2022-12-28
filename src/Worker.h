@@ -9,7 +9,7 @@
 #define _WORKER_H
 
 #include "Noncopyable.h"
-#include "FiberSem.h"
+#include "FiberSync.h"
 #include "Singleton.h"
 #include "IoManager.h"
 #include "Thread.h"

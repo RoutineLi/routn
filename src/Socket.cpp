@@ -165,6 +165,7 @@ namespace Routn{
 
 
 	bool Socket::bind(const Address::ptr addr){
+		_localAddress = addr;
 		if(!isValid()){
 			newSock();
 			if(ROUTN_UNLIKELY(!isValid())){
@@ -229,6 +230,14 @@ namespace Routn{
 		getRemoteAddress();
 		getLocalAddress();
 		return true;
+	}
+
+	bool Socket::reconnect(uint64_t timeout_ms){
+		if(!_localAddress){
+			ROUTN_LOG_ERROR(g_logger) << "reconnect local_addr is null !";
+			return false;
+		}
+		return connect(_localAddress, timeout_ms);
 	}
 
 	bool Socket::listen(int backlog){

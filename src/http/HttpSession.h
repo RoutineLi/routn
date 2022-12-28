@@ -8,7 +8,7 @@
 #ifndef _HTTPSESSION_H
 #define _HTTPSESSION_H
 
-#include "../SocketStream.h"
+#include "../streams/SocketStream.h"
 #include "HTTP.h"
 
 namespace Routn

@@ -37,7 +37,7 @@ namespace Http{
 				ROUTN_LOG_ERROR(g_logger) << "http header Upgrade is not websocket";
 				break;
 			}
-			if(strcasecmp(req->getHeader("Connection").c_str(), "Upgrade")){
+			if(req->getHeader("Connection").find("Upgrade") == req->getHeader("Connection").npos){
 				ROUTN_LOG_ERROR(g_logger) << "http header Connection is not Upgrade";
 				break;
 			}
@@ -122,12 +122,11 @@ namespace Http{
 		int cur_len = 0;
 		do{
 			WSFrameHead ws_head;
-			memset(&ws_head, 0, sizeof(ws_head));
 			//stream流读取协议头帧
 			if(stream->readFixSize(&ws_head, sizeof(ws_head)) <= 0){
 				break;
 			}
-			ROUTN_LOG_DEBUG(g_logger) << "WSFreamHead " << ws_head.toString();
+			ROUTN_LOG_INFO(g_logger) << "WSFreamHead " << ws_head.toString();
 
 			if(ws_head.opcode == WSFrameHead::PING){
 				ROUTN_LOG_INFO(g_logger) << "PING";
@@ -139,7 +138,7 @@ namespace Http{
 					|| ws_head.opcode == WSFrameHead::TEXT_FRAME
 					|| ws_head.opcode == WSFrameHead::BIN_FRAME){
 				if(!client && !ws_head.mask){
-					ROUTN_LOG_INFO(g_logger) << "WSFrameHead mask != 1";
+					ROUTN_LOG_INFO(g_logger) << "WSFrameHead mask = " << ws_head.mask;
 					break;
 				}
 				uint64_t length = 0;
