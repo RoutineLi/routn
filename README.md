@@ -21,16 +21,16 @@
     ```cpp
     template<T, FromStr, ToStr>
     class ConfigVar;
-
+    
     template<F, T>
     LexicalCast;
     
     //容器片特化模板类
     //vector list map unordered_map set unordered_set
-
+    
     自定义类型，需要实现Routn::LexicalCast,片特化实现后，就可以支持Config解析自定义类型并支持与
     规定stl容器嵌套使用
-
+    
     配置的事件机制：
         当一个配置项发生修改的时候，可以反向通知对应代码
     # 日志系统整合配置系统
@@ -43,7 +43,7 @@
               - type: FileAppender
                   file: ../../log/root_log.txt
               - type: StdoutAppender
-    
+
 2)
     json xml
 
@@ -52,13 +52,38 @@
     pthread_create
     std::thread->pthread---没有区分读写锁，不太适用高并发
     选型：threads=>pthread
-	   mutex=>pthread_mutex
-	   cond=>pthread_cond
-	   sem=>semaphore
+       mutex=>pthread_mutex
+       cond=>pthread_cond
+       sem=>semaphore
+       rwmutex=> pthread_rwlock_t
+       spinlock=> pthread_spinlock_t
+       rw_spinlock=> Intel->tbb::rw_spinlock
     线程库整合：对于语句少，只负责写的日志模块采用SpinLock
               对于配置模块，读多写少，采用读写分离的读写锁RW_Mutex
 
+​		需要第三方库TBB
+
+```cpp
+	pthread中提供的锁有：pthread_mutex_t, pthread_spinlock_t, pthread_rwlock_t。
+pthread_mutex_t是互斥锁，同一瞬间只能有一个线程能够获取锁，其他线程在等待获取锁的时候会进入休眠状态。因此pthread_mutex_t消耗的CPU资源很小，但是性能不高，因为会引起线程切换。
+pthread_spinlock_t是自旋锁，同一瞬间也只能有一个线程能够获取锁，不同的是，其他线程在等待获取锁的过程中并不进入睡眠状态，而是在CPU上进入“自旋”等待。自旋锁的性能很高，但是只适合对很小的代码段加锁（或短期持有的锁），自旋锁对CPU的占用相对较高。
+pthread_rwlock_t是读写锁，同时可以有多个线程获得读锁，同时只允许有一个线程获得写锁。其他线程在等待锁的时候同样会进入睡眠。读写锁在互斥锁的基础上，允许多个线程“读”，在某些场景下能提高性能。
+    
+·单线程不加锁：0.818845s
+·多线程使用pthread_mutex_t：120.978713s (很离谱吧…………我也吓了一跳)
+·多线程使用pthread_rwlock_t：10.592172s （多个线程加读锁）
+·多线程使用pthread_spinlock_t：4.766012s
+·多个线程使用tbb::spin_mutex：6.638609s （从这里可以看出pthread的自旋锁比TBB的自旋锁性能高出28%）
+·多个线程使用tbb::spin_rw_mutex：3.471757s （并行读的环境下，这是所有锁中性能最高的）
+
+```
+
+
+
+
+
 ## 协程库封装(支线:尝试采用libco)
+
     采用ucontext接口(unix Posix)
     ucontext_t.
     macro
@@ -242,7 +267,7 @@
 
 ## http协议解析
     支持HTTP/1.1 --API
-    
+
 HTTPRequest;
 HTTPResponse;
 HTTPParser --> ragel --> github-->mongrel2/src/http11
@@ -270,7 +295,7 @@ HTTPParser --> ragel --> github-->mongrel2/src/http11
 
 ## Stream  针对文件/Socket封装
     read/write/readFixSize/WriteFixSize
-
+    
     HttpSession/HttpConnection
     Server.accept, socket->session
     Client connect socket->connection
@@ -298,9 +323,9 @@ HTTPParser --> ragel --> github-->mongrel2/src/http11
 ```
 ## 输入参数解析
     int argc, char** argv
-
+    
     ./routn -d -c conf
-   
+
    # 环境变量
    getenv
    setenv
@@ -312,7 +337,7 @@ HTTPParser --> ragel --> github-->mongrel2/src/http11
    1.读写环境变量
    2.获取程序的绝对路径，基于绝对路径设置cwd
    3.可以通过cmdline，在进入main函数之前，解析好参数
-   
+
    # 配置加载
    配置的文件夹路径：log.yml, http.yml, tcp.yml, redis.yml...等等
 
@@ -339,3 +364,39 @@ HTTPParser --> ragel --> github-->mongrel2/src/http11
 ```
 
 ## 分布式协议
+
+​	Rock协议-----底层采用ByteArray进行序列化，三种消息类型，REQUEST，RESPONSE， NOTIFY
+
+### 协议头设计：
+
+``` cpp
+ struct RockMsgHeader{
+    uint8_t magic[2];  //魔法数
+    uint8_t version;   //版本号
+    uint8_t flag;    //flag标志位
+    int32_t length;   //长度
+  };
+
+
+```
+
+### 消息体：继承自Protocol ==> Message基类
+
+```
+Request===>{
+	_sn: 序列号，
+	_cmd: 状态码
+}
+
+Response===>{
+	_sn: 序列号
+	_cmd: 状态码
+	_result: 响应码
+	_resultStr: 响应原因
+}
+
+Notify===>{
+	_notify: 通知序列号
+}
+```
+
