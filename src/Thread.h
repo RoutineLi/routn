@@ -9,6 +9,8 @@
 
 #include "Noncopyable.h"
 
+#include <tbb/spin_rw_mutex.h>
+
 #include <list>
 #include <thread>
 #include <iostream>
@@ -148,6 +150,7 @@ namespace Routn
 		bool _locked;
 	};
 
+
 	//空锁类：调试用
 	class NullMutex
 	{
@@ -158,6 +161,7 @@ namespace Routn
 		void lock() {}
 		void unlock() {}
 	};
+
 
 	//互斥锁类
 	class Mutex
@@ -258,6 +262,30 @@ namespace Routn
 
 	private:
 		pthread_spinlock_t _mutex;
+	};
+
+
+	//读写自旋锁
+	class RWSpinLock : public Noncopyable{
+	public:
+		using ReadLock = R_ScopedLockImpl<RWSpinLock>;
+		using WriteLock = W_ScopedLockImpl<RWSpinLock>;
+		RWSpinLock(){}
+		~RWSpinLock(){}
+		void write_lock(){
+			_lock.lock();
+			_isRead = false;
+		}
+		void read_lock(){
+			_lock.lock_read();
+			_isRead = true;
+		}
+		void unlock(){
+			_lock.unlock();
+		}
+	private:
+		tbb::spin_rw_mutex _lock;
+		bool _isRead = false;
 	};
 
 	//CAS锁（原子锁）

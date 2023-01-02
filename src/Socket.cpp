@@ -446,6 +446,11 @@ namespace Routn{
 		return os;
 	}
 	
+	std::string Socket::toString(){
+		std::stringstream ss;
+		dump(ss);
+		return ss.str();
+	}
 	
 	bool Socket::cancelRead(){
 		return IOManager::GetThis()->cancelEvent(_sock, Routn::IOManager::READ);

@@ -9,6 +9,7 @@
 #define _MODULE_H
 
 #include "streams/Stream.h"
+#include "rpc/RockStream.h"
 #include "Singleton.h"
 #include "Thread.h"
 
@@ -35,6 +36,7 @@ namespace Routn{
 	public:
 		enum Type{
 			MODULE = 0,
+			ROCK = 1
 		};
 		using ptr = std::shared_ptr<Module>;
 		Module(const std::string& name
@@ -45,6 +47,16 @@ namespace Routn{
 
 		virtual void onBeforeArgsParse(int argc, char** argv);
 		virtual void onAfterArgsParse(int argc, char** argv);
+
+		virtual bool handleRequest(Message::ptr req
+							,Message::ptr rsp
+							,Stream::ptr stream){
+			return true;
+		}
+    	virtual bool handleNotify(Message::ptr notify
+                              ,Stream::ptr stream){
+			return true;
+		}
 
 		virtual bool onLoad();
 		virtual bool onUnload();
@@ -71,6 +83,24 @@ namespace Routn{
 		uint32_t _type;
 	};
 
+	class RockModule : public Module{
+	public:
+		using ptr = std::shared_ptr<RockModule>;
+		RockModule(const std::string& name
+				, const std::string& version
+				, const std::string& filename);
+		virtual bool handleRockRequest(RockRequest::ptr request
+							, RockResponse::ptr response
+							, RockStream::ptr stream) = 0;
+		virtual bool handleRockNotify(RockNotify::ptr request
+							, RockStream::ptr stream) = 0;
+
+		virtual bool handleRequest(Message::ptr req
+							,Message::ptr rsp
+							,Stream::ptr stream) override;
+    	virtual bool handleNotify(Message::ptr notify
+                              ,Stream::ptr stream) override;
+	};
 
 	class ModuleManager{
 	public:

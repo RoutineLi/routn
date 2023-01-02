@@ -219,6 +219,8 @@ namespace Routn{
 				//server.reset(new Routn::Http::HttpServer(i.keepalive, Routn::IOManager::GetThis(), Routn::IOManager::GetThis(), accept_worker));
 			}else if(i.type == "ws"){
 				server.reset(new Routn::Http::WSServer(process_worker, io_worker, accept_worker));
+			}else if(i.type == "rock"){
+				server.reset(new Routn::RockServer("rock", process_worker, io_worker, accept_worker));
 			}else{
             	ROUTN_LOG_ERROR(g_logger) << "invalid server type=" << i.type
                 	<< LexicalCast<TcpServerConf, std::string>()(i);

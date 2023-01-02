@@ -1,7 +1,7 @@
 servers:
     - address: ["0.0.0.0:8083"]
       type: http
-      ssl: 1
+      ssl: 0
       cert_file: /home/rotun-li/routn/bin/ssl/server.crt
       key_file: /home/rotun-li/routn/bin/ssl/server.key
       accept_worker: accept
@@ -18,4 +18,12 @@ servers:
       process_worker:  http_io
       keepalive: true
       timeout: 1000
-      name: routn/1.1
+      name: chat/0.1
+
+    - address: ["0.0.0.0:8060"]
+      type: rock
+      accept_worker: accept
+      io_worker: io
+      process_worker: io
+      timeout: 1000
+      name: rock/1.0

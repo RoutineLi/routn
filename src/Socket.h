@@ -34,6 +34,8 @@ namespace Routn{
 			UNIX = AF_UNIX
 		};
 
+		std::string toString();
+
 		static Socket::ptr CreateTCP(Routn::Address::ptr address);
 		static Socket::ptr CreateUDP(Routn::Address::ptr address);
 

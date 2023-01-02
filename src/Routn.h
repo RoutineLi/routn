@@ -17,6 +17,9 @@
 #include "src/Hook.h"
 #include "src/Scheduler.h"
 #include "src/IoManager.h"
+#include "src/Protocol.h"
+#include "src/JsonUtil.h"
+#include "src/FiberSync.h"
 
 
 #endif

@@ -155,6 +155,7 @@ namespace Routn{
 		virtual void handleClient(Socket::ptr client);			//触发回调
 		virtual void startAccept(Socket::ptr sock);
 	protected:
+
 		std::vector<Socket::ptr> 	_socks;
 		IOManager* 				 	_worker;
 		IOManager*					_io_worker;
@@ -163,6 +164,7 @@ namespace Routn{
 		std::string 			 	_name;
 		bool						_isStop;
 		bool 						_ssl = false;
+		std::string 				_type = "tcp";
 
 		TcpServerConf::ptr 			_conf;
 	};

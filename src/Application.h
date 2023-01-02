@@ -16,6 +16,8 @@
 #include "Env.h"
 
 #include "http/HttpServer.h"
+#include "rpc/RockServer.h"
+#include "rpc/RockStream.h"
 #include "http/WSServer.h"
 #include "TcpServer.h"
 

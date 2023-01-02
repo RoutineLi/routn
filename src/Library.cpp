@@ -69,7 +69,8 @@ namespace Routn{
 
 		destroy_module destroy = (destroy_module)dlsym(handle, "DestroyModule");
 		if(!destroy){
-			ROUTN_LOG_ERROR(g_logger) << "cannot load symbol DestroyModule in " << path;
+			ROUTN_LOG_ERROR(g_logger) << "cannot load symbol DestroyModule in " << path
+				<< " reason: " << dlerror();
 			dlclose(handle);
 			return nullptr;			
 		}

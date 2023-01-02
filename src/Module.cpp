@@ -33,7 +33,6 @@ namespace Routn{
 	}
 
 	void Module::onBeforeArgsParse(int argc, char** argv){
-
 	}
 
 	void Module::onAfterArgsParse(int argc, char** argv){
@@ -65,6 +64,29 @@ namespace Routn{
 
 	bool Module::onServerUp(){
 		return true;
+	}
+
+	bool RockModule::handleRequest(Message::ptr req
+						,Message::ptr rsp
+						,Stream::ptr stream){
+		auto rock_req = std::dynamic_pointer_cast<RockRequest>(req);
+		auto rock_rsp = std::dynamic_pointer_cast<RockResponse>(rsp);
+		auto rock_stream = std::dynamic_pointer_cast<RockStream>(stream);
+    	return handleRockRequest(rock_req, rock_rsp, rock_stream);
+	}
+	
+	bool RockModule::handleNotify(Message::ptr notify
+							,Stream::ptr stream){
+		auto rock_nty = std::dynamic_pointer_cast<RockNotify>(notify);
+		auto rock_stream = std::dynamic_pointer_cast<RockStream>(stream);
+		return handleRockNotify(rock_nty, rock_stream);
+	}
+
+	RockModule::RockModule(const std::string& name
+							, const std::string& version
+							, const std::string& filename)
+		: Module(name, version, filename, ROCK){
+
 	}
 
 	ModuleManager::ModuleManager(){
