@@ -9,6 +9,26 @@
 #define _CHAT_SERVLET_H
 
 #include "src/http/HttpServlet.h"
+#include "src/http/WSServlet.h"
+
+
+// TODO as template
+
+
+
+class ChatServlet : public Routn::Http::WSServlet{
+public:
+	ChatServlet();
+	virtual int32_t onConnect(Routn::Http::HttpRequest::ptr header
+					, Routn::Http::WSSession::ptr session) override;
+	virtual int32_t onClose(Routn::Http::HttpRequest::ptr header
+					, Routn::Http::WSSession::ptr session) override;
+	virtual int32_t handle(Routn::Http::HttpRequest::ptr header
+					, Routn::Http::WSFrameMessage::ptr msg
+					, Routn::Http::WSSession::ptr session) override;
+};
+
+
 
 namespace Routn{
 namespace Http{
@@ -25,6 +45,4 @@ namespace Http{
 	};
 }
 }
-
-
 #endif
