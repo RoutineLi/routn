@@ -8,8 +8,10 @@
 #ifndef _HTTP_H
 #define _HTTP_H
 
+
 #include <map>
 #include <memory>
+#include <vector>
 #include <cstring>
 #include <string>
 #include <fstream>
@@ -217,8 +219,6 @@ namespace Routn
 			using MapType = std::map<std::string, std::string, CaseInsensitiveLess>;
 			HttpRequest(uint8_t version = 0x11, bool close = true);
 
-			void init();
-
 			HttpMethod getMethod() const { return _method; }
 			uint8_t getVersion() const { return _version; }
 			const std::string &getPath() const { return _path; }
@@ -243,8 +243,8 @@ namespace Routn
 			void setCookies(const MapType &v) { _cookies = v; }
 
 			std::string getHeader(const std::string &key, const std::string &def = "") const;
-			std::string getParam(const std::string &key, const std::string &def = "") const;
-			std::string getCookie(const std::string &key, const std::string &def = "") const;
+			std::string getParam(const std::string &key, const std::string &def = "");
+			std::string getCookie(const std::string &key, const std::string &def = "");
 
 			void setHeader(const std::string &key, const std::string &val);
 			void setParam(const std::string &key, const std::string &val);
@@ -277,27 +277,39 @@ namespace Routn
 			template <class T>
 			bool checkGetParamAs(const std::string &key, T &val, const T &def = T())
 			{
-				return checkGetAs(_headers, key, val, def);
+				initQueryParam();
+				initBodyParam();
+				return checkGetAs(_params, key, val, def);
 			}
 			template <class T>
 			T getParamAs(const std::string &key, const T &def = T())
 			{
-				return getAs(_headers, key, def);
+				initQueryParam();
+				initBodyParam();
+				return getAs(_params, key, def);
 			}
 
 			template <class T>
 			bool checkGetCookieAs(const std::string &key, T &val, const T &def = T())
 			{
-				return checkGetAs(_headers, key, val, def);
+				initCookies();
+				return checkGetAs(_cookies, key, val, def);
 			}
 			template <class T>
 			T getCookieAs(const std::string &key, const T &def = T())
 			{
-				return getAs(_headers, key, def);
+				initCookies();
+				return getAs(_cookies, key, def);
 			}
 
 			std::ostream &dump(std::ostream &os);
 			std::string toString();
+
+			void init();
+			void initParam();
+			void initQueryParam();
+			void initBodyParam();
+			void initCookies();
 
 		private:
 			HttpMethod _method;
@@ -313,6 +325,8 @@ namespace Routn
 			MapType _headers;
 			MapType _params;
 			MapType _cookies;
+
+			uint8_t _parserParamFlag;
 		};
 
 		class HttpResponse
@@ -328,6 +342,7 @@ namespace Routn
 			const std::string &getBody() const { return _body; }
 			const std::string &getReason() const { return _reason; }
 			const MapType &getHeaders() const { return _headers; }
+			const std::vector<std::string>& getCookies() const { return _cookies;}
 
 			void setStatus(HttpStatus v) { _status = v; }
 			void setVersion(uint8_t v) { _version = v; }
@@ -335,7 +350,11 @@ namespace Routn
 			void setReason(const std::string &v) { _reason = v; }
 			void setHeaders(const MapType &v) { _headers = v; }
 			void setWebsocket(bool v) { _websocket = v;}
-			
+			void setCookie(const std::string& key, const std::string& val
+						, time_t expired = 0, const std::string& path = ""
+                   		, const std::string& domain = "", bool secure = false);
+			void setCookies(const std::vector<std::string>& v) { _cookies = v;}
+
 			bool isWebsocket() const { return _websocket;} 
 			bool isClose() const { return _close; }
 			void setClose(bool v) { _close = v; }
@@ -367,6 +386,7 @@ namespace Routn
 			std::string _body;
 			std::string _reason;
 			MapType _headers;
+			std::vector<std::string> _cookies;
 		};
 
 	}

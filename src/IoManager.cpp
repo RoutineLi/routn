@@ -17,6 +17,53 @@ namespace Routn
 {
 	static Routn::Logger::ptr g_logger = ROUTN_LOG_NAME("system");
 
+	enum EpollCtlOp {
+	};
+
+	static std::ostream& operator<< (std::ostream& os, const EpollCtlOp& op) {
+		switch((int)op) {
+	#define XX(ctl) \
+			case ctl: \
+				return os << #ctl;
+			XX(EPOLL_CTL_ADD);
+			XX(EPOLL_CTL_MOD);
+			XX(EPOLL_CTL_DEL);
+			default:
+				return os << (int)op;
+		}
+	#undef XX
+	}
+
+	static std::ostream& operator<< (std::ostream& os, EPOLL_EVENTS events) {
+		if(!events) {
+			return os << "0";
+		}
+		bool first = true;
+	#define XX(E) \
+		if(events & E) { \
+			if(!first) { \
+				os << "|"; \
+			} \
+			os << #E; \
+			first = false; \
+		}
+		XX(EPOLLIN);
+		XX(EPOLLPRI);
+		XX(EPOLLOUT);
+		XX(EPOLLRDNORM);
+		XX(EPOLLRDBAND);
+		XX(EPOLLWRNORM);
+		XX(EPOLLWRBAND);
+		XX(EPOLLMSG);
+		XX(EPOLLERR);
+		XX(EPOLLHUP);
+		XX(EPOLLRDHUP);
+		XX(EPOLLONESHOT);
+		XX(EPOLLET);
+	#undef XX
+		return os;
+	}
+
 	IOManager::FdContext::EventContext& IOManager::FdContext::getContext(IOManager::Event event)
 	{
 		switch (event)
@@ -114,8 +161,8 @@ namespace Routn
 		if(ROUTN_UNLIKELY(temp_ctx->events & event))
 		{
 			ROUTN_LOG_ERROR(g_logger) << "addEvent assert fd = " << fd
-						<< " event = " << event
-						<< " temp_ctx.event = " << temp_ctx->events;
+						<< " event = " << (EPOLL_EVENTS)event
+						<< " temp_ctx.event = " << (EPOLL_EVENTS)temp_ctx->events;
 			ROUTN_ASSERT(!(temp_ctx->events & event));
 		}
 

@@ -6,6 +6,7 @@
  ************************************************************************/
 
 #include "chat_module.h"
+#include "chat_servlet.h"
 
 #include "src/Application.h"
 #include "src/Config.h"
@@ -29,6 +30,13 @@ namespace Chat{
 		return false;
 	}
 
+	//static int32_t handle(Routn::Http::HttpRequest::ptr request
+	//						, Routn::Http::HttpResponse::ptr response
+	//						, Routn::Http::HttpSession::ptr session){
+	//	ROUTN_LOG_INFO(root) << "handle";
+	//	return 0;
+    //}	
+
 	bool ChatModule::onServerUp() {
 		return true;
 	}
@@ -45,24 +53,10 @@ namespace Chat{
 			if(!i){
 				continue;
 			}
-			
-
 			Routn::Http::ResourceServlet::ptr slt(new Routn::Http::ResourceServlet(Routn::EnvMgr::GetInstance()->getCwd()));
 			auto slt_dispatch = http_server->getServletDispatch();
 			slt_dispatch->addGlobServlet("/html/*", slt);
 		}
-		//svrs.clear();
-		if(!Routn::Application::GetInstance()->getServer("ws", svrs)){
-			ROUTN_LOG_INFO(root) << "no ws alive";
-			return false; 
-		}
-		for(auto& i : svrs){
-			Routn::Http::WSServer::ptr wsserver = std::dynamic_pointer_cast<Routn::Http::WSServer>(i);
-			auto slt_dispatch = wsserver->getWSServletDispatch();
-			ChatServlet::ptr slt(new ChatServlet);
-			slt_dispatch->addServlet("/routn/chat", slt);
-		}
-
 		return true;
 	}
 

@@ -114,6 +114,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
+
+#=============================================================================
 # Target rules for targets named chat
 
 # Build rule for target.
@@ -140,43 +153,17 @@ heart/fast:
 .PHONY : heart/fast
 
 #=============================================================================
-# Target rules for targets named http_server_demo
+# Target rules for targets named test_service_discovery
 
 # Build rule for target.
-http_server_demo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 http_server_demo
-.PHONY : http_server_demo
+test_service_discovery: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_service_discovery
+.PHONY : test_service_discovery
 
 # fast build rule for target.
-http_server_demo/fast:
-	$(MAKE) -f CMakeFiles/http_server_demo.dir/build.make CMakeFiles/http_server_demo.dir/build
-.PHONY : http_server_demo/fast
-
-#=============================================================================
-# Target rules for targets named test_http_connection
-
-# Build rule for target.
-test_http_connection: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_http_connection
-.PHONY : test_http_connection
-
-# fast build rule for target.
-test_http_connection/fast:
-	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/build
-.PHONY : test_http_connection/fast
-
-#=============================================================================
-# Target rules for targets named ex_echoServer
-
-# Build rule for target.
-ex_echoServer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ex_echoServer
-.PHONY : ex_echoServer
-
-# fast build rule for target.
-ex_echoServer/fast:
-	$(MAKE) -f CMakeFiles/ex_echoServer.dir/build.make CMakeFiles/ex_echoServer.dir/build
-.PHONY : ex_echoServer/fast
+test_service_discovery/fast:
+	$(MAKE) -f CMakeFiles/test_service_discovery.dir/build.make CMakeFiles/test_service_discovery.dir/build
+.PHONY : test_service_discovery/fast
 
 #=============================================================================
 # Target rules for targets named routn-svr
@@ -204,60 +191,6 @@ routn/fast:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/build
 .PHONY : routn/fast
 
-examples/ex_echoServer.o: examples/ex_echoServer.cpp.o
-
-.PHONY : examples/ex_echoServer.o
-
-# target to build an object file
-examples/ex_echoServer.cpp.o:
-	$(MAKE) -f CMakeFiles/ex_echoServer.dir/build.make CMakeFiles/ex_echoServer.dir/examples/ex_echoServer.cpp.o
-.PHONY : examples/ex_echoServer.cpp.o
-
-examples/ex_echoServer.i: examples/ex_echoServer.cpp.i
-
-.PHONY : examples/ex_echoServer.i
-
-# target to preprocess a source file
-examples/ex_echoServer.cpp.i:
-	$(MAKE) -f CMakeFiles/ex_echoServer.dir/build.make CMakeFiles/ex_echoServer.dir/examples/ex_echoServer.cpp.i
-.PHONY : examples/ex_echoServer.cpp.i
-
-examples/ex_echoServer.s: examples/ex_echoServer.cpp.s
-
-.PHONY : examples/ex_echoServer.s
-
-# target to generate assembly for a file
-examples/ex_echoServer.cpp.s:
-	$(MAKE) -f CMakeFiles/ex_echoServer.dir/build.make CMakeFiles/ex_echoServer.dir/examples/ex_echoServer.cpp.s
-.PHONY : examples/ex_echoServer.cpp.s
-
-examples/http_server_demo.o: examples/http_server_demo.cpp.o
-
-.PHONY : examples/http_server_demo.o
-
-# target to build an object file
-examples/http_server_demo.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server_demo.dir/build.make CMakeFiles/http_server_demo.dir/examples/http_server_demo.cpp.o
-.PHONY : examples/http_server_demo.cpp.o
-
-examples/http_server_demo.i: examples/http_server_demo.cpp.i
-
-.PHONY : examples/http_server_demo.i
-
-# target to preprocess a source file
-examples/http_server_demo.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server_demo.dir/build.make CMakeFiles/http_server_demo.dir/examples/http_server_demo.cpp.i
-.PHONY : examples/http_server_demo.cpp.i
-
-examples/http_server_demo.s: examples/http_server_demo.cpp.s
-
-.PHONY : examples/http_server_demo.s
-
-# target to generate assembly for a file
-examples/http_server_demo.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server_demo.dir/build.make CMakeFiles/http_server_demo.dir/examples/http_server_demo.cpp.s
-.PHONY : examples/http_server_demo.cpp.s
-
 modules/chat_room/chat_module.o: modules/chat_room/chat_module.cpp.o
 
 .PHONY : modules/chat_room/chat_module.o
@@ -284,6 +217,33 @@ modules/chat_room/chat_module.s: modules/chat_room/chat_module.cpp.s
 modules/chat_room/chat_module.cpp.s:
 	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_module.cpp.s
 .PHONY : modules/chat_room/chat_module.cpp.s
+
+modules/chat_room/chat_protocol.o: modules/chat_room/chat_protocol.cpp.o
+
+.PHONY : modules/chat_room/chat_protocol.o
+
+# target to build an object file
+modules/chat_room/chat_protocol.cpp.o:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_protocol.cpp.o
+.PHONY : modules/chat_room/chat_protocol.cpp.o
+
+modules/chat_room/chat_protocol.i: modules/chat_room/chat_protocol.cpp.i
+
+.PHONY : modules/chat_room/chat_protocol.i
+
+# target to preprocess a source file
+modules/chat_room/chat_protocol.cpp.i:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_protocol.cpp.i
+.PHONY : modules/chat_room/chat_protocol.cpp.i
+
+modules/chat_room/chat_protocol.s: modules/chat_room/chat_protocol.cpp.s
+
+.PHONY : modules/chat_room/chat_protocol.s
+
+# target to generate assembly for a file
+modules/chat_room/chat_protocol.cpp.s:
+	$(MAKE) -f CMakeFiles/chat.dir/build.make CMakeFiles/chat.dir/modules/chat_room/chat_protocol.cpp.s
+.PHONY : modules/chat_room/chat_protocol.cpp.s
 
 modules/chat_room/chat_servlet.o: modules/chat_room/chat_servlet.cpp.o
 
@@ -582,32 +542,32 @@ src/Fiber.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Fiber.cpp.s
 .PHONY : src/Fiber.cpp.s
 
-src/FiberSem.o: src/FiberSem.cpp.o
+src/FiberSync.o: src/FiberSync.cpp.o
 
-.PHONY : src/FiberSem.o
+.PHONY : src/FiberSync.o
 
 # target to build an object file
-src/FiberSem.cpp.o:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/FiberSem.cpp.o
-.PHONY : src/FiberSem.cpp.o
+src/FiberSync.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/FiberSync.cpp.o
+.PHONY : src/FiberSync.cpp.o
 
-src/FiberSem.i: src/FiberSem.cpp.i
+src/FiberSync.i: src/FiberSync.cpp.i
 
-.PHONY : src/FiberSem.i
+.PHONY : src/FiberSync.i
 
 # target to preprocess a source file
-src/FiberSem.cpp.i:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/FiberSem.cpp.i
-.PHONY : src/FiberSem.cpp.i
+src/FiberSync.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/FiberSync.cpp.i
+.PHONY : src/FiberSync.cpp.i
 
-src/FiberSem.s: src/FiberSem.cpp.s
+src/FiberSync.s: src/FiberSync.cpp.s
 
-.PHONY : src/FiberSem.s
+.PHONY : src/FiberSync.s
 
 # target to generate assembly for a file
-src/FiberSem.cpp.s:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/FiberSem.cpp.s
-.PHONY : src/FiberSem.cpp.s
+src/FiberSync.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/FiberSync.cpp.s
+.PHONY : src/FiberSync.cpp.s
 
 src/Hook.o: src/Hook.cpp.o
 
@@ -662,6 +622,33 @@ src/IoManager.s: src/IoManager.cpp.s
 src/IoManager.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/IoManager.cpp.s
 .PHONY : src/IoManager.cpp.s
+
+src/JsonUtil.o: src/JsonUtil.cpp.o
+
+.PHONY : src/JsonUtil.o
+
+# target to build an object file
+src/JsonUtil.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/JsonUtil.cpp.o
+.PHONY : src/JsonUtil.cpp.o
+
+src/JsonUtil.i: src/JsonUtil.cpp.i
+
+.PHONY : src/JsonUtil.i
+
+# target to preprocess a source file
+src/JsonUtil.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/JsonUtil.cpp.i
+.PHONY : src/JsonUtil.cpp.i
+
+src/JsonUtil.s: src/JsonUtil.cpp.s
+
+.PHONY : src/JsonUtil.s
+
+# target to generate assembly for a file
+src/JsonUtil.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/JsonUtil.cpp.s
+.PHONY : src/JsonUtil.cpp.s
 
 src/Library.o: src/Library.cpp.o
 
@@ -744,6 +731,33 @@ src/Module.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Module.cpp.s
 .PHONY : src/Module.cpp.s
 
+src/Protocol.o: src/Protocol.cpp.o
+
+.PHONY : src/Protocol.o
+
+# target to build an object file
+src/Protocol.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Protocol.cpp.o
+.PHONY : src/Protocol.cpp.o
+
+src/Protocol.i: src/Protocol.cpp.i
+
+.PHONY : src/Protocol.i
+
+# target to preprocess a source file
+src/Protocol.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Protocol.cpp.i
+.PHONY : src/Protocol.cpp.i
+
+src/Protocol.s: src/Protocol.cpp.s
+
+.PHONY : src/Protocol.s
+
+# target to generate assembly for a file
+src/Protocol.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Protocol.cpp.s
+.PHONY : src/Protocol.cpp.s
+
 src/Scheduler.o: src/Scheduler.cpp.o
 
 .PHONY : src/Scheduler.o
@@ -797,60 +811,6 @@ src/Socket.s: src/Socket.cpp.s
 src/Socket.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Socket.cpp.s
 .PHONY : src/Socket.cpp.s
-
-src/SocketStream.o: src/SocketStream.cpp.o
-
-.PHONY : src/SocketStream.o
-
-# target to build an object file
-src/SocketStream.cpp.o:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/SocketStream.cpp.o
-.PHONY : src/SocketStream.cpp.o
-
-src/SocketStream.i: src/SocketStream.cpp.i
-
-.PHONY : src/SocketStream.i
-
-# target to preprocess a source file
-src/SocketStream.cpp.i:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/SocketStream.cpp.i
-.PHONY : src/SocketStream.cpp.i
-
-src/SocketStream.s: src/SocketStream.cpp.s
-
-.PHONY : src/SocketStream.s
-
-# target to generate assembly for a file
-src/SocketStream.cpp.s:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/SocketStream.cpp.s
-.PHONY : src/SocketStream.cpp.s
-
-src/Stream.o: src/Stream.cpp.o
-
-.PHONY : src/Stream.o
-
-# target to build an object file
-src/Stream.cpp.o:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Stream.cpp.o
-.PHONY : src/Stream.cpp.o
-
-src/Stream.i: src/Stream.cpp.i
-
-.PHONY : src/Stream.i
-
-# target to preprocess a source file
-src/Stream.cpp.i:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Stream.cpp.i
-.PHONY : src/Stream.cpp.i
-
-src/Stream.s: src/Stream.cpp.s
-
-.PHONY : src/Stream.s
-
-# target to generate assembly for a file
-src/Stream.cpp.s:
-	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Stream.cpp.s
-.PHONY : src/Stream.cpp.s
 
 src/TcpServer.o: src/TcpServer.cpp.o
 
@@ -1013,6 +973,60 @@ src/Worker.s: src/Worker.cpp.s
 src/Worker.cpp.s:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Worker.cpp.s
 .PHONY : src/Worker.cpp.s
+
+src/Zk_client.o: src/Zk_client.cpp.o
+
+.PHONY : src/Zk_client.o
+
+# target to build an object file
+src/Zk_client.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Zk_client.cpp.o
+.PHONY : src/Zk_client.cpp.o
+
+src/Zk_client.i: src/Zk_client.cpp.i
+
+.PHONY : src/Zk_client.i
+
+# target to preprocess a source file
+src/Zk_client.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Zk_client.cpp.i
+.PHONY : src/Zk_client.cpp.i
+
+src/Zk_client.s: src/Zk_client.cpp.s
+
+.PHONY : src/Zk_client.s
+
+# target to generate assembly for a file
+src/Zk_client.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/Zk_client.cpp.s
+.PHONY : src/Zk_client.cpp.s
+
+src/db/Sqlite.o: src/db/Sqlite.cpp.o
+
+.PHONY : src/db/Sqlite.o
+
+# target to build an object file
+src/db/Sqlite.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/db/Sqlite.cpp.o
+.PHONY : src/db/Sqlite.cpp.o
+
+src/db/Sqlite.i: src/db/Sqlite.cpp.i
+
+.PHONY : src/db/Sqlite.i
+
+# target to preprocess a source file
+src/db/Sqlite.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/db/Sqlite.cpp.i
+.PHONY : src/db/Sqlite.cpp.i
+
+src/db/Sqlite.s: src/db/Sqlite.cpp.s
+
+.PHONY : src/db/Sqlite.s
+
+# target to generate assembly for a file
+src/db/Sqlite.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/db/Sqlite.cpp.s
+.PHONY : src/db/Sqlite.cpp.s
 
 src/http/HTTP.o: src/http/HTTP.cpp.o
 
@@ -1365,6 +1379,114 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/routn-svr.dir/build.make CMakeFiles/routn-svr.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/ns/NameServerClient.o: src/ns/NameServerClient.cpp.o
+
+.PHONY : src/ns/NameServerClient.o
+
+# target to build an object file
+src/ns/NameServerClient.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerClient.cpp.o
+.PHONY : src/ns/NameServerClient.cpp.o
+
+src/ns/NameServerClient.i: src/ns/NameServerClient.cpp.i
+
+.PHONY : src/ns/NameServerClient.i
+
+# target to preprocess a source file
+src/ns/NameServerClient.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerClient.cpp.i
+.PHONY : src/ns/NameServerClient.cpp.i
+
+src/ns/NameServerClient.s: src/ns/NameServerClient.cpp.s
+
+.PHONY : src/ns/NameServerClient.s
+
+# target to generate assembly for a file
+src/ns/NameServerClient.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerClient.cpp.s
+.PHONY : src/ns/NameServerClient.cpp.s
+
+src/ns/NameServerModule.o: src/ns/NameServerModule.cpp.o
+
+.PHONY : src/ns/NameServerModule.o
+
+# target to build an object file
+src/ns/NameServerModule.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerModule.cpp.o
+.PHONY : src/ns/NameServerModule.cpp.o
+
+src/ns/NameServerModule.i: src/ns/NameServerModule.cpp.i
+
+.PHONY : src/ns/NameServerModule.i
+
+# target to preprocess a source file
+src/ns/NameServerModule.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerModule.cpp.i
+.PHONY : src/ns/NameServerModule.cpp.i
+
+src/ns/NameServerModule.s: src/ns/NameServerModule.cpp.s
+
+.PHONY : src/ns/NameServerModule.s
+
+# target to generate assembly for a file
+src/ns/NameServerModule.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerModule.cpp.s
+.PHONY : src/ns/NameServerModule.cpp.s
+
+src/ns/NameServerProtocol.o: src/ns/NameServerProtocol.cpp.o
+
+.PHONY : src/ns/NameServerProtocol.o
+
+# target to build an object file
+src/ns/NameServerProtocol.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerProtocol.cpp.o
+.PHONY : src/ns/NameServerProtocol.cpp.o
+
+src/ns/NameServerProtocol.i: src/ns/NameServerProtocol.cpp.i
+
+.PHONY : src/ns/NameServerProtocol.i
+
+# target to preprocess a source file
+src/ns/NameServerProtocol.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerProtocol.cpp.i
+.PHONY : src/ns/NameServerProtocol.cpp.i
+
+src/ns/NameServerProtocol.s: src/ns/NameServerProtocol.cpp.s
+
+.PHONY : src/ns/NameServerProtocol.s
+
+# target to generate assembly for a file
+src/ns/NameServerProtocol.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/NameServerProtocol.cpp.s
+.PHONY : src/ns/NameServerProtocol.cpp.s
+
+src/ns/ns_protobuf.pb.o: src/ns/ns_protobuf.pb.cpp.o
+
+.PHONY : src/ns/ns_protobuf.pb.o
+
+# target to build an object file
+src/ns/ns_protobuf.pb.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/ns_protobuf.pb.cpp.o
+.PHONY : src/ns/ns_protobuf.pb.cpp.o
+
+src/ns/ns_protobuf.pb.i: src/ns/ns_protobuf.pb.cpp.i
+
+.PHONY : src/ns/ns_protobuf.pb.i
+
+# target to preprocess a source file
+src/ns/ns_protobuf.pb.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/ns_protobuf.pb.cpp.i
+.PHONY : src/ns/ns_protobuf.pb.cpp.i
+
+src/ns/ns_protobuf.pb.s: src/ns/ns_protobuf.pb.cpp.s
+
+.PHONY : src/ns/ns_protobuf.pb.s
+
+# target to generate assembly for a file
+src/ns/ns_protobuf.pb.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/ns/ns_protobuf.pb.cpp.s
+.PHONY : src/ns/ns_protobuf.pb.cpp.s
+
 src/plugins/libco/coctx.o: src/plugins/libco/coctx.cpp.o
 
 .PHONY : src/plugins/libco/coctx.o
@@ -1401,32 +1523,302 @@ src/plugins/libco/coctx_swap.S.o:
 	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/plugins/libco/coctx_swap.S.o
 .PHONY : src/plugins/libco/coctx_swap.S.o
 
-test/test_http_connection.o: test/test_http_connection.cpp.o
+src/rpc/RockProtocol.o: src/rpc/RockProtocol.cpp.o
 
-.PHONY : test/test_http_connection.o
+.PHONY : src/rpc/RockProtocol.o
 
 # target to build an object file
-test/test_http_connection.cpp.o:
-	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/test/test_http_connection.cpp.o
-.PHONY : test/test_http_connection.cpp.o
+src/rpc/RockProtocol.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockProtocol.cpp.o
+.PHONY : src/rpc/RockProtocol.cpp.o
 
-test/test_http_connection.i: test/test_http_connection.cpp.i
+src/rpc/RockProtocol.i: src/rpc/RockProtocol.cpp.i
 
-.PHONY : test/test_http_connection.i
+.PHONY : src/rpc/RockProtocol.i
 
 # target to preprocess a source file
-test/test_http_connection.cpp.i:
-	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/test/test_http_connection.cpp.i
-.PHONY : test/test_http_connection.cpp.i
+src/rpc/RockProtocol.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockProtocol.cpp.i
+.PHONY : src/rpc/RockProtocol.cpp.i
 
-test/test_http_connection.s: test/test_http_connection.cpp.s
+src/rpc/RockProtocol.s: src/rpc/RockProtocol.cpp.s
 
-.PHONY : test/test_http_connection.s
+.PHONY : src/rpc/RockProtocol.s
 
 # target to generate assembly for a file
-test/test_http_connection.cpp.s:
-	$(MAKE) -f CMakeFiles/test_http_connection.dir/build.make CMakeFiles/test_http_connection.dir/test/test_http_connection.cpp.s
-.PHONY : test/test_http_connection.cpp.s
+src/rpc/RockProtocol.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockProtocol.cpp.s
+.PHONY : src/rpc/RockProtocol.cpp.s
+
+src/rpc/RockServer.o: src/rpc/RockServer.cpp.o
+
+.PHONY : src/rpc/RockServer.o
+
+# target to build an object file
+src/rpc/RockServer.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockServer.cpp.o
+.PHONY : src/rpc/RockServer.cpp.o
+
+src/rpc/RockServer.i: src/rpc/RockServer.cpp.i
+
+.PHONY : src/rpc/RockServer.i
+
+# target to preprocess a source file
+src/rpc/RockServer.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockServer.cpp.i
+.PHONY : src/rpc/RockServer.cpp.i
+
+src/rpc/RockServer.s: src/rpc/RockServer.cpp.s
+
+.PHONY : src/rpc/RockServer.s
+
+# target to generate assembly for a file
+src/rpc/RockServer.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockServer.cpp.s
+.PHONY : src/rpc/RockServer.cpp.s
+
+src/rpc/RockStream.o: src/rpc/RockStream.cpp.o
+
+.PHONY : src/rpc/RockStream.o
+
+# target to build an object file
+src/rpc/RockStream.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockStream.cpp.o
+.PHONY : src/rpc/RockStream.cpp.o
+
+src/rpc/RockStream.i: src/rpc/RockStream.cpp.i
+
+.PHONY : src/rpc/RockStream.i
+
+# target to preprocess a source file
+src/rpc/RockStream.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockStream.cpp.i
+.PHONY : src/rpc/RockStream.cpp.i
+
+src/rpc/RockStream.s: src/rpc/RockStream.cpp.s
+
+.PHONY : src/rpc/RockStream.s
+
+# target to generate assembly for a file
+src/rpc/RockStream.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/rpc/RockStream.cpp.s
+.PHONY : src/rpc/RockStream.cpp.s
+
+src/streams/AsyncSocketStream.o: src/streams/AsyncSocketStream.cpp.o
+
+.PHONY : src/streams/AsyncSocketStream.o
+
+# target to build an object file
+src/streams/AsyncSocketStream.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/AsyncSocketStream.cpp.o
+.PHONY : src/streams/AsyncSocketStream.cpp.o
+
+src/streams/AsyncSocketStream.i: src/streams/AsyncSocketStream.cpp.i
+
+.PHONY : src/streams/AsyncSocketStream.i
+
+# target to preprocess a source file
+src/streams/AsyncSocketStream.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/AsyncSocketStream.cpp.i
+.PHONY : src/streams/AsyncSocketStream.cpp.i
+
+src/streams/AsyncSocketStream.s: src/streams/AsyncSocketStream.cpp.s
+
+.PHONY : src/streams/AsyncSocketStream.s
+
+# target to generate assembly for a file
+src/streams/AsyncSocketStream.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/AsyncSocketStream.cpp.s
+.PHONY : src/streams/AsyncSocketStream.cpp.s
+
+src/streams/LoadBalance.o: src/streams/LoadBalance.cpp.o
+
+.PHONY : src/streams/LoadBalance.o
+
+# target to build an object file
+src/streams/LoadBalance.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/LoadBalance.cpp.o
+.PHONY : src/streams/LoadBalance.cpp.o
+
+src/streams/LoadBalance.i: src/streams/LoadBalance.cpp.i
+
+.PHONY : src/streams/LoadBalance.i
+
+# target to preprocess a source file
+src/streams/LoadBalance.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/LoadBalance.cpp.i
+.PHONY : src/streams/LoadBalance.cpp.i
+
+src/streams/LoadBalance.s: src/streams/LoadBalance.cpp.s
+
+.PHONY : src/streams/LoadBalance.s
+
+# target to generate assembly for a file
+src/streams/LoadBalance.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/LoadBalance.cpp.s
+.PHONY : src/streams/LoadBalance.cpp.s
+
+src/streams/ServiceDiscovery.o: src/streams/ServiceDiscovery.cpp.o
+
+.PHONY : src/streams/ServiceDiscovery.o
+
+# target to build an object file
+src/streams/ServiceDiscovery.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/ServiceDiscovery.cpp.o
+.PHONY : src/streams/ServiceDiscovery.cpp.o
+
+src/streams/ServiceDiscovery.i: src/streams/ServiceDiscovery.cpp.i
+
+.PHONY : src/streams/ServiceDiscovery.i
+
+# target to preprocess a source file
+src/streams/ServiceDiscovery.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/ServiceDiscovery.cpp.i
+.PHONY : src/streams/ServiceDiscovery.cpp.i
+
+src/streams/ServiceDiscovery.s: src/streams/ServiceDiscovery.cpp.s
+
+.PHONY : src/streams/ServiceDiscovery.s
+
+# target to generate assembly for a file
+src/streams/ServiceDiscovery.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/ServiceDiscovery.cpp.s
+.PHONY : src/streams/ServiceDiscovery.cpp.s
+
+src/streams/SocketStream.o: src/streams/SocketStream.cpp.o
+
+.PHONY : src/streams/SocketStream.o
+
+# target to build an object file
+src/streams/SocketStream.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/SocketStream.cpp.o
+.PHONY : src/streams/SocketStream.cpp.o
+
+src/streams/SocketStream.i: src/streams/SocketStream.cpp.i
+
+.PHONY : src/streams/SocketStream.i
+
+# target to preprocess a source file
+src/streams/SocketStream.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/SocketStream.cpp.i
+.PHONY : src/streams/SocketStream.cpp.i
+
+src/streams/SocketStream.s: src/streams/SocketStream.cpp.s
+
+.PHONY : src/streams/SocketStream.s
+
+# target to generate assembly for a file
+src/streams/SocketStream.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/SocketStream.cpp.s
+.PHONY : src/streams/SocketStream.cpp.s
+
+src/streams/Stream.o: src/streams/Stream.cpp.o
+
+.PHONY : src/streams/Stream.o
+
+# target to build an object file
+src/streams/Stream.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/Stream.cpp.o
+.PHONY : src/streams/Stream.cpp.o
+
+src/streams/Stream.i: src/streams/Stream.cpp.i
+
+.PHONY : src/streams/Stream.i
+
+# target to preprocess a source file
+src/streams/Stream.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/Stream.cpp.i
+.PHONY : src/streams/Stream.cpp.i
+
+src/streams/Stream.s: src/streams/Stream.cpp.s
+
+.PHONY : src/streams/Stream.s
+
+# target to generate assembly for a file
+src/streams/Stream.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/Stream.cpp.s
+.PHONY : src/streams/Stream.cpp.s
+
+src/streams/ZLIBStream.o: src/streams/ZLIBStream.cpp.o
+
+.PHONY : src/streams/ZLIBStream.o
+
+# target to build an object file
+src/streams/ZLIBStream.cpp.o:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/ZLIBStream.cpp.o
+.PHONY : src/streams/ZLIBStream.cpp.o
+
+src/streams/ZLIBStream.i: src/streams/ZLIBStream.cpp.i
+
+.PHONY : src/streams/ZLIBStream.i
+
+# target to preprocess a source file
+src/streams/ZLIBStream.cpp.i:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/ZLIBStream.cpp.i
+.PHONY : src/streams/ZLIBStream.cpp.i
+
+src/streams/ZLIBStream.s: src/streams/ZLIBStream.cpp.s
+
+.PHONY : src/streams/ZLIBStream.s
+
+# target to generate assembly for a file
+src/streams/ZLIBStream.cpp.s:
+	$(MAKE) -f CMakeFiles/routn.dir/build.make CMakeFiles/routn.dir/src/streams/ZLIBStream.cpp.s
+.PHONY : src/streams/ZLIBStream.cpp.s
+
+test/test_module.o: test/test_module.cpp.o
+
+.PHONY : test/test_module.o
+
+# target to build an object file
+test/test_module.cpp.o:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test/test_module.cpp.o
+.PHONY : test/test_module.cpp.o
+
+test/test_module.i: test/test_module.cpp.i
+
+.PHONY : test/test_module.i
+
+# target to preprocess a source file
+test/test_module.cpp.i:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test/test_module.cpp.i
+.PHONY : test/test_module.cpp.i
+
+test/test_module.s: test/test_module.cpp.s
+
+.PHONY : test/test_module.s
+
+# target to generate assembly for a file
+test/test_module.cpp.s:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test/test_module.cpp.s
+.PHONY : test/test_module.cpp.s
+
+test/test_service_discovery.o: test/test_service_discovery.cpp.o
+
+.PHONY : test/test_service_discovery.o
+
+# target to build an object file
+test/test_service_discovery.cpp.o:
+	$(MAKE) -f CMakeFiles/test_service_discovery.dir/build.make CMakeFiles/test_service_discovery.dir/test/test_service_discovery.cpp.o
+.PHONY : test/test_service_discovery.cpp.o
+
+test/test_service_discovery.i: test/test_service_discovery.cpp.i
+
+.PHONY : test/test_service_discovery.i
+
+# target to preprocess a source file
+test/test_service_discovery.cpp.i:
+	$(MAKE) -f CMakeFiles/test_service_discovery.dir/build.make CMakeFiles/test_service_discovery.dir/test/test_service_discovery.cpp.i
+.PHONY : test/test_service_discovery.cpp.i
+
+test/test_service_discovery.s: test/test_service_discovery.cpp.s
+
+.PHONY : test/test_service_discovery.s
+
+# target to generate assembly for a file
+test/test_service_discovery.cpp.s:
+	$(MAKE) -f CMakeFiles/test_service_discovery.dir/build.make CMakeFiles/test_service_discovery.dir/test/test_service_discovery.cpp.s
+.PHONY : test/test_service_discovery.cpp.s
 
 # Help Target
 help:
@@ -1435,23 +1827,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... chat"
 	@echo "... rebuild_cache"
 	@echo "... heart"
-	@echo "... http_server_demo"
-	@echo "... test_http_connection"
-	@echo "... ex_echoServer"
+	@echo "... test_service_discovery"
 	@echo "... routn-svr"
 	@echo "... routn"
-	@echo "... examples/ex_echoServer.o"
-	@echo "... examples/ex_echoServer.i"
-	@echo "... examples/ex_echoServer.s"
-	@echo "... examples/http_server_demo.o"
-	@echo "... examples/http_server_demo.i"
-	@echo "... examples/http_server_demo.s"
 	@echo "... modules/chat_room/chat_module.o"
 	@echo "... modules/chat_room/chat_module.i"
 	@echo "... modules/chat_room/chat_module.s"
+	@echo "... modules/chat_room/chat_protocol.o"
+	@echo "... modules/chat_room/chat_protocol.i"
+	@echo "... modules/chat_room/chat_protocol.s"
 	@echo "... modules/chat_room/chat_servlet.o"
 	@echo "... modules/chat_room/chat_servlet.i"
 	@echo "... modules/chat_room/chat_servlet.s"
@@ -1485,15 +1873,18 @@ help:
 	@echo "... src/Fiber.o"
 	@echo "... src/Fiber.i"
 	@echo "... src/Fiber.s"
-	@echo "... src/FiberSem.o"
-	@echo "... src/FiberSem.i"
-	@echo "... src/FiberSem.s"
+	@echo "... src/FiberSync.o"
+	@echo "... src/FiberSync.i"
+	@echo "... src/FiberSync.s"
 	@echo "... src/Hook.o"
 	@echo "... src/Hook.i"
 	@echo "... src/Hook.s"
 	@echo "... src/IoManager.o"
 	@echo "... src/IoManager.i"
 	@echo "... src/IoManager.s"
+	@echo "... src/JsonUtil.o"
+	@echo "... src/JsonUtil.i"
+	@echo "... src/JsonUtil.s"
 	@echo "... src/Library.o"
 	@echo "... src/Library.i"
 	@echo "... src/Library.s"
@@ -1503,18 +1894,15 @@ help:
 	@echo "... src/Module.o"
 	@echo "... src/Module.i"
 	@echo "... src/Module.s"
+	@echo "... src/Protocol.o"
+	@echo "... src/Protocol.i"
+	@echo "... src/Protocol.s"
 	@echo "... src/Scheduler.o"
 	@echo "... src/Scheduler.i"
 	@echo "... src/Scheduler.s"
 	@echo "... src/Socket.o"
 	@echo "... src/Socket.i"
 	@echo "... src/Socket.s"
-	@echo "... src/SocketStream.o"
-	@echo "... src/SocketStream.i"
-	@echo "... src/SocketStream.s"
-	@echo "... src/Stream.o"
-	@echo "... src/Stream.i"
-	@echo "... src/Stream.s"
 	@echo "... src/TcpServer.o"
 	@echo "... src/TcpServer.i"
 	@echo "... src/TcpServer.s"
@@ -1533,6 +1921,12 @@ help:
 	@echo "... src/Worker.o"
 	@echo "... src/Worker.i"
 	@echo "... src/Worker.s"
+	@echo "... src/Zk_client.o"
+	@echo "... src/Zk_client.i"
+	@echo "... src/Zk_client.s"
+	@echo "... src/db/Sqlite.o"
+	@echo "... src/db/Sqlite.i"
+	@echo "... src/db/Sqlite.s"
 	@echo "... src/http/HTTP.o"
 	@echo "... src/http/HTTP.i"
 	@echo "... src/http/HTTP.s"
@@ -1572,13 +1966,55 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/ns/NameServerClient.o"
+	@echo "... src/ns/NameServerClient.i"
+	@echo "... src/ns/NameServerClient.s"
+	@echo "... src/ns/NameServerModule.o"
+	@echo "... src/ns/NameServerModule.i"
+	@echo "... src/ns/NameServerModule.s"
+	@echo "... src/ns/NameServerProtocol.o"
+	@echo "... src/ns/NameServerProtocol.i"
+	@echo "... src/ns/NameServerProtocol.s"
+	@echo "... src/ns/ns_protobuf.pb.o"
+	@echo "... src/ns/ns_protobuf.pb.i"
+	@echo "... src/ns/ns_protobuf.pb.s"
 	@echo "... src/plugins/libco/coctx.o"
 	@echo "... src/plugins/libco/coctx.i"
 	@echo "... src/plugins/libco/coctx.s"
 	@echo "... src/plugins/libco/coctx_swap.o"
-	@echo "... test/test_http_connection.o"
-	@echo "... test/test_http_connection.i"
-	@echo "... test/test_http_connection.s"
+	@echo "... src/rpc/RockProtocol.o"
+	@echo "... src/rpc/RockProtocol.i"
+	@echo "... src/rpc/RockProtocol.s"
+	@echo "... src/rpc/RockServer.o"
+	@echo "... src/rpc/RockServer.i"
+	@echo "... src/rpc/RockServer.s"
+	@echo "... src/rpc/RockStream.o"
+	@echo "... src/rpc/RockStream.i"
+	@echo "... src/rpc/RockStream.s"
+	@echo "... src/streams/AsyncSocketStream.o"
+	@echo "... src/streams/AsyncSocketStream.i"
+	@echo "... src/streams/AsyncSocketStream.s"
+	@echo "... src/streams/LoadBalance.o"
+	@echo "... src/streams/LoadBalance.i"
+	@echo "... src/streams/LoadBalance.s"
+	@echo "... src/streams/ServiceDiscovery.o"
+	@echo "... src/streams/ServiceDiscovery.i"
+	@echo "... src/streams/ServiceDiscovery.s"
+	@echo "... src/streams/SocketStream.o"
+	@echo "... src/streams/SocketStream.i"
+	@echo "... src/streams/SocketStream.s"
+	@echo "... src/streams/Stream.o"
+	@echo "... src/streams/Stream.i"
+	@echo "... src/streams/Stream.s"
+	@echo "... src/streams/ZLIBStream.o"
+	@echo "... src/streams/ZLIBStream.i"
+	@echo "... src/streams/ZLIBStream.s"
+	@echo "... test/test_module.o"
+	@echo "... test/test_module.i"
+	@echo "... test/test_module.s"
+	@echo "... test/test_service_discovery.o"
+	@echo "... test/test_service_discovery.i"
+	@echo "... test/test_service_discovery.s"
 .PHONY : help
 
 

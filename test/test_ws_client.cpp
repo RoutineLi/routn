@@ -9,7 +9,7 @@
 #include "../src/Routn.h"
 
 void test(){
-	auto ret = Routn::Http::WSConnection::Create("http://172.20.10.2:8020/routn", 1000);
+	auto ret = Routn::Http::WSConnection::Create("ws://172.20.10.2:8084/routn/chat", 1000);
 	if(!ret.second){
 		std::cout << L_BLUE << ret.first->toString() << _NONE << std::endl;
 		return ;

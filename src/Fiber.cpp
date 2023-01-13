@@ -39,7 +39,7 @@ namespace Routn
 		coctx_init(&_fctx);
 		++s_fiber_count;
 #endif
-		ROUTN_LOG_DEBUG(g_logger) << "Fiber::Fiber()";
+		ROUTN_LOG_DEBUG(g_logger) << "Fiber::Fiber_main start";
 	}
 
 	Fiber::Fiber(std::function<void()> cb, size_t stacksize, bool use_caller)

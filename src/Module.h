@@ -100,6 +100,9 @@ namespace Routn{
 							,Stream::ptr stream) override;
     	virtual bool handleNotify(Message::ptr notify
                               ,Stream::ptr stream) override;
+
+		void registerService(const std::string& server_type,
+            const std::string& domain, const std::string& service);
 	};
 
 	class ModuleManager{

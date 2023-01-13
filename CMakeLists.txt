@@ -7,7 +7,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -fno-strict-aliasing -export-dynamic -o3 -pipe -g -D_GNU_SOURCE -D_REENTRANT -m64 -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-dev -lssl -lcrypto -L ./lib")
 
-set(PROJECT_SOURCE_DIR /home/test/routn)
+set(PROJECT_SOURCE_DIR /home/rotun-li/routn/)
 
 include_directories(.)
 include_directories(/usr/local/include)
@@ -21,32 +21,39 @@ if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
-find_package(Protobuf)
-if(Protobuf_FOUND)
-    include_directories(${Protobuf_INCLUDE_DIRS})
-endif()
-
 find_package(ZLIB REQUIRED)
 if(ZLIB_FOUND)
     include_directories(${ZLIB_INCLUDE_DIR})
 endif()
 
+find_package(Protobuf REQUIRED)
+if(Protobuf_FOUND)
+    include_directories(${Protobuf_INCLUDE_DIR})
+endif()
+
+find_library(YAMLCPP yamlcpp)
 find_library(PTHREAD pthread)
 find_library(OPENSSL openssl)
 find_library(CRYPTO crypto)
+find_library(Protobuf protobuf)
 
 set(LIB_SRC
+    src/rpc/RockProtocol.cpp
+    src/rpc/RockStream.cpp
+    src/rpc/RockServer.cpp
+    src/ns/NameServerProtocol.cpp
+    src/ns/NameServerClient.cpp
+    src/ns/ns_protobuf.pb.cpp
+    src/ns/NameServerModule.cpp
     src/plugins/libco/coctx.cpp
     src/plugins/libco/coctx_swap.S
-    src/streams/Stream.cpp
-    src/streams/SocketStream.cpp
-    src/streams/AsyncSocketStream.cpp
-    src/streams/ZLIBStream.cpp
-    src/streams/LoadBalance.cpp
+    src/db/Sqlite.cpp
+    src/TcpServer.cpp
     src/Log.cpp
     src/Util.cpp
     src/Config.cpp
     src/Fiber.cpp
+    src/FiberSync.cpp
     src/Thread.cpp
     src/Scheduler.cpp
     src/IoManager.cpp
@@ -56,17 +63,23 @@ set(LIB_SRC
     src/Address.cpp
     src/Socket.cpp
     src/ByteArray.cpp
-    src/TcpServer.cpp
     src/Uri.rl.cpp
     src/Daemon.cpp
     src/Env.cpp
-    src/FiberSync.cpp
     src/Worker.cpp
     src/Library.cpp
     src/Module.cpp
     src/Dns.cpp
+    src/JsonUtil.cpp
     src/Protocol.cpp
     src/Application.cpp
+    src/Zk_client.cpp
+    src/streams/Stream.cpp
+    src/streams/SocketStream.cpp
+    src/streams/AsyncSocketStream.cpp
+    src/streams/ZLIBStream.cpp
+    src/streams/ServiceDiscovery.cpp
+    src/streams/LoadBalance.cpp
     src/http/HttpSession.cpp
     src/http/HttpConnection.cpp
     src/http/HttpServer.cpp
@@ -79,10 +92,6 @@ set(LIB_SRC
     src/http/WSSession.cpp
     src/http/WSServlet.cpp
     src/http/WSConnection.cpp
-    src/rpc/RockProtocol.cpp
-    src/rpc/RockStream.cpp
-    src/rpc/RockServer.cpp
-    src/db/Sqlite.cpp
     )
 
 add_library(routn SHARED ${LIB_SRC})
@@ -93,8 +102,12 @@ set(LIBS
         pthread
         yaml-cpp
         dl
-	    ${ZLIB_LIBRARIES}
+        colib
+        tbb
+        ${ZLIB_LIBRARIES}
         sqlite3
+        protobuf
+        zookeeper_mt
     )
 
 
@@ -198,25 +211,49 @@ add_executable(ex_echoServer examples/ex_echoServer.cpp)
 add_dependencies(ex_echoServer routn)
 target_link_libraries(ex_echoServer routn ${LIBS})
 
-add_executable(test_http_connection test/test_http_connection.cpp)
-add_dependencies(test_http_connection routn)
-target_link_libraries(test_http_connection routn ${LIBS})
-
 add_executable(http_server_demo examples/http_server_demo.cpp)
 add_dependencies(http_server_demo routn)
 target_link_libraries(http_server_demo routn ${LIBS})
 
-#这里添加自定义业务Module
-#add_library(test_module SHARED tests/test_module.cpp)
+add_executable(test_lru test/test_lru.cpp)
+add_dependencies(test_lru routn)
+target_link_libraries(test_lru routn ${LIBS})
+
+add_executable(test_timed_cache test/test_timed_cache.cpp)
+add_dependencies(test_timed_cache routn)
+target_link_libraries(test_timed_cache routn ${LIBS})
 
 add_library(heart SHARED modules/heart/heart_module.cpp)
-add_library(chat SHARED modules/chat_room/chat_module.cpp modules/chat_room/chat_servlet.cpp)
-
-endif()
+add_library(chat SHARED modules/chat_room/chat_servlet.cpp modules/chat_room/chat_module.cpp modules/chat_room/chat_protocol.cpp)
+add_library(test SHARED test/test_module.cpp)
 
 add_executable(test_sqlite test/test_sqlite.cpp)
 add_dependencies(test_sqlite routn)
 target_link_libraries(test_sqlite routn ${LIBS})
+
+add_executable(test_nameserver test/test_nameserver.cpp)
+add_dependencies(test_nameserver routn)
+target_link_libraries(test_nameserver routn ${LIBS})
+
+add_executable(test_rock test/test_rock.cpp)
+add_dependencies(test_rock routn)
+target_link_libraries(test_rock routn ${LIBS})
+
+add_executable(test_zookeeper test/test_zookeeper.cpp)
+add_dependencies(test_zookeeper routn)
+target_link_libraries(test_zookeeper routn ${LIBS})
+
+endif()
+
+
+add_executable(test_service_discovery test/test_service_discovery.cpp)
+add_dependencies(test_service_discovery routn)
+target_link_libraries(test_service_discovery routn ${LIBS})
+
+add_library(heart SHARED modules/heart/heart_module.cpp)
+add_library(chat SHARED modules/chat_room/chat_servlet.cpp modules/chat_room/chat_module.cpp modules/chat_room/chat_protocol.cpp)
+add_library(test SHARED test/test_module.cpp)
+
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

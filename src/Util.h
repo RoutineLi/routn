@@ -9,6 +9,8 @@
 #define _UTIL_H
 
 #include <boost/lexical_cast.hpp>
+#include <google/protobuf/message.h>
+
 #include <vector>
 #include <sys/types.h>
 #include <sys/time.h>
@@ -19,6 +21,7 @@
 #include <stdio.h>
 #include <string>
 #include <sys/stat.h>
+#include "JsonUtil.h"
 #include <execinfo.h>
 
 namespace Routn
@@ -163,6 +166,36 @@ namespace Routn
 
 	std::string base64encode(const std::string& data, bool url = false);
 	std::string sha1sum(const std::string &data); 
+
+	std::string UrlEncode(const std::string &str, bool space_as_plus = true);
+	std::string UrlDecode(const std::string &str, bool space_as_plus = true);
+
+	std::string Trim(const std::string& str, const std::string& delimit = " \t\r\n");
+    std::string TrimLeft(const std::string& str, const std::string& delimit = " \t\r\n");
+    std::string TrimRight(const std::string& str, const std::string& delimit = " \t\r\n");
+
+
+	std::string PBToJsonString(const google::protobuf::Message& message);
+
+	template<class Iter>
+	std::string Join(Iter begin, Iter end, const std::string& tag) {
+		std::stringstream ss;
+		for(Iter it = begin; it != end; ++it) {
+			if(it != begin) {
+				ss << tag;
+			}
+			ss << *it;
+		}
+		return ss.str();
+	}
+
+	std::vector<std::string> split(const std::string &str, char delim, size_t max = ~0);
+	std::vector<std::string> split(const std::string &str, const char *delims, size_t max = ~0);
+
+	std::string GetIPv4();
+
+	std::string GetHostName();
+
 };
 
 #endif

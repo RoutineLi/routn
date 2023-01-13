@@ -11,20 +11,16 @@
 #include "Dns.h"
 #include "Config.h"
 
+#include <vector>
+
 static Routn::Logger::ptr g_logger = ROUTN_LOG_NAME("system");
 
 static Routn::ConfigVar<std::string>::ptr g_server_work_path = 
 	Routn::Config::Lookup("system.work_path", std::string("/home/rotun-li/routn"), "server work path");
 static Routn::ConfigVar<std::string>::ptr g_server_pid_file = 
 	Routn::Config::Lookup("system.pid_file", std::string("routn.pid"), "server pid file");
-
-//struct __INIT_WORK_PATH{
-//	__INIT_WORK_PATH(){
-//		g_server_work_path->addListener([](const std::string& ov, const std::string& nv){
-//			g_server_work_path->setValue(nv);
-//		});
-//	}
-//};
+static Routn::ConfigVar<std::string>::ptr g_service_discovery_zk =
+	Routn::Config::Lookup("service_discovery.zk", std::string(""), "service discovery zookeeper");
 
 namespace Routn{
 
@@ -135,8 +131,6 @@ namespace Routn{
 	int Application::run_fiber(){
 		
 		Routn::WorkerMgr::GetInstance()->init();
-		DnsMgr::GetInstance()->init();
-		DnsMgr::GetInstance()->start();
 
 		std::vector<Module::ptr> modules;
 		ModuleMgr::GetInstance()->listAll(modules);
@@ -221,6 +215,9 @@ namespace Routn{
 				server.reset(new Routn::Http::WSServer(process_worker, io_worker, accept_worker));
 			}else if(i.type == "rock"){
 				server.reset(new Routn::RockServer("rock", process_worker, io_worker, accept_worker));
+			}else if(i.type == "nameserver"){
+				server.reset(new RockServer("nameserver", process_worker, io_worker, accept_worker));
+				ModuleMgr::GetInstance()->add(std::make_shared<Ns::NameServerModule>());
 			}else{
             	ROUTN_LOG_ERROR(g_logger) << "invalid server type=" << i.type
                 	<< LexicalCast<TcpServerConf, std::string>()(i);
@@ -247,6 +244,41 @@ namespace Routn{
 			svrs.push_back(server);
 		}
 
+		if(!g_service_discovery_zk->getValue().empty()){
+			_serviceDiscovery.reset(new ZKServiceDiscovery(g_service_discovery_zk->getValue()));
+			_rockSDLoadBalance.reset(new RockSDLoadBalance(_serviceDiscovery));
+
+			std::vector<TcpServer::ptr> svrs;
+			if(!getServer("http", svrs)){
+				_serviceDiscovery->setSelfInfo(GetIPv4() + ":0:" + GetHostName());
+			}else{
+				std::string ip_and_port;
+				for(auto &i : svrs){
+					auto socks = i->getSocks();
+					for(auto & s : socks){
+						auto addr = std::dynamic_pointer_cast<IPv4Address>(s->getLocalAddress());
+						if(!addr){
+							continue;
+						}
+						auto str = addr->toString();
+						if(str.find("127.0.0.1") == 0){
+							continue;
+						}
+						if(str.find("0.0.0.0") == 0){
+							ip_and_port = GetIPv4() + ":" + std::to_string(addr->getPort());
+							break;
+						}else{
+							ip_and_port = addr->toString();
+						}
+					}
+					if(!ip_and_port.empty()){
+						break;
+					}
+				}
+				_serviceDiscovery->setSelfInfo(ip_and_port + ":" + GetHostName());
+			}
+		}
+
 		for(auto& i : modules){
 			i->onServerReady();
 		}
@@ -255,9 +287,19 @@ namespace Routn{
 			i->start();
 		}
 
+		if(_rockSDLoadBalance){
+			_rockSDLoadBalance->start();  
+		}
+
 		for(auto& i : modules){
 			i->onServerUp();
 		}
+
+		if(_rockSDLoadBalance){
+			_rockSDLoadBalance->doRegister();
+		}
+
+		modules.clear();
 		return 0;
 	}
 	

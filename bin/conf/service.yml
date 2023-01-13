@@ -1,0 +1,5 @@
+service_discovery:
+  zk: 127.0.0.1:2181
+rock_services:
+  routn300.top:
+    "all" : fair

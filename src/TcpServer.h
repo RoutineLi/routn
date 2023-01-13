@@ -29,7 +29,7 @@ namespace Routn{
 		int timeout = 1000 * 2 * 60;
 		int ssl = 0;		//ssl协议状态
 		
-		///server类型：默认http
+		///server类型：默认http (http, nameserver, ws, rock)
 		std::string type = "http";
 		std::string name;
 		std::string id;

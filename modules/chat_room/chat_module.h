@@ -9,7 +9,6 @@
 #define _CHAT_MODULE_H
 
 #include "src/Module.h"
-#include "chat_servlet.h"
 
 namespace Chat{
 	class ChatModule : public Routn::Module{

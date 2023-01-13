@@ -6,6 +6,7 @@
  ************************************************************************/
 
 #include "HTTP.h"
+#include "../Util.h"
 
 namespace Routn{
 namespace Http{
@@ -63,7 +64,8 @@ namespace Http{
 		: _method(HttpMethod::GET)
 		, _version(version)
 		, _close(close)
-		, _path("/"){
+		, _path("/")
+		, _parserParamFlag(0){
 	}
 
 	void HttpRequest::init(){
@@ -82,12 +84,15 @@ namespace Http{
 		return it == _headers.end() ? def : it->second;
 	}
 
-	std::string HttpRequest::getParam(const std::string& key, const std::string& def) const {
+	std::string HttpRequest::getParam(const std::string& key, const std::string& def){
+		initQueryParam();
+		initBodyParam();
 		auto it = _params.find(key);
 		return it == _params.end() ? def : it->second;
 	}
 
-	std::string HttpRequest::getCookie(const std::string& key, const std::string& def) const {
+	std::string HttpRequest::getCookie(const std::string& key, const std::string& def){
+		initCookies();
 		auto it = _cookies.find(key);
 		return it == _cookies.end() ? def : it->second;
 	}
@@ -101,7 +106,7 @@ namespace Http{
 		_params[key] = val;
 	}
 
-	void HttpRequest::setCookie(const std::string& key, const std::string& val){
+	void HttpRequest::setCookie(const std::string &key, const std::string &val){
 		_cookies[key] = val;
 	}
 
@@ -131,6 +136,8 @@ namespace Http{
 	}
 
 	bool HttpRequest::hasParam(const std::string& key, std::string* val){
+		initQueryParam();
+		initBodyParam();
 		auto it = _params.find(key);
 		if(it == _params.end()){
 			return false;
@@ -142,6 +149,7 @@ namespace Http{
 	}
 
 	bool HttpRequest::hasCookie(const std::string& key, std::string* val){
+		initCookies();
 		auto it = _cookies.find(key);
 		if(it == _cookies.end()){
 			return false;
@@ -152,6 +160,64 @@ namespace Http{
 		return true;
 	}
 
+	void HttpRequest::initParam(){
+		initQueryParam();
+		initBodyParam();
+		initCookies();
+	}
+
+	void HttpRequest::initQueryParam(){
+		if(_parserParamFlag & 0x1){
+			return ;
+		}
+	#define PARSE_PARAM(str, m, flag, trim) \
+		size_t pos = 0; \
+		do{	\
+			size_t last = pos;	\
+			pos = str.find('=', pos);	\
+			if(pos == std::string::npos){	\
+				break;	\
+			}	\
+			size_t key = pos;	\
+			pos = str.find(flag, pos);	\
+			m.insert({trim(str.substr(last, key - last)),	\
+			Routn::UrlDecode(str.substr(key + 1, pos - key - 1))});	\
+			if(pos == std::string::npos){	\
+				break;	\
+			}	\
+			++pos;	\
+		}while(true);
+
+		PARSE_PARAM(_query, _params, '&',);
+		_parserParamFlag |= 0x1;
+	}
+
+	void HttpRequest::initBodyParam(){
+		if(_parserParamFlag & 0x2){
+			return ;
+		}
+		std::string content_type = getHeader("content-type");
+		if(strcasestr(content_type.c_str(), "application/x-www-form-urlencoded") == nullptr){
+			_parserParamFlag |= 0x2;
+			return ;
+		}
+		PARSE_PARAM(_body, _params, '&',);
+		_parserParamFlag |= 0x2;
+	}
+
+	void HttpRequest::initCookies(){
+		if(_parserParamFlag & 0x4){
+			return ;
+		}
+		std::string cookie = getHeader("cookie");
+		if(cookie.empty()){
+			_parserParamFlag |= 0x4;
+			return ;
+		}
+		PARSE_PARAM(cookie, _cookies, ';', Routn::Trim);
+		_parserParamFlag |= 0x4;
+	}
+#undef PARSE_PARAM
 
 	std::ostream& HttpRequest::dump(std::ostream& os){
 		//GET /uri HTTP/1.1
@@ -208,6 +274,26 @@ namespace Http{
 
 	void HttpResponse::delHeader(const std::string& key){
 		_headers.erase(key);
+	}
+
+	void HttpResponse::setCookie(const std::string& key, const std::string& val
+						, time_t expired, const std::string& path
+                   		, const std::string& domain, bool secure){
+	    std::stringstream ss;
+		ss << key << "=" << val;
+		if(expired > 0) {
+			ss << ";expires=" << Routn::TimerToString(expired, "%a, %d %b %Y %H:%M:%S") << " GMT";
+		}
+		if(!domain.empty()) {
+			ss << ";domain=" << domain;
+		}
+		if(!path.empty()) {
+			ss << ";path=" << path;
+		}
+		if(secure) {
+			ss << ";secure";
+		}
+		_cookies.push_back(ss.str());	
 	}
 
 	std::ostream& HttpResponse::dump(std::ostream& os){

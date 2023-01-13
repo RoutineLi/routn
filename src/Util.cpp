@@ -10,10 +10,14 @@
 #include "Fiber.h"
 
 #include <openssl/sha.h>
+#include <google/protobuf/unknown_field_set.h>
 
 #include <dirent.h>
+#include <arpa/inet.h>
+#include <ifaddrs.h>
 #include <signal.h>
 #include <unistd.h>
+
 
 namespace Routn
 {
@@ -272,4 +276,370 @@ namespace Routn
 		}
 		return rt;	
 	}
-};
+
+
+	static const char uri_chars[256] = {
+		/* 0 */
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 1, 1, 0,
+		1, 1, 1, 1, 1, 1, 1, 1,   1, 1, 0, 0, 0, 1, 0, 0,
+		/* 64 */
+		0, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1, 1, 1,
+		1, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 0, 0, 0, 0, 1,
+		0, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1, 1, 1,
+		1, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 0, 0, 0, 1, 0,
+		/* 128 */
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		/* 192 */
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+	};
+
+	static const char xdigit_chars[256] = {
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,1,2,3,4,5,6,7,8,9,0,0,0,0,0,0,
+		0,10,11,12,13,14,15,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,10,11,12,13,14,15,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	};
+
+#define CHAR_IS_UNRESERVED(c)           \
+    (uri_chars[(unsigned char)(c)])
+
+	//-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~
+	std::string UrlEncode(const std::string& str, bool space_as_plus) {
+		static const char *hexdigits = "0123456789ABCDEF";
+		std::string* ss = nullptr;
+		const char* end = str.c_str() + str.length();
+		for(const char* c = str.c_str() ; c < end; ++c) {
+			if(!CHAR_IS_UNRESERVED(*c)) {
+				if(!ss) {
+					ss = new std::string;
+					ss->reserve(str.size() * 1.2);
+					ss->append(str.c_str(), c - str.c_str());
+				}
+				if(*c == ' ' && space_as_plus) {
+					ss->append(1, '+');
+				} else {
+					ss->append(1, '%');
+					ss->append(1, hexdigits[(uint8_t)*c >> 4]);
+					ss->append(1, hexdigits[*c & 0xf]);
+				}
+			} else if(ss) {
+				ss->append(1, *c);
+			}
+		}
+		if(!ss) {
+			return str;
+		} else {
+			std::string rt = *ss;
+			delete ss;
+			return rt;
+		}
+	}
+
+	std::string UrlDecode(const std::string& str, bool space_as_plus) {
+		std::string* ss = nullptr;
+		const char* end = str.c_str() + str.length();
+		for(const char* c = str.c_str(); c < end; ++c) {
+			if(*c == '+' && space_as_plus) {
+				if(!ss) {
+					ss = new std::string;
+					ss->append(str.c_str(), c - str.c_str());
+				}
+				ss->append(1, ' ');
+			} else if(*c == '%' && (c + 2) < end
+						&& isxdigit(*(c + 1)) && isxdigit(*(c + 2))){
+				if(!ss) {
+					ss = new std::string;
+					ss->append(str.c_str(), c - str.c_str());
+				}
+				ss->append(1, (char)(xdigit_chars[(int)*(c + 1)] << 4 | xdigit_chars[(int)*(c + 2)]));
+				c += 2;
+			} else if(ss) {
+				ss->append(1, *c);
+			}
+		}
+		if(!ss) {
+			return str;
+		} else {
+			std::string rt = *ss;
+			delete ss;
+			return rt;
+		}
+	}
+
+
+	std::string Trim(const std::string& str, const std::string& delimit) {
+    auto begin = str.find_first_not_of(delimit);
+    if(begin == std::string::npos) {
+        return "";
+    }
+    auto end = str.find_last_not_of(delimit);
+    return str.substr(begin, end - begin + 1);
+}
+
+	std::string TrimLeft(const std::string& str, const std::string& delimit) {
+		auto begin = str.find_first_not_of(delimit);
+		if(begin == std::string::npos) {
+			return "";
+		}
+		return str.substr(begin);
+	}
+
+	std::string TrimRight(const std::string& str, const std::string& delimit) {
+		auto end = str.find_last_not_of(delimit);
+		if(end == std::string::npos) {
+			return "";
+		};
+		return str.substr(0, end);
+	}
+
+
+	static void serialize_unknownfieldset(const google::protobuf::UnknownFieldSet& ufs, json::value& jnode){
+		std::map<int, std::vector<json::value> > kvs;
+		for(int i = 0; i < ufs.field_count(); ++i){
+			const auto& uf = ufs.field(i);
+			switch((int)uf.type()){
+				case google::protobuf::UnknownField::TYPE_VARINT:
+					kvs[uf.number()].push_back((long long)uf.varint());
+					break;
+				case google::protobuf::UnknownField::TYPE_FIXED32:
+					kvs[uf.number()].push_back((uint32_t)uf.fixed32());
+					break;
+				case google::protobuf::UnknownField::TYPE_FIXED64:
+					kvs[uf.number()].push_back((uint64_t)uf.fixed64());
+					break;
+				case google::protobuf::UnknownField::TYPE_LENGTH_DELIMITED:
+					google::protobuf::UnknownFieldSet tmp;
+					auto& v = uf.length_delimited();
+					if(!v.empty() && tmp.ParseFromString(v)){
+						json::value vv;
+						serialize_unknownfieldset(tmp, vv);
+						kvs[uf.number()].push_back(vv);
+					}else{
+						kvs[uf.number()].push_back(v);
+					}
+					break;
+			}
+		}
+
+		for(auto& i : kvs){
+			if(i.second.size() > 1){
+				for(auto& n : i.second){
+					jnode[std::to_string(i.first)].push_back(n);
+				}
+			}else{
+				jnode[std::to_string(i.first)] = i.second[0];
+			}
+		}
+	}
+
+	static void serialize_message(const google::protobuf::Message& message, json::value& jnode){
+		const google::protobuf::Descriptor* descriptor = message.GetDescriptor();
+		const google::protobuf::Reflection* reflection = message.GetReflection();
+
+		for(int i = 0; i < descriptor->field_count(); ++i){
+			const google::protobuf::FieldDescriptor* field = descriptor->field(i);
+
+			if(field->is_repeated()){
+				if(!reflection->FieldSize(message, field)){
+					continue;
+				}
+			}else{
+				if(!reflection->HasField(message, field)){
+					continue;
+				}
+			}
+
+			if(field->is_repeated()){
+				switch(field->cpp_type()){
+	#define XX(cpptype, method, valuetype, jsontype)	\
+					case google::protobuf::FieldDescriptor::CPPTYPE_##cpptype: {	\
+						int size = reflection->FieldSize(message, field);	\
+						for(int n = 0; n < size; ++n){	\
+							jnode[field->name()].push_back(	\
+								(jsontype)reflection->GetRepeated##method(	\
+								message, field, n));	\
+						}	\
+						break;	\
+					}
+				XX(INT32, Int32, int32_t, int);
+				XX(UINT32, UInt32, uint32_t, uint32_t);
+				XX(FLOAT, Float, float, float);
+				XX(DOUBLE, Double, double, double);
+				XX(BOOL, Bool, bool, bool);
+				XX(INT64, Int64, int64_t, long long);
+				XX(UINT64, UInt64, uint64_t, unsigned long long);
+	#undef XX
+					case google::protobuf::FieldDescriptor::CPPTYPE_ENUM:{
+						int size = reflection->FieldSize(message, field);
+						for(int n = 0; n < size; ++n){
+							jnode[field->name()].push_back(reflection->GetRepeatedEnum(message, field, n)->number());
+						}
+						break;
+					}
+					case google::protobuf::FieldDescriptor::CPPTYPE_STRING:{
+						int size = reflection->FieldSize(message, field);
+						for(int n = 0; n < size; ++n){
+							jnode[field->name()].push_back(reflection->GetRepeatedString(message, field, n));
+						}
+						break;
+					}
+					case google::protobuf::FieldDescriptor::CPPTYPE_MESSAGE:{
+						int size = reflection->FieldSize(message, field);
+						for(int n = 0; n < size; ++n){
+							json::value vv;
+							serialize_message(reflection->GetRepeatedMessage(message, field, n), vv);
+							jnode[field->name()].push_back(vv);
+						}
+						break;
+					}
+				}
+				continue;
+			}
+
+			switch(field->cpp_type()){
+	#define XX(cpptype, method, valuetype, jsontype)\
+				case google::protobuf::FieldDescriptor::CPPTYPE_##cpptype:{	\
+					jnode[field->name()] = (jsontype)reflection->Get##method(message, field); \
+					break; \
+				}
+				XX(INT32, Int32, int32_t, int32_t);
+				XX(UINT32, UInt32, uint32_t, uint32_t);
+				XX(FLOAT, Float, float, double);
+				XX(DOUBLE, Double, double, double);
+				XX(BOOL, Bool, bool, bool);
+				XX(INT64, Int64, int64_t, int64_t);
+				XX(UINT64, UInt64, uint64_t, uint64_t);
+	#undef XX
+				case google::protobuf::FieldDescriptor::CPPTYPE_ENUM:{
+					jnode[field->name()] = reflection->GetEnum(message, field)->number();
+					break;
+				}
+				case google::protobuf::FieldDescriptor::CPPTYPE_STRING:{
+					jnode[field->name()] = reflection->GetString(message, field);
+					break;
+				}
+				case google::protobuf::FieldDescriptor::CPPTYPE_MESSAGE:{
+					serialize_message(reflection->GetMessage(message, field), jnode[field->name()]);
+				}
+			}
+		}
+
+		const auto& ufs = reflection->GetUnknownFields(message);
+		serialize_unknownfieldset(ufs, jnode);
+	}
+
+	std::string PBToJsonString(const google::protobuf::Message& message){
+		json::value jnode;
+		serialize_message(message, jnode);
+		return Routn::JsonUtil::ToString(jnode);
+	}
+
+
+	std::vector<std::string> split(const std::string &str, char delim, size_t max) {
+    	std::vector<std::string> result;
+		if (str.empty()) {
+			return result;
+		}
+
+		size_t last = 0;
+		size_t pos = str.find(delim);
+		while (pos != std::string::npos) {
+			result.push_back(str.substr(last, pos - last));
+			last = pos + 1;
+			if (--max == 1)
+				break;
+			pos = str.find(delim, last);
+		}
+		result.push_back(str.substr(last));
+		return result;
+	}
+
+	std::vector<std::string> split(const std::string &str, const char *delims, size_t max) {
+		std::vector<std::string> result;
+		if (str.empty()) {
+			return result;
+		}
+
+		size_t last = 0;
+		size_t pos = str.find_first_of(delims);
+		while (pos != std::string::npos) {
+			result.push_back(str.substr(last, pos - last));
+			last = pos + 1;
+			if (--max == 1)
+				break;
+			pos = str.find_first_of(delims, last);
+		}
+		result.push_back(str.substr(last));
+		return result;
+	}
+
+	in_addr_t GetIPv4Inet() {
+		struct ifaddrs* ifas = nullptr;
+		struct ifaddrs* ifa = nullptr;
+
+		in_addr_t localhost = inet_addr("127.0.0.1");
+		if(getifaddrs(&ifas)) {
+			ROUTN_LOG_ERROR(g_logger) << "getifaddrs errno=" << errno
+				<< " errstr=" << strerror(errno);
+			return localhost;
+		}
+
+		in_addr_t ipv4 = localhost;
+
+		for(ifa = ifas; ifa && ifa->ifa_addr; ifa = ifa->ifa_next) {
+			if(ifa->ifa_addr->sa_family != AF_INET) {
+				continue;
+			}
+			if(!strncasecmp(ifa->ifa_name, "lo", 2)) {
+				continue;
+			}
+			ipv4 = ((struct sockaddr_in*)ifa->ifa_addr)->sin_addr.s_addr;
+			if(ipv4 == localhost) {
+				continue;
+			}
+		}
+		if(ifas != nullptr) {
+			freeifaddrs(ifas);
+		}
+		return ipv4;
+	}
+
+	std::string _GetIPv4() {
+		char ipv4[INET_ADDRSTRLEN] = {0};
+		memset(ipv4, 0, INET_ADDRSTRLEN);
+		auto ia = GetIPv4Inet();
+		inet_ntop(AF_INET, &ia, ipv4, INET_ADDRSTRLEN);
+		return ipv4;
+	}
+
+	std::string GetIPv4() {
+		static const std::string ip = _GetIPv4();
+		return ip;
+	}
+
+	std::string GetHostName() {
+		char host[512] = {0};
+		gethostname(host, 511);
+    	return host;
+	}
+}

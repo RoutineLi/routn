@@ -90,13 +90,7 @@ namespace Routn
 				}
 				parser->getData()->setBody(body);
 			}
-
-			std::string keep_alive = parser->getData()->getHeader("Connection");
-			if (!strcasecmp(keep_alive.c_str(), "Keep-Alive"))
-			{
-				parser->getData()->setClose(false);
-				_socket->setOptionImpl(SOL_SOCKET, SO_KEEPALIVE, 1);
-			}
+			parser->getData()->init();
 			return parser->getData();
 		}
 

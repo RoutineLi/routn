@@ -18,6 +18,8 @@
 #include "http/HttpServer.h"
 #include "rpc/RockServer.h"
 #include "rpc/RockStream.h"
+#include "ns/NameServerModule.h"
+#include "streams/ServiceDiscovery.h"
 #include "http/WSServer.h"
 #include "TcpServer.h"
 
@@ -28,6 +30,8 @@ namespace Routn{
 		Application();
 
 		static Application* GetInstance() { return s_instance;}
+
+		ZKServiceDiscovery::ptr getServiceDiscovery() const { return _serviceDiscovery;}
 
 		bool getServer(const std::string& type, std::vector<TcpServer::ptr>& svrs);		
 		bool init(int argc, char** argv);
@@ -41,6 +45,9 @@ namespace Routn{
 		IOManager::ptr _mainIOMgr;
 		int _argc = 0;
 		const char** _argv = nullptr;
+
+		ZKServiceDiscovery::ptr _serviceDiscovery;
+		RockSDLoadBalance::ptr _rockSDLoadBalance;
 	};
 
 }

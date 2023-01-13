@@ -94,6 +94,7 @@ namespace Routn{
 		   << " result = " << _result
 		   << " result_msg = " << _resStr
 		   << " bodylen = " << _body.size()
+		   << " body = " << _body
 		   << "]";
 		return ss.str();
 	}
