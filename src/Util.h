@@ -40,6 +40,12 @@ namespace Routn
 	//获取高精度时间-us
 	uint64_t GetCurrentUs();
 
+	std::string ToUpper(const std::string& name);
+
+	std::string ToLower(const std::string& name);
+
+	time_t StringToTimer(const char* str, const char* format = "%Y-%m-%d %H:%M:%S");
+
 	std::string TimerToString(time_t ts = time(0), const std::string& format = "%Y-%m-%d %H:%M:%S");
 
 	//文件操作相关类
@@ -173,6 +179,11 @@ namespace Routn
 	std::string Trim(const std::string& str, const std::string& delimit = " \t\r\n");
     std::string TrimLeft(const std::string& str, const std::string& delimit = " \t\r\n");
     std::string TrimRight(const std::string& str, const std::string& delimit = " \t\r\n");
+
+	
+	std::string replace(const std::string& str1, char find, char replaceWith);
+	std::string replace(const std::string& str1, char find, const std::string& replaceWith);
+	std::string replace(const std::string& str1, const std::string& find, const std::string& replaceWith);
 
 
 	std::string PBToJsonString(const google::protobuf::Message& message);

@@ -63,6 +63,12 @@ namespace Routn{
 
 		virtual bool onConnect(Routn::Stream::ptr stream);
 		virtual bool onDisconnect(Routn::Stream::ptr stream);
+		
+		void registerService(const std::string& server_type,
+            const std::string& domain, const std::string& service);
+
+		void addRegisterParam(const std::string& key, const std::string& val);
+		void queryService(const std::string& domain, const std::string& service);
 
 		virtual bool onServerReady();
 		virtual bool onServerUp();
@@ -100,9 +106,6 @@ namespace Routn{
 							,Stream::ptr stream) override;
     	virtual bool handleNotify(Message::ptr notify
                               ,Stream::ptr stream) override;
-
-		void registerService(const std::string& server_type,
-            const std::string& domain, const std::string& service);
 	};
 
 	class ModuleManager{

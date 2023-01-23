@@ -131,7 +131,8 @@ namespace Routn{
 	int Application::run_fiber(){
 		
 		Routn::WorkerMgr::GetInstance()->init();
-
+		Routn::DnsMgr::GetInstance()->init();
+		Routn::DnsMgr::GetInstance()->start();
 		std::vector<Module::ptr> modules;
 		ModuleMgr::GetInstance()->listAll(modules);
 		for(auto &i : modules){

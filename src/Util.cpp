@@ -73,6 +73,17 @@ namespace Routn
 		gettimeofday(&tv, NULL);
 		return tv.tv_sec * 1000 * 1000ul + tv.tv_usec;		
 	}
+	std::string ToUpper(const std::string& name){
+		std::string rt = name;
+		std::transform(rt.begin(), rt.end(), rt.begin(), ::toupper);
+		return rt;
+	}
+
+	std::string ToLower(const std::string& name){
+		std::string rt = name;
+		std::transform(rt.begin(), rt.end(), rt.begin(), ::tolower);
+		return rt;
+	}
 
 
 	std::string TimerToString(time_t ts, const std::string& format){
@@ -81,6 +92,15 @@ namespace Routn
 		char buff[64];
 		strftime(buff, sizeof(buff), format.c_str(), &tm);
 		return std::string(buff);
+	}
+
+	time_t StringToTimer(const char* str, const char* format){
+		struct tm t;
+		memset(&t, 0, sizeof(t));
+		if(!strptime(str, format, &t)){
+			return 0;
+		}
+		return mktime(&t);
 	}
 
 	static int __lstat(const char* file, struct stat* st = nullptr) {
@@ -642,4 +662,37 @@ namespace Routn
 		gethostname(host, 511);
     	return host;
 	}
-}
+
+
+	std::string replace(const std::string& str1, char find, char replaceWith){
+		auto str = str1;
+		size_t index = str.find(find);
+		while(index != std::string::npos){
+			str[index] = replaceWith;
+			index = str.find(find, index + 1);
+		}
+		return str;
+	}
+
+	
+	std::string replace(const std::string& str1, char find, const std::string& replaceWith){
+		auto str = str1;
+		size_t index = str.find(find);
+		while(index != std::string::npos){
+			str = str.substr(0, index) + replaceWith + str.substr(index + 1);
+			index = str.find(find, index + replaceWith.size());
+		}
+		return str;
+	}
+
+	std::string replace(const std::string& str1, const std::string& find, const std::string& replaceWith){
+		auto str = str1;
+		size_t index = str.find(find);
+		while(index != std::string::npos){
+			str = str.substr(0, index) + replaceWith + str.substr(index + find.size());
+			index = str.find(find, index + replaceWith.size());
+		}
+		return str; 
+	}
+
+}	

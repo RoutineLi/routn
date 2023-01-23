@@ -82,7 +82,7 @@ namespace Routn{
 		return handleRockNotify(rock_nty, rock_stream);
 	}
 
-	void RockModule::registerService(const std::string& server_type,
+	void Module::registerService(const std::string& server_type,
             							const std::string& domain, const std::string& service){
 		auto sd = Application::GetInstance()->getServiceDiscovery();
 		if(!sd){
@@ -113,6 +113,23 @@ namespace Routn{
 			}
 		}
 	}
+
+	void Module::addRegisterParam(const std::string& key, const std::string& val){
+		auto sd = Application::GetInstance()->getServiceDiscovery();
+		if(!sd){
+			return ;
+		}
+		sd->addParam(key, val);
+	}
+
+	void Module::queryService(const std::string& domain, const std::string& service){
+		auto sd = Application::GetInstance()->getServiceDiscovery();
+		if(!sd){
+			return ;
+		}
+		sd->queryServer(domain, service);
+	}
+
 
 	RockModule::RockModule(const std::string& name
 							, const std::string& version
