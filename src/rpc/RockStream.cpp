@@ -47,7 +47,7 @@ namespace Routn{
 			RockSendCtx::ptr ctx(new RockSendCtx);
 			ctx->msg = msg;
 			enqueue(ctx);
-			return -1;
+			return 1;
 		}else{
 			return -1;
 		}

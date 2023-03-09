@@ -15,7 +15,7 @@ namespace Routn
 	static Routn::Logger::ptr g_logger = ROUTN_LOG_NAME("system");
 
 	static thread_local Schedular *t_schedular = nullptr;
-	static thread_local Fiber *t_fiber = nullptr;
+	static thread_local Fiber *t_fiber = nullptr;					//main()协程
 
 	Schedular::Schedular(size_t threads, bool use_caller, const std::string &name)
 		: _name(name)

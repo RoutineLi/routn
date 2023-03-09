@@ -62,9 +62,10 @@ namespace Routn
 
 	//获取高精度时间-ms
 	uint64_t GetCurrentMs(){
-		struct timeval tv;
-		gettimeofday(&tv, NULL);
-		return tv.tv_sec * 1000ul + tv.tv_usec / 1000;
+		struct timespec tv;
+		//gettimeofday(&tv, NULL);
+		clock_gettime(CLOCK_MONOTONIC_RAW, &tv)
+        return tv.tv_sec * 1000 + tv.tv_nsec / 1000000;
 	}
 	
 	//获取高精度时间-us

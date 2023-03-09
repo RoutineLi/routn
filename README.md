@@ -386,7 +386,7 @@ protected:
     void AsyncSocketStream::doRead(){
         ...
         while(isConnected()){
-            Ctx::ptr ctx = doRecv();    //recv data==>Ctx
+            Ctx::ptr ctx = doRecv();    //recv data==>enqueue
             if(ctx)
                 ctx->doRsp();           //make response
         }
@@ -402,7 +402,7 @@ protected:
         ...
         /**
          * 实际上基于协程信号量的实现，消息队列每次只会有一个
-         * 消息，保证了每次只会取出一个消息去消费，原子性。
+         * 消息，保证了每次只会取出一个消息去消费，阻塞队列。
          **/
         while(isConnected()){
             _sem.wait();               //--队列信号量
@@ -660,7 +660,7 @@ void ZKServiceDiscovery::onWatch(int type, int stat, const std::string& path, 		
 			if(type == ZKClient::EventType::SESSION){
 				return onZKConnect(path, client);
 			}else if(type == ZKClient::EventType::CHILD){
-				return onZKChanged(path, client);
+				return onZKChild(path, client);
 			}else if(type == ZKClient::EventType::CHANGED){
 				return onZKChanged(path, client);
 			}else if(type == ZKClient::EventType::DELETED){
@@ -811,3 +811,4 @@ float getWeight(const uint32_t& now){
 
 ```
 
+###### 

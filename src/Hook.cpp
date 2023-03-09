@@ -187,7 +187,9 @@ extern "C"
 
 		Routn::Fiber::ptr fiber = Routn::Fiber::GetThis();
 		Routn::IOManager *iom = Routn::IOManager::GetThis();
-		iom->addTimer(seconds * 1000, std::bind((void (Routn::Schedular::*)(Routn::Fiber::ptr, int thread)) & Routn::IOManager::schedule, iom, fiber, -1));
+		iom->addTimer(seconds * 1000
+			, std::bind((void (Routn::Schedular::*)(Routn::Fiber::ptr, int thread)) 
+			& Routn::IOManager::schedule, iom, fiber, -1));
 		//iom->addTimer(seconds * 1000, [iom, fiber](){
 		//	iom->schedule(fiber);
 		//});
